@@ -226,6 +226,7 @@ Module modMain
 
     Sub Main()
 
+        'Prueba de Merge
 
         'leyendo el archivo config de la sucursal
         LeeConfig()
