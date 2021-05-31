@@ -1,0 +1,155 @@
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\bin\Debug\PEFacturacion.exe.config
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.exe
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.xml
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.pdb
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\bin\Debug\PEFacturacion.exe
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\bin\Debug\PEFacturacion.pdb
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\bin\Debug\PEFacturacion.xml
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\GenerateResource.write.1.tlog
+\\Vboxsvr\karina\PEFacturacion\bin\Debug\PEFacturacion.exe.config
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.exe
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.xml
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.pdb
+\\Vboxsvr\karina\PEFacturacion\bin\Debug\PEFacturacion.exe
+\\Vboxsvr\karina\PEFacturacion\bin\Debug\PEFacturacion.pdb
+\\Vboxsvr\karina\PEFacturacion\bin\Debug\PEFacturacion.xml
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\ResolveAssemblyReference.cache
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\GenerateResource.read.1.tlog
+\\Vboxsvr\karina\PEFacturacion\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\bin\Debug\PEFacturacion.exe.config
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.exe
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.xml
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.pdb
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\bin\Debug\PEFacturacion.exe
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\bin\Debug\PEFacturacion.pdb
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\bin\Debug\PEFacturacion.xml
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\PEFacturacion.Resources.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion1\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+C:\Users\vWin7Pro_Desa\Desktop\PEFacturacion\obj\Debug\PEFacturacion.frmManejoFactura.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\bin\Debug\PEFacturacion.exe.config
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.exe
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.xml
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.pdb
+C:\Users\Consiss\Documents\PEFacturacion_2\bin\Debug\PEFacturacion.exe
+C:\Users\Consiss\Documents\PEFacturacion_2\bin\Debug\PEFacturacion.pdb
+C:\Users\Consiss\Documents\PEFacturacion_2\bin\Debug\PEFacturacion.xml
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.frmManejoFactura.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.Resources.resources
+C:\Users\Consiss\Documents\PEFacturacion_2\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\bin\Debug\PEFacturacion.exe.config
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.exe
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.xml
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.pdb
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.frmManejoFactura.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.Resources.resources
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\bin\Debug\PEFacturacion.exe
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\bin\Debug\PEFacturacion.pdb
+C:\Users\Consiss\Documents\PEFacturacion_2 - copia\bin\Debug\PEFacturacion.xml
+K:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.exe.config
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.exe
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.xml
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.pdb
+K:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.exe
+K:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.pdb
+K:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.xml
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmManejoFactura.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmEnviarCorreo.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.vbprojResolveAssemblyReference.cache
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmFacGlobalAutomatica.resources
+K:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+D:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.exe.config
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.exe
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.xml
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.pdb
+D:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.exe
+D:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.pdb
+D:\MODULO FAC-ELEC\PEFacturacion\bin\Debug\PEFacturacion.xml
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.vbprojResolveAssemblyReference.cache
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmEnviarCorreo.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmFacGlobalAutomatica.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmManejoFactura.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
+D:\MODULO FAC-ELEC\PEFacturacion\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+D:\_SISTEMAS\PEFacturacion\bin\Debug\PEFacturacion.exe.config
+D:\_SISTEMAS\PEFacturacion\bin\Debug\PEFacturacion.exe.manifest
+D:\_SISTEMAS\PEFacturacion\bin\Debug\PEFacturacion.application
+D:\_SISTEMAS\PEFacturacion\bin\Debug\PEFacturacion.exe
+D:\_SISTEMAS\PEFacturacion\bin\Debug\PEFacturacion.pdb
+D:\_SISTEMAS\PEFacturacion\bin\Debug\PEFacturacion.xml
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmEnviarCorreo.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmFacGlobalAutomatica.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmManejoFactura.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.exe.manifest
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.application
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.exe
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.xml
+D:\_SISTEMAS\PEFacturacion\obj\Debug\PEFacturacion.pdb
+D:\_SISTEMAS\PEFacturacion_20210422\bin\Debug\PEFacturacion.exe.config
+D:\_SISTEMAS\PEFacturacion_20210422\bin\Debug\PEFacturacion.exe.manifest
+D:\_SISTEMAS\PEFacturacion_20210422\bin\Debug\PEFacturacion.application
+D:\_SISTEMAS\PEFacturacion_20210422\bin\Debug\PEFacturacion.exe
+D:\_SISTEMAS\PEFacturacion_20210422\bin\Debug\PEFacturacion.pdb
+D:\_SISTEMAS\PEFacturacion_20210422\bin\Debug\PEFacturacion.xml
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmEnviarCorreo.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmFacGlobalAutomatica.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmManejoFactura.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.Resources.resources
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.exe.manifest
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.application
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.exe
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.xml
+D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.pdb

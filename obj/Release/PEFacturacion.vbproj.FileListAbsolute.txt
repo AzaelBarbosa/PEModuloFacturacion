@@ -1,0 +1,13 @@
+D:\_SISTEMAS\PEFacturacion\bin\Release\PEFacturacion.exe.config
+D:\_SISTEMAS\PEFacturacion\bin\Release\PEFacturacion.exe
+D:\_SISTEMAS\PEFacturacion\bin\Release\PEFacturacion.pdb
+D:\_SISTEMAS\PEFacturacion\bin\Release\PEFacturacion.xml
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.frmFacturaGlobalDiaria.resources
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.frmFacturaIndividual.resources
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.frmMenuFacturacion.resources
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.Resources.resources
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.vbproj.GenerateResource.Cache
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.exe
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.xml
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.pdb
+D:\_SISTEMAS\PEFacturacion\obj\Release\PEFacturacion.frmDatosClienteFacturacion.resources

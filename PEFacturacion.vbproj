@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E1FF8B5-CA61-4F48-AD6A-F6ADE6DE67F4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>PEFacturacion</RootNamespace>
+    <AssemblyName>PEFacturacion</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\192.168.2.5\spe\Nueva carpeta\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\192.168.2.5\spe\Nueva carpeta\</InstallUrl>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PEFacturacion.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PEFacturacion.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>575CE5D0FD8A78322FE401DFAA4392D0A72A2083</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>PEFacturacion_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsSQLServer.vb" />
+    <Compile Include="clsUtilerias.vb" />
+    <Compile Include="frmCancelarFactura.designer.vb">
+      <DependentUpon>frmCancelarFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCancelarFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatosClienteFacturacion.designer.vb">
+      <DependentUpon>frmDatosClienteFacturacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDatosClienteFacturacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnviarCorreo.designer.vb">
+      <DependentUpon>frmEnviarCorreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnviarCorreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacGlobalAutomatica.designer.vb">
+      <DependentUpon>frmFacGlobalAutomatica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacGlobalAutomatica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaGlobalDiaria.designer.vb">
+      <DependentUpon>frmFacturaGlobalDiaria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturaGlobalDiaria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaIndividual.designer.vb">
+      <DependentUpon>frmFacturaIndividual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturaIndividual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManejoFactura.Designer.vb">
+      <DependentUpon>frmManejoFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmManejoFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuFacturacion.Designer.vb">
+      <DependentUpon>frmMenuFacturacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuFacturacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modMain.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\FelProd\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FelTest\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmCancelarFactura.resx">
+      <DependentUpon>frmCancelarFactura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDatosClienteFacturacion.resx">
+      <DependentUpon>frmDatosClienteFacturacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnviarCorreo.resx">
+      <DependentUpon>frmEnviarCorreo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacGlobalAutomatica.resx">
+      <DependentUpon>frmFacGlobalAutomatica.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaGlobalDiaria.resx">
+      <DependentUpon>frmFacturaGlobalDiaria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaIndividual.resx">
+      <DependentUpon>frmFacturaIndividual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManejoFactura.resx">
+      <DependentUpon>frmManejoFactura.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuFacturacion.resx">
+      <DependentUpon>frmMenuFacturacion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PEFacturacion_ClaveTemporal.pfx" />
+    <None Include="Service References\FelProd\ConexionRemota.wsdl" />
+    <None Include="Service References\FelProd\ConexionRemota.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelProd\ConexionRemota1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelProd\ConexionRemota2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelProd\ConexionRemota3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaCancelacionCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaNumeroCreditosCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaOperacionCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaProcesarSolicitudCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaReporteCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaReporteTicketsCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaSolicitudesPendientesCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaSolicitudesProcesadasCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaTicketCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelProd\PEFacturacion.FelProd.RespuestaValidacionRFCCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\ConexionRemota.wsdl" />
+    <None Include="Service References\FelTest\ConexionRemota.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelTest\ConexionRemota1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelTest\ConexionRemota2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelTest\ConexionRemota3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaCancelacionCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaNumeroCreditosCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaOperacionCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaProcesarSolicitudCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaReporteCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaReporteTicketsCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaSolicitudesPendientesCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaSolicitudesProcesadasCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaTicketCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FelTest\PEFacturacion.FelTest.RespuestaValidacionRFCCR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FelProd\" />
+    <WCFMetadataStorage Include="Service References\FelTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Imagenes\imgDatos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelTest\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelTest\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelTest\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelProd\ConexionRemota.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelProd\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelProd\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FelProd\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cambio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CancelarDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\correo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PDFAcuse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\XMLAcuse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anadir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnnuevo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
