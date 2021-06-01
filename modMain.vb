@@ -517,8 +517,8 @@ Module modMain
             End If
         Catch ex As Exception
             If strmodoFactura = "AUTOMATICA" Then
-                texto = texto & "ERROR: Falla de conexión con el PAC para Consultar Créditos Disponibles " & vbNewLine
-                texto = texto & "Error Detallado: " & ex.Message & vbNewLine
+                texto = texto & "ERROR: No Hay conexión con el PAC FEL-Factura en Línea , Intentar más tarde " & vbNewLine
+                'texto = texto & "Error Detallado: " & ex.Message & vbNewLine
                 bolObtuvoCred = False
             Else
                 frmDatosClienteFacturacion.Cursor = Cursors.Default
@@ -2738,7 +2738,8 @@ Module modMain
                         EnviarCorreo(NumCreditosFel)
                     End If
                 Else
-
+                    EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    Exit Sub
                 End If
             End If
 
@@ -3815,7 +3816,7 @@ BuscaDatos:
 
             Catch ex As Exception
                 If strmodoFactura = "AUTOMATICA" Then
-                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: " & ex.Message & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: No existe Carpeta R: para almacenar Comprobante de Factura, favor de configurar "
                     My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
                     FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
                     nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
@@ -3836,7 +3837,11 @@ BuscaDatos:
                 End If
 
             Catch ex As Exception
-                TipoError = "ERROR: No se Encontro la Ruta D"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: No existe Carpeta D: para almacenar Comprobante de Factura, favor de configurar "
+                My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
+                nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
             Finally
                 VerificaCarpetaFacturacion = strCarpetaFacturas
             End Try

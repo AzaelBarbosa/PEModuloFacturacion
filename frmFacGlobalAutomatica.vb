@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 
+
 Public Class frmFacGlobalAutomatica
+    Dim FechaFacturada As Boolean = False
     Private Function GeneraTablaDetalle(ByVal Datos As DataTable) As DataTable
         Dim intFila As Integer = 0
         Dim SumoCosto As Boolean = False
@@ -269,6 +271,23 @@ Reintento:
         If FechaManual <> "" Then
             FechaManual = Mid(FechaManual, 1, 4) & "-" & Mid(FechaManual, 5, 2) & "-" & Mid(FechaManual, 7, 2)
         End If
+    End Sub
+
+    Private Sub SeFacturoGlobal()
+        Dim sSQL As String = ""
+        Dim dtBusca As New DataTable
+
+        sSQL = "SELECT * FROM BPFFacturas WHERE TipoFactura='GLOBAL' AND FechaFactura = '" & Format(dtpFechaIni.Value, "yyyyMMdd") & "'"
+
+        dtBusca = SQLServer.ExecSQLReturnDT(sSQL, "Buscar")
+        If Not dtBusca Is Nothing Then
+            If dtBusca.Rows.Count > 0 Then
+                FechaFacturada = True
+            Else
+                FechaFacturada = False
+            End If
+        End If
+
     End Sub
 
     Private Sub buscar()
@@ -559,13 +578,19 @@ Intento:
             TipoError = "Busca PE002"
             dblSubtotal = Format((dblSumaTotal + dblSumaDescuento) - dblSumaIVA, "$ #,##0.00")
             TipoError = "Busca PE003"
+
             If dtDetalle Is Nothing OrElse dtDetalle.Rows.Count <= 0 Then
-
-                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "ERROR: No hay movimientos pendientes de facturar!" & vbNewLine
-                My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
-                EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
-                End
-
+                If FechaFacturada = True Then
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Día ya fue facturado previamente!" & vbNewLine
+                    My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    'EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    End
+                Else
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "No hay movimientos pendientes de facturar!" & vbNewLine
+                    My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    'EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    End
+                End If
             End If
 
             ConectaBD()
