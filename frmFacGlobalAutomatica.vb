@@ -579,6 +579,9 @@ Intento:
             dblSubtotal = Format((dblSumaTotal + dblSumaDescuento) - dblSumaIVA, "$ #,##0.00")
             TipoError = "Busca PE003"
 
+            'SE VALIDA SI YA SE FACTURA LA FECHA
+            SeFacturoGlobal()
+
             If dtDetalle Is Nothing OrElse dtDetalle.Rows.Count <= 0 Then
                 If FechaFacturada = True Then
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Día ya fue facturado previamente!" & vbNewLine
