@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="PEFacturacion.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="PEFacturacion" version="21.5.27.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="PEFacturacion" version="21.6.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="PEFacturacion.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -52,14 +52,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PEFacturacion.exe" size="1208832">
-      <assemblyIdentity name="PEFacturacion" version="21.5.27.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PEFacturacion.exe" size="1209856">
+      <assemblyIdentity name="PEFacturacion" version="21.6.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>rfAv9C/5qtalU1VbPeXNe19Q9AE=</dsig:DigestValue>
+        <dsig:DigestValue>eKOcxr10GaBKy55r8+livplN2l8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -153,3 +153,24 @@ D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.application
 D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.exe
 D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.xml
 D:\_SISTEMAS\PEFacturacion_20210422\obj\Debug\PEFacturacion.pdb
+D:\Desarrollos GIT\PEFacturacion\bin\Debug\PEFacturacion.exe.config
+D:\Desarrollos GIT\PEFacturacion\bin\Debug\PEFacturacion.exe.manifest
+D:\Desarrollos GIT\PEFacturacion\bin\Debug\PEFacturacion.application
+D:\Desarrollos GIT\PEFacturacion\bin\Debug\PEFacturacion.exe
+D:\Desarrollos GIT\PEFacturacion\bin\Debug\PEFacturacion.pdb
+D:\Desarrollos GIT\PEFacturacion\bin\Debug\PEFacturacion.xml
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmCancelarFactura.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmDatosClienteFacturacion.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmEnviarCorreo.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmFacGlobalAutomatica.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmManejoFactura.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.exe.manifest
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.application
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.exe
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.xml
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.pdb
