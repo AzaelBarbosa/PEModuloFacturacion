@@ -23,10 +23,10 @@ Partial Class frmManejoFactura
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmManejoFactura))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgvResultadoFact = New System.Windows.Forms.DataGridView()
@@ -157,8 +157,8 @@ Partial Class frmManejoFactura
         'colEstatus
         '
         Me.colEstatus.DataPropertyName = "Estatus"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colEstatus.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colEstatus.DefaultCellStyle = DataGridViewCellStyle5
         Me.colEstatus.HeaderText = "Estatus"
         Me.colEstatus.Name = "colEstatus"
         Me.colEstatus.Width = 45
@@ -166,8 +166,8 @@ Partial Class frmManejoFactura
         'colAcuse
         '
         Me.colAcuse.DataPropertyName = "Acuse"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colAcuse.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colAcuse.DefaultCellStyle = DataGridViewCellStyle6
         Me.colAcuse.HeaderText = "Acuse"
         Me.colAcuse.Name = "colAcuse"
         Me.colAcuse.Width = 40
@@ -183,8 +183,8 @@ Partial Class frmManejoFactura
         'colTipoComprobante
         '
         Me.colTipoComprobante.DataPropertyName = "TipoComprobante"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colTipoComprobante.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colTipoComprobante.DefaultCellStyle = DataGridViewCellStyle7
         Me.colTipoComprobante.HeaderText = "Tipo"
         Me.colTipoComprobante.Name = "colTipoComprobante"
         Me.colTipoComprobante.Width = 40
@@ -192,10 +192,10 @@ Partial Class frmManejoFactura
         'colImporte
         '
         Me.colImporte.DataPropertyName = "ImporteTotal"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.colImporte.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.colImporte.DefaultCellStyle = DataGridViewCellStyle8
         Me.colImporte.HeaderText = "Importe"
         Me.colImporte.Name = "colImporte"
         Me.colImporte.ReadOnly = True
@@ -388,7 +388,7 @@ Partial Class frmManejoFactura
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(252, 530)
+        Me.GroupBox3.Size = New System.Drawing.Size(233, 530)
         Me.GroupBox3.TabIndex = 22
         Me.GroupBox3.TabStop = False
         '
@@ -463,7 +463,7 @@ Partial Class frmManejoFactura
         Me.btnVerXMLAcuse.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerXMLAcuse.Image = Global.PEFacturacion.My.Resources.Resources.XMLAcuse
         Me.btnVerXMLAcuse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerXMLAcuse.Location = New System.Drawing.Point(12, 335)
+        Me.btnVerXMLAcuse.Location = New System.Drawing.Point(12, 381)
         Me.btnVerXMLAcuse.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerXMLAcuse.Name = "btnVerXMLAcuse"
         Me.btnVerXMLAcuse.Size = New System.Drawing.Size(208, 46)
@@ -479,7 +479,7 @@ Partial Class frmManejoFactura
         Me.btnVerPDFAcuse.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerPDFAcuse.Image = Global.PEFacturacion.My.Resources.Resources.PDFAcuse
         Me.btnVerPDFAcuse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerPDFAcuse.Location = New System.Drawing.Point(12, 289)
+        Me.btnVerPDFAcuse.Location = New System.Drawing.Point(12, 335)
         Me.btnVerPDFAcuse.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerPDFAcuse.Name = "btnVerPDFAcuse"
         Me.btnVerPDFAcuse.Size = New System.Drawing.Size(208, 46)
@@ -649,7 +649,7 @@ Partial Class frmManejoFactura
         Me.btnCancelaFac.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancelaFac.Image = Global.PEFacturacion.My.Resources.Resources.CancelarDoc
         Me.btnCancelaFac.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelaFac.Location = New System.Drawing.Point(12, 382)
+        Me.btnCancelaFac.Location = New System.Drawing.Point(12, 291)
         Me.btnCancelaFac.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelaFac.Name = "btnCancelaFac"
         Me.btnCancelaFac.Size = New System.Drawing.Size(208, 46)
@@ -678,7 +678,7 @@ Partial Class frmManejoFactura
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(972, 607)
+        Me.ClientSize = New System.Drawing.Size(963, 607)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4)

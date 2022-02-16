@@ -40,6 +40,7 @@
       <xs:element minOccurs="0" name="Addenda" nillable="true" type="tns:AddendaCFDR" />
       <xs:element minOccurs="0" name="Aerolineas" nillable="true" type="tns:AerolineasR" />
       <xs:element minOccurs="0" name="CFDIRegistroFiscal" nillable="true" type="tns:CFDIRegistroFiscalR" />
+      <xs:element minOccurs="0" name="CartaPorte20" nillable="true" type="tns:CartaPorte20R" />
       <xs:element minOccurs="0" name="CertificadoDestruccion" nillable="true" type="tns:CertificadoDestruccionR" />
       <xs:element minOccurs="0" name="CfdiRelacionados" nillable="true" type="tns:CfdiRelacionadosR" />
       <xs:element minOccurs="0" name="ClaveCFDI" nillable="true" type="xs:string" />
@@ -232,6 +233,356 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CFDIRegistroFiscalR" nillable="true" type="tns:CFDIRegistroFiscalR" />
+  <xs:complexType name="CartaPorte20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntradaSalidaMerc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FiguraTransporte" nillable="true" type="tns:ArrayOfCartaPorteTiposFigura20R" />
+      <xs:element minOccurs="0" name="Mercancias" nillable="true" type="tns:CartaPorteMercancias20R" />
+      <xs:element minOccurs="0" name="PaisOrigenDestino" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalDistRec" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TranspInternac" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ubicaciones" nillable="true" type="tns:ArrayOfCartaPorteUbicacion20R" />
+      <xs:element minOccurs="0" name="ViaEntradaSalida" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorte20R" nillable="true" type="tns:CartaPorte20R" />
+  <xs:complexType name="ArrayOfCartaPorteTiposFigura20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteTiposFigura20R" nillable="true" type="tns:CartaPorteTiposFigura20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteTiposFigura20R" nillable="true" type="tns:ArrayOfCartaPorteTiposFigura20R" />
+  <xs:complexType name="CartaPorteTiposFigura20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Domicilio" nillable="true" type="tns:CartaPorteTiposFiguraDomicilio20R" />
+      <xs:element minOccurs="0" name="NombreFigura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumLicencia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumRegIdTribFigura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartesTransporte" nillable="true" type="tns:ArrayOfCartaPorteTiposFiguraPartesTransporte20R" />
+      <xs:element minOccurs="0" name="RFCFigura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResidenciaFiscalFigura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoFigura" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteTiposFigura20R" nillable="true" type="tns:CartaPorteTiposFigura20R" />
+  <xs:complexType name="CartaPorteTiposFiguraDomicilio20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoPostal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Colonia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Localidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Municipio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroExterior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroInterior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Referencia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteTiposFiguraDomicilio20R" nillable="true" type="tns:CartaPorteTiposFiguraDomicilio20R" />
+  <xs:complexType name="ArrayOfCartaPorteTiposFiguraPartesTransporte20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteTiposFiguraPartesTransporte20R" nillable="true" type="tns:CartaPorteTiposFiguraPartesTransporte20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteTiposFiguraPartesTransporte20R" nillable="true" type="tns:ArrayOfCartaPorteTiposFiguraPartesTransporte20R" />
+  <xs:complexType name="CartaPorteTiposFiguraPartesTransporte20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ParteTransporte" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteTiposFiguraPartesTransporte20R" nillable="true" type="tns:CartaPorteTiposFiguraPartesTransporte20R" />
+  <xs:complexType name="CartaPorteMercancias20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Autotransporte" nillable="true" type="tns:CartaPorteMercanciasAutotransporte20R" />
+      <xs:element minOccurs="0" name="CargoPorTasacion" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Mercancia" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercancia20R" />
+      <xs:element minOccurs="0" name="NumTotalMercancias" type="xs:int" />
+      <xs:element minOccurs="0" name="PesoBrutoTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PesoNetoTotal" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TransporteAereo" nillable="true" type="tns:CartaPorteMercanciasTransporteAereo20R" />
+      <xs:element minOccurs="0" name="TransporteFerroviario" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviario20R" />
+      <xs:element minOccurs="0" name="TransporteMaritimo" nillable="true" type="tns:CartaPorteMercanciasTransporteMaritimo20R" />
+      <xs:element minOccurs="0" name="UnidadPeso" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercancias20R" nillable="true" type="tns:CartaPorteMercancias20R" />
+  <xs:complexType name="CartaPorteMercanciasAutotransporte20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdentificacionVehicular" nillable="true" type="tns:CartaPorteMercanciasAutotransporteIdentificacionVehicular20R" />
+      <xs:element minOccurs="0" name="NumPermisoSCT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PermSCT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remolques" nillable="true" type="tns:ArrayOfCartaPorteMercanciasAutotransporteRemolque20R" />
+      <xs:element minOccurs="0" name="Seguros" nillable="true" type="tns:CartaPorteMercanciasAutotransporteSeguros20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasAutotransporte20R" nillable="true" type="tns:CartaPorteMercanciasAutotransporte20R" />
+  <xs:complexType name="CartaPorteMercanciasAutotransporteIdentificacionVehicular20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnioModeloVM" type="xs:int" />
+      <xs:element minOccurs="0" name="ConfigVehicular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlacaVM" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasAutotransporteIdentificacionVehicular20R" nillable="true" type="tns:CartaPorteMercanciasAutotransporteIdentificacionVehicular20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasAutotransporteRemolque20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasAutotransporteRemolque20R" nillable="true" type="tns:CartaPorteMercanciasAutotransporteRemolque20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasAutotransporteRemolque20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasAutotransporteRemolque20R" />
+  <xs:complexType name="CartaPorteMercanciasAutotransporteRemolque20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Placa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubTipoRem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasAutotransporteRemolque20R" nillable="true" type="tns:CartaPorteMercanciasAutotransporteRemolque20R" />
+  <xs:complexType name="CartaPorteMercanciasAutotransporteSeguros20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AseguraCarga" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AseguraMedAmbiente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AseguraRespCivil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PolizaCarga" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PolizaMedAmbiente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PolizaRespCivil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaSeguro" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasAutotransporteSeguros20R" nillable="true" type="tns:CartaPorteMercanciasAutotransporteSeguros20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasMercancia20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasMercancia20R" nillable="true" type="tns:CartaPorteMercanciasMercancia20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasMercancia20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercancia20R" />
+  <xs:complexType name="CartaPorteMercanciasMercancia20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BienesTransp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CantidadTransporta" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercanciaCantidadTransporta20R" />
+      <xs:element minOccurs="0" name="ClaveSTCC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaveUnidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CveMaterialPeligroso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripEmbalaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DetalleMercancia" nillable="true" type="tns:CartaPorteMercanciasMercanciaDetalleMercancia20R" />
+      <xs:element minOccurs="0" name="Dimensiones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Embalaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FraccionArancelaria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GuiasIdentificacion" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercanciaGuiasIdentificacion20R" />
+      <xs:element minOccurs="0" name="MaterialPeligroso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Moneda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pedimentos" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercanciaPedimentos20R" />
+      <xs:element minOccurs="0" name="PesoEnKg" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UUIDComercioExt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValorMercancia" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasMercancia20R" nillable="true" type="tns:CartaPorteMercanciasMercancia20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasMercanciaCantidadTransporta20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasMercanciaCantidadTransporta20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaCantidadTransporta20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasMercanciaCantidadTransporta20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercanciaCantidadTransporta20R" />
+  <xs:complexType name="CartaPorteMercanciasMercanciaCantidadTransporta20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CvesTransporte" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDDestino" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDOrigen" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasMercanciaCantidadTransporta20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaCantidadTransporta20R" />
+  <xs:complexType name="CartaPorteMercanciasMercanciaDetalleMercancia20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NumPiezas" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PesoBruto" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PesoNeto" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PesoTara" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnidadPesoMerc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasMercanciaDetalleMercancia20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaDetalleMercancia20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasMercanciaGuiasIdentificacion20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasMercanciaGuiasIdentificacion20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaGuiasIdentificacion20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasMercanciaGuiasIdentificacion20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercanciaGuiasIdentificacion20R" />
+  <xs:complexType name="CartaPorteMercanciasMercanciaGuiasIdentificacion20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DescripGuiaIdentificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroGuiaIdentificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PesoGuiaIdentificacion" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasMercanciaGuiasIdentificacion20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaGuiasIdentificacion20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasMercanciaPedimentos20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasMercanciaPedimentos20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaPedimentos20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasMercanciaPedimentos20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasMercanciaPedimentos20R" />
+  <xs:complexType name="CartaPorteMercanciasMercanciaPedimentos20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Pedimento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasMercanciaPedimentos20R" nillable="true" type="tns:CartaPorteMercanciasMercanciaPedimentos20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteAereo20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoTransportista" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LugarContrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatriculaAeronave" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreAseg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreEmbarcador" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPermisoSCT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPolizaSeguro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumRegIdTribEmbarc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroGuia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PermSCT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFCEmbarcador" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResidenciaFiscalEmbarc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteAereo20R" nillable="true" type="tns:CartaPorteMercanciasTransporteAereo20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteFerroviario20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Carro" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteFerroviarioCarro20R" />
+      <xs:element minOccurs="0" name="DerechosDePaso" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" />
+      <xs:element minOccurs="0" name="NombreAseg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPolizaSeguro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDeServicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDeTrafico" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteFerroviario20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviario20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasTransporteFerroviarioCarro20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasTransporteFerroviarioCarro20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviarioCarro20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasTransporteFerroviarioCarro20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteFerroviarioCarro20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteFerroviarioCarro20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contenedor" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" />
+      <xs:element minOccurs="0" name="GuiaCarro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatriculaCarro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoCarro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToneladasNetasCarro" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteFerroviarioCarro20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviarioCarro20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasTransporteFerroviarioCarroContenedor20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteFerroviarioCarroContenedor20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PesoContenedorVacio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PesoNetoMercancia" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TipoContenedor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviarioCarroContenedor20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="KilometrajePagado" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TipoDerechoDePaso" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" nillable="true" type="tns:CartaPorteMercanciasTransporteFerroviarioDerechosDePaso20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteMaritimo20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnioEmbarcacion" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Calado" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Contenedor" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteMaritimoContenedor20R" />
+      <xs:element minOccurs="0" name="Eslora" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LineaNaviera" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Manga" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Matricula" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NacionalidadEmbarc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreAgenteNaviero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreAseg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreEmbarc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumAutorizacionNaviero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumCertITC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumConocEmbarc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPermisoSCT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPolizaSeguro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumViaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroOMI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PermSCT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoCarga" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoEmbarcacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnidadesDeArqBruto" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteMaritimo20R" nillable="true" type="tns:CartaPorteMercanciasTransporteMaritimo20R" />
+  <xs:complexType name="ArrayOfCartaPorteMercanciasTransporteMaritimoContenedor20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteMercanciasTransporteMaritimoContenedor20R" nillable="true" type="tns:CartaPorteMercanciasTransporteMaritimoContenedor20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteMercanciasTransporteMaritimoContenedor20R" nillable="true" type="tns:ArrayOfCartaPorteMercanciasTransporteMaritimoContenedor20R" />
+  <xs:complexType name="CartaPorteMercanciasTransporteMaritimoContenedor20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MatriculaContenedor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPrecinto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoContenedor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteMercanciasTransporteMaritimoContenedor20R" nillable="true" type="tns:CartaPorteMercanciasTransporteMaritimoContenedor20R" />
+  <xs:complexType name="ArrayOfCartaPorteUbicacion20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartaPorteUbicacion20R" nillable="true" type="tns:CartaPorteUbicacion20R" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartaPorteUbicacion20R" nillable="true" type="tns:ArrayOfCartaPorteUbicacion20R" />
+  <xs:complexType name="CartaPorteUbicacion20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DistanciaRecorrida" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Domicilio" nillable="true" type="tns:CartaPorteUbicacionDomicilio20R" />
+      <xs:element minOccurs="0" name="FechaHoraSalidaLlegada" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDUbicacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NavegacionTrafico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreEstacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreRemitenteDestinatario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumEstacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumRegIdTrib" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFCRemitenteDestinatario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResidenciaFiscal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoEstacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoUbicacion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteUbicacion20R" nillable="true" type="tns:CartaPorteUbicacion20R" />
+  <xs:complexType name="CartaPorteUbicacionDomicilio20R">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoPostal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Colonia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Localidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Municipio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroExterior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroInterior" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Referencia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartaPorteUbicacionDomicilio20R" nillable="true" type="tns:CartaPorteUbicacionDomicilio20R" />
   <xs:complexType name="CertificadoDestruccionR">
     <xs:sequence>
       <xs:element minOccurs="0" name="InformacionAduanera" nillable="true" type="tns:CertificadoDestruccionInformacionAduaneraR" />
@@ -1988,6 +2339,20 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="EstatusTicket" nillable="true" type="tns:EstatusTicket" />
+  <xs:complexType name="ArrayOfUUIDMotivoCancelacionCR">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UUIDMotivoCancelacionCR" nillable="true" type="tns:UUIDMotivoCancelacionCR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUUIDMotivoCancelacionCR" nillable="true" type="tns:ArrayOfUUIDMotivoCancelacionCR" />
+  <xs:complexType name="UUIDMotivoCancelacionCR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FolioSustitucion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Motivo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UUID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UUIDMotivoCancelacionCR" nillable="true" type="tns:UUIDMotivoCancelacionCR" />
   <xs:complexType name="RespuestaSolicitudesPendientesCR">
     <xs:sequence>
       <xs:element minOccurs="0" name="ErrorGeneral" nillable="true" type="xs:string" />

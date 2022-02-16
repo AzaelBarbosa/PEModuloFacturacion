@@ -230,17 +230,17 @@
             Exit Sub
         End If
 
-        If (dtpFechaIni.Value = dtpFechaFin.Value) And dtpFechaIni.Value = strFechaUltimoCierre Then
-            If FacturaGlobalFecha(Mid(strFechaUltimoCierre, 1, 4) & Mid(strFechaUltimoCierre, 6, 2) & Mid(strFechaUltimoCierre, 9, 2)) Then
-                MsgBox("Ya existe una Factura Global de esta Fecha!", MsgBoxStyle.Exclamation, "Facturación")
-                Exit Sub
-            End If
-        Else
-            If FacturaGlobalFecha(Mid(dtpFechaIni.Value, 7, 4) & Mid(dtpFechaIni.Value, 4, 2) & Mid(dtpFechaIni.Value, 1, 2)) Then
-                MsgBox("Ya existe una Factura Global de esta Fecha!", MsgBoxStyle.Exclamation, "Facturación")
-                Exit Sub
-            End If
-        End If
+        'If (dtpFechaIni.Value = dtpFechaFin.Value) And dtpFechaIni.Value = strFechaUltimoCierre Then
+        '    If FacturaGlobalFecha(Mid(strFechaUltimoCierre, 1, 4) & Mid(strFechaUltimoCierre, 6, 2) & Mid(strFechaUltimoCierre, 9, 2)) Then
+        '        MsgBox("Solo se puede generar una Factura Global para un dia cerrado. " & vbCrLf & "Ya existe una Factura Global para " & Mid(strFechaUltimoCierre, 9, 2) & "-" & Mid(strFechaUltimoCierre, 6, 2) & "-" & Mid(strFechaUltimoCierre, 1, 4) & " movimiento no procede.", MsgBoxStyle.Exclamation, "Facturación")
+        '        Exit Sub
+        '    End If
+        'Else
+        '    If FacturaGlobalFecha(Mid(dtpFechaIni.Value, 7, 4) & Mid(dtpFechaIni.Value, 4, 2) & Mid(dtpFechaIni.Value, 1, 2)) Then
+        '        MsgBox("Solo se puede generar una Factura Global para un dia cerrado. " & vbCrLf & "Ya existe una Factura Global de esta Fecha!", MsgBoxStyle.Exclamation, "Facturación")
+        '        Exit Sub
+        '    End If
+        'End If
 
         Me.Cursor = Cursors.WaitCursor
         lblTextoAnuncio.Text = "Validando información inicial..."
@@ -719,6 +719,7 @@
 
             errorFG = False
             GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
+            'GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
 
             If errorFG Then
                 GoTo NoseHaceNada
@@ -737,7 +738,7 @@
                 lblTextoAnuncio.Visible = True
                 lblTextoAnuncio.Refresh()
 
-                GeneraNotasdeCredito(x1, x2)
+                GeneraNotasdeCredito2(x1, x2)
             End If
 
             LimpiaPantalla()

@@ -20,11 +20,23 @@
   <wsdl:message name="IConexionRemota_GenerarCFDI_OutputMessage">
     <wsdl:part name="parameters" element="tns:GenerarCFDIResponse" />
   </wsdl:message>
+  <wsdl:message name="IConexionRemota_GenerarCFDI40_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarCFDI40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_GenerarCFDI40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarCFDI40Response" />
+  </wsdl:message>
   <wsdl:message name="IConexionRemota_GenerarTicket_InputMessage">
     <wsdl:part name="parameters" element="tns:GenerarTicket" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_GenerarTicket_OutputMessage">
     <wsdl:part name="parameters" element="tns:GenerarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_GenerarTicket40_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarTicket40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_GenerarTicket40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarTicket40Response" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_EnviarCFDI_InputMessage">
     <wsdl:part name="parameters" element="tns:EnviarCFDI" />
@@ -32,11 +44,23 @@
   <wsdl:message name="IConexionRemota_EnviarCFDI_OutputMessage">
     <wsdl:part name="parameters" element="tns:EnviarCFDIResponse" />
   </wsdl:message>
+  <wsdl:message name="IConexionRemota_EnviarCFDI40_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarCFDI40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_EnviarCFDI40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarCFDI40Response" />
+  </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerPDF_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPDF" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerPDF_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerPDF40_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPDF40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerPDF40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPDF40Response" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerXMLPorReferencia_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerXMLPorReferencia" />
@@ -44,11 +68,23 @@
   <wsdl:message name="IConexionRemota_ObtenerXMLPorReferencia_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerXMLPorReferenciaResponse" />
   </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerXMLPorReferencia40_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerXMLPorReferencia40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerXMLPorReferencia40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerXMLPorReferencia40Response" />
+  </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerXMLPorUUID_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerXMLPorUUID" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerXMLPorUUID_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerXMLPorUUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerXMLPorUUID40_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerXMLPorUUID40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerXMLPorUUID40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerXMLPorUUID40Response" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerXMLyAddendaPorUUID_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerXMLyAddendaPorUUID" />
@@ -68,11 +104,23 @@
   <wsdl:message name="IConexionRemota_ObtenerComprobantes_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerComprobantesResponse" />
   </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerComprobantes40_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComprobantes40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerComprobantes40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComprobantes40Response" />
+  </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerAcuseEnvio_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerAcuseEnvio" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerAcuseEnvio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerAcuseEnvioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerAcuseEnvio40_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAcuseEnvio40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerAcuseEnvio40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAcuseEnvio40Response" />
   </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerAcuseCancelacion_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerAcuseCancelacion" />
@@ -128,6 +176,12 @@
   <wsdl:message name="IConexionRemota_CancelarCFDIsConValidacion_OutputMessage">
     <wsdl:part name="parameters" element="tns:CancelarCFDIsConValidacionResponse" />
   </wsdl:message>
+  <wsdl:message name="IConexionRemota_CancelarCFDIsV4_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelarCFDIsV4" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_CancelarCFDIsV4_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelarCFDIsV4Response" />
+  </wsdl:message>
   <wsdl:message name="IConexionRemota_ObtenerSolicitudesPendientesCancelacion_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerSolicitudesPendientesCancelacion" />
   </wsdl:message>
@@ -179,25 +233,49 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/GenerarCFDI" message="tns:IConexionRemota_GenerarCFDI_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/GenerarCFDIResponse" message="tns:IConexionRemota_GenerarCFDI_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GenerarCFDI40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/GenerarCFDI40" message="tns:IConexionRemota_GenerarCFDI40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/GenerarCFDI40Response" message="tns:IConexionRemota_GenerarCFDI40_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GenerarTicket">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/GenerarTicket" message="tns:IConexionRemota_GenerarTicket_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/GenerarTicketResponse" message="tns:IConexionRemota_GenerarTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarTicket40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/GenerarTicket40" message="tns:IConexionRemota_GenerarTicket40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/GenerarTicket40Response" message="tns:IConexionRemota_GenerarTicket40_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EnviarCFDI">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/EnviarCFDI" message="tns:IConexionRemota_EnviarCFDI_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/EnviarCFDIResponse" message="tns:IConexionRemota_EnviarCFDI_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EnviarCFDI40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/EnviarCFDI40" message="tns:IConexionRemota_EnviarCFDI40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/EnviarCFDI40Response" message="tns:IConexionRemota_EnviarCFDI40_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerPDF">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerPDF" message="tns:IConexionRemota_ObtenerPDF_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerPDFResponse" message="tns:IConexionRemota_ObtenerPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPDF40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerPDF40" message="tns:IConexionRemota_ObtenerPDF40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerPDF40Response" message="tns:IConexionRemota_ObtenerPDF40_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerXMLPorReferencia">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia" message="tns:IConexionRemota_ObtenerXMLPorReferencia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferenciaResponse" message="tns:IConexionRemota_ObtenerXMLPorReferencia_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerXMLPorReferencia40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia40" message="tns:IConexionRemota_ObtenerXMLPorReferencia40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia40Response" message="tns:IConexionRemota_ObtenerXMLPorReferencia40_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerXMLPorUUID">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID" message="tns:IConexionRemota_ObtenerXMLPorUUID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUIDResponse" message="tns:IConexionRemota_ObtenerXMLPorUUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerXMLPorUUID40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID40" message="tns:IConexionRemota_ObtenerXMLPorUUID40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID40Response" message="tns:IConexionRemota_ObtenerXMLPorUUID40_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerXMLyAddendaPorUUID">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerXMLyAddendaPorUUID" message="tns:IConexionRemota_ObtenerXMLyAddendaPorUUID_InputMessage" />
@@ -211,9 +289,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerComprobantes" message="tns:IConexionRemota_ObtenerComprobantes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerComprobantesResponse" message="tns:IConexionRemota_ObtenerComprobantes_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerComprobantes40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerComprobantes40" message="tns:IConexionRemota_ObtenerComprobantes40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerComprobantes40Response" message="tns:IConexionRemota_ObtenerComprobantes40_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerAcuseEnvio">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio" message="tns:IConexionRemota_ObtenerAcuseEnvio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvioResponse" message="tns:IConexionRemota_ObtenerAcuseEnvio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAcuseEnvio40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio40" message="tns:IConexionRemota_ObtenerAcuseEnvio40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio40Response" message="tns:IConexionRemota_ObtenerAcuseEnvio40_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerAcuseCancelacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion" message="tns:IConexionRemota_ObtenerAcuseCancelacion_InputMessage" />
@@ -250,6 +336,10 @@
     <wsdl:operation name="CancelarCFDIsConValidacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/CancelarCFDIsConValidacion" message="tns:IConexionRemota_CancelarCFDIsConValidacion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/CancelarCFDIsConValidacionResponse" message="tns:IConexionRemota_CancelarCFDIsConValidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCFDIsV4">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/CancelarCFDIsV4" message="tns:IConexionRemota_CancelarCFDIsV4_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/CancelarCFDIsV4Response" message="tns:IConexionRemota_CancelarCFDIsV4_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerSolicitudesPendientesCancelacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerSolicitudesPendientesCancelacion" message="tns:IConexionRemota_ObtenerSolicitudesPendientesCancelacion_InputMessage" />
@@ -300,8 +390,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GenerarCFDI40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/GenerarCFDI40" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GenerarTicket">
       <soap:operation soapAction="http://tempuri.org/IConexionRemota/GenerarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarTicket40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/GenerarTicket40" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -318,8 +426,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EnviarCFDI40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/EnviarCFDI40" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerPDF">
       <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPDF40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerPDF40" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -336,8 +462,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerXMLPorReferencia40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia40" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerXMLPorUUID">
       <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerXMLPorUUID40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID40" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -372,8 +516,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerComprobantes40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerComprobantes40" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerAcuseEnvio">
       <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAcuseEnvio40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio40" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -455,6 +617,15 @@
     </wsdl:operation>
     <wsdl:operation name="CancelarCFDIsConValidacion">
       <soap:operation soapAction="http://tempuri.org/IConexionRemota/CancelarCFDIsConValidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCFDIsV4">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/CancelarCFDIsV4" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

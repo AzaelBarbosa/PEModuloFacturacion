@@ -88,6 +88,14 @@ Public Class frmManejoFactura
         Me.Text = "Manejo Facturas - Ver." & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build
         Panel1.Left = (Me.Width / 2) - (Panel1.Width / 2)
         Panel1.Top = (Me.Height / 2) - (Panel1.Height / 2)
+
+        If strUsuario <> 1 Then
+            btnCancelaFac.Enabled = False
+            btnVerPDFAcuse.Enabled = False
+            btnVerXMLAcuse.Enabled = False
+            'btnSustitucion.Enabled = False
+        End If
+
         Limpia()
     End Sub
 
@@ -749,6 +757,7 @@ Public Class frmManejoFactura
         Dim Seleccionaron As Integer = 0
         Dim drNew As DataRow
         Dim TipoF As String = ""
+        Dim FolioFact As Integer = 0
 
         If dgvResultadoFact.RowCount <= 0 Then
             Exit Sub
@@ -797,6 +806,7 @@ Public Class frmManejoFactura
                         dtEnviar.AcceptChanges()
                         FechaCancelado = dgvResultadoFact.Item("colFecha", iFila).Value
                         TipoF = dgvResultadoFact.Item("colTipo", iFila).Value
+                        FolioFact = dgvResultadoFact.Item("colFolio", iFila).Value
                     Else
                         MsgBox("Esta Factura ya esta cancelada!", MsgBoxStyle.Exclamation, "Facturación")
                         Exit Sub
@@ -808,10 +818,11 @@ Public Class frmManejoFactura
         Dim frmDatCancelar As New frmCancelarFactura
         TipoCancelacion = "SUSTITUCION"
         frmDatCancelar.TipoFactura = TipoF
-        frmDatCancelar.ShowDialog()
-        If frmDatCancelar.DialogResult = Windows.Forms.DialogResult.Cancel Then
-            Exit Sub
-        End If
+        frmDatCancelar.Folio = FolioFact
+        frmDatCancelar.Show()
+        'If frmDatCancelar.DialogResult = Windows.Forms.DialogResult.Cancel Then
+        '    Exit Sub
+        'End If
 
     End Sub
 End Class

@@ -234,51 +234,77 @@ Public Class frmFacturaIndividual
 
             Else
                 For intFila = 0 To dgvFacturar.Rows.Count - 1
-                    drNew = dtReturn.NewRow
-                    drNew("Concepto") = "INTERESES VENTA"
-                    drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
-                    drNew("Tipo") = dgvFacturar.Item("colFTipo", intFila).Value
-                    drNew("NoTicket") = dgvFacturar.Item("colFPrefijo", intFila).Value & "-" & dgvFacturar.Item("colFNoticket", intFila).Value
-                    drNew("TipoMov") = dgvFacturar.Item("colFTipoMov", intFila).Value
-                    drNew("Importe") = dgvFacturar.Item("colFImporte", intFila).Value
-                    drNew("Descuento") = dgvFacturar.Item("colFDescuento", intFila).Value
-                    drNew("IVA") = dgvFacturar.Item("colFIVA", intFila).Value
-                    drNew("Total") = dgvFacturar.Item("colFImporteFacturar", intFila).Value
-                    drNew("Costo") = dgvFacturar.Item("colFCosto", intFila).Value
-                    drNew("ImportePagado") = CDbl(dgvFacturar.Item("colFImportePago", intFila).Value) - CDbl(dgvFacturar.Item("colFCosto", intFila).Value)
-                    drNew("Interes") = dgvFacturar.Item("colFInteres", intFila).Value
-                    drNew("Recargo") = dgvFacturar.Item("colFRecargo", intFila).Value
-                    drNew("UUIDFacturaGlobal") = dgvFacturar.Item("colFUUIDFacturaGlobal", intFila).Value
-                    drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
-                    drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
-                    drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
-                    dtReturn.Rows.Add(drNew)
-                    dtReturn.AcceptChanges()
+                    If dgvFacturar.Item("colFImporte", intFila).Value > 0 Then
+                        drNew = dtReturn.NewRow
+                        drNew("Concepto") = "INTERESES VENTA"
+                        drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
+                        drNew("Tipo") = dgvFacturar.Item("colFTipo", intFila).Value
+                        drNew("NoTicket") = dgvFacturar.Item("colFPrefijo", intFila).Value & "-" & dgvFacturar.Item("colFNoticket", intFila).Value
+                        drNew("TipoMov") = dgvFacturar.Item("colFTipoMov", intFila).Value
+                        drNew("Importe") = dgvFacturar.Item("colFImporte", intFila).Value
+                        drNew("Descuento") = dgvFacturar.Item("colFDescuento", intFila).Value
+                        drNew("IVA") = dgvFacturar.Item("colFIVA", intFila).Value
+                        drNew("Total") = dgvFacturar.Item("colFImporteFacturar", intFila).Value
+                        drNew("Costo") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("ImportePagado") = CDbl(dgvFacturar.Item("colFImportePago", intFila).Value) - CDbl(dgvFacturar.Item("colFCosto", intFila).Value)
+                        drNew("Interes") = dgvFacturar.Item("colFInteres", intFila).Value
+                        drNew("Recargo") = dgvFacturar.Item("colFRecargo", intFila).Value
+                        drNew("UUIDFacturaGlobal") = dgvFacturar.Item("colFUUIDFacturaGlobal", intFila).Value
+                        drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
+                        drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
+                        drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        dtReturn.Rows.Add(drNew)
+                        dtReturn.AcceptChanges()
 
-                    'PARA LOS TICKETS DE APARATOS Y JOYERIA QUE EL COSTO SEA MENOR AL PRECIO PAGADO, SE DEBE DE  2 LINEAS EN LA FACTURA
-                    'UNA LINEA CON EL IMPORTE DEL COSTO Y SIN IVA
-                    'UNA LINEA CON EL IMPORTE DE LA UTILIDAD Y EL IVA DE LA UTILIDAD
+                        'PARA LOS TICKETS DE APARATOS Y JOYERIA QUE EL COSTO SEA MENOR AL PRECIO PAGADO, SE DEBE DE  2 LINEAS EN LA FACTURA
+                        'UNA LINEA CON EL IMPORTE DEL COSTO Y SIN IVA
+                        'UNA LINEA CON EL IMPORTE DE LA UTILIDAD Y EL IVA DE LA UTILIDAD
 
-                    drNew = dtReturn.NewRow
-                    drNew("Concepto") = dgvFacturar.Item("colFConcepto", intFila).Value
-                    drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
-                    drNew("Tipo") = dgvFacturar.Item("colFTipo", intFila).Value
-                    drNew("NoTicket") = dgvFacturar.Item("colFPrefijo", intFila).Value & "-" & dgvFacturar.Item("colFNoticket", intFila).Value
-                    drNew("TipoMov") = dgvFacturar.Item("colFTipoMov", intFila).Value
-                    drNew("Importe") = dgvFacturar.Item("colFCosto", intFila).Value
-                    drNew("Descuento") = 0
-                    drNew("IVA") = 0
-                    drNew("Costo") = 0
-                    drNew("Total") = dgvFacturar.Item("colFCosto", intFila).Value
-                    drNew("ImportePagado") = dgvFacturar.Item("colFCosto", intFila).Value
-                    drNew("Interes") = dgvFacturar.Item("colFInteres", intFila).Value
-                    drNew("Recargo") = dgvFacturar.Item("colFRecargo", intFila).Value
-                    drNew("UUIDFacturaGlobal") = dgvFacturar.Item("colFUUIDFacturaGlobal", intFila).Value
-                    drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
-                    drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
-                    drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
-                    dtReturn.Rows.Add(drNew)
-                    dtReturn.AcceptChanges()
+                        drNew = dtReturn.NewRow
+                        drNew("Concepto") = dgvFacturar.Item("colFConcepto", intFila).Value
+                        drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
+                        drNew("Tipo") = dgvFacturar.Item("colFTipo", intFila).Value
+                        drNew("NoTicket") = dgvFacturar.Item("colFPrefijo", intFila).Value & "-" & dgvFacturar.Item("colFNoticket", intFila).Value
+                        drNew("TipoMov") = dgvFacturar.Item("colFTipoMov", intFila).Value
+                        drNew("Importe") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("Descuento") = 0
+                        drNew("IVA") = 0
+                        drNew("Costo") = 0
+                        drNew("Total") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("ImportePagado") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("Interes") = dgvFacturar.Item("colFInteres", intFila).Value
+                        drNew("Recargo") = dgvFacturar.Item("colFRecargo", intFila).Value
+                        drNew("UUIDFacturaGlobal") = dgvFacturar.Item("colFUUIDFacturaGlobal", intFila).Value
+                        drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
+                        drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
+                        drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        dtReturn.Rows.Add(drNew)
+                        dtReturn.AcceptChanges()
+                    Else
+
+                        drNew = dtReturn.NewRow
+                        drNew("Concepto") = dgvFacturar.Item("colFConcepto", intFila).Value
+                        drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
+                        drNew("Tipo") = dgvFacturar.Item("colFTipo", intFila).Value
+                        drNew("NoTicket") = dgvFacturar.Item("colFPrefijo", intFila).Value & "-" & dgvFacturar.Item("colFNoticket", intFila).Value
+                        drNew("TipoMov") = dgvFacturar.Item("colFTipoMov", intFila).Value
+                        drNew("Importe") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("Descuento") = 0
+                        drNew("IVA") = 0
+                        drNew("Costo") = 0
+                        drNew("Total") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("ImportePagado") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("Interes") = dgvFacturar.Item("colFInteres", intFila).Value
+                        drNew("Recargo") = dgvFacturar.Item("colFRecargo", intFila).Value
+                        drNew("UUIDFacturaGlobal") = dgvFacturar.Item("colFUUIDFacturaGlobal", intFila).Value
+                        drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
+                        drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
+                        drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        dtReturn.Rows.Add(drNew)
+                        dtReturn.AcceptChanges()
+
+                    End If
+
                 Next intFila
             End If
 
@@ -680,7 +706,7 @@ INICIO:
                         lblTextoAnuncio.Text = "Esperando actualización Aparatos..."
                         lblTextoAnuncio.Visible = True
                         lblTextoAnuncio.Refresh()
-                        AdminpaqEsperaActualizacion()
+                        'AdminpaqEsperaActualizacion()
 
                         sSQL = "sps_AQ_FacturaPeriodica"
                         oParam(0) = New SqlClient.SqlParameter("@pNoSucursal", intNoSucursal)
@@ -1114,6 +1140,10 @@ INICIO:
             If frmDatCt.DialogResult = Windows.Forms.DialogResult.Cancel Then
                 Exit Sub
             End If
+
+
+
+
 
             Me.Cursor = Cursors.WaitCursor
             lblTextoAnuncio.Text = "Validando información inicial..."

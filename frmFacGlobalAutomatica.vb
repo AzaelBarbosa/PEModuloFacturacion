@@ -160,7 +160,7 @@ Public Class frmFacGlobalAutomatica
         'cboInclDirCte.SelectedIndex = 0
 
         'Try
-        '    'PRUEBA DE ESCRITURA BLOC DE NOTA   C:\SPE\VINO\LOG\
+        '    'PRUEBA DE ESCRITURA BLOC DE NOTA   `\
         '    nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
         '    If (System.IO.File.Exists(nombreArchi)) Then
         '        File.Delete(nombreArchi)
@@ -211,11 +211,11 @@ Public Class frmFacGlobalAutomatica
 
             'PRUEBA DE ESCRITURA BLOC DE NOTA   C:\SPE\VINO\LOG\
             If UsoFManual = 1 Then
-                nombreArchi = sRuta & "\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
                 FechaFact = Replace(FechaManual, "-", "")
                 strFechaBusqueda = FechaFact
             Else
-                nombreArchi = sRuta & "\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
                 FechaFact = Replace(strFechaUltimoCierre, "-", "")
                 strFechaBusqueda = FechaFact
             End If
@@ -317,20 +317,31 @@ Reintento:
             ''---BUSCAR FACTURA GLOBAL PENDIENTE---
             ''-------------------------------------
 
-            'If BuscaFacturaGlobalPendiente(FechaFact) = True Then
-            '    For Each dr As DataRow In dtFactPend.Rows
-            '        Comprobando = "SI"
-            '        obtenerPDF(dtFactPend)
-            '        If FactTimbrada = True Then
-            '            obtenerPDF(dtFactPend)
-            '            obtenerXML(dtFactPend)
-            '            ActualizaMovimientosFacturados(enTipoDocumento.Factura, dr("Folio"))
-            '        Else
-            '            intSiguienteFolio = dr("Folio")
-            '            BorrarFacturaGlobalPendiente(dr("Folio"))
-            '        End If
-            '    Next dr
-            'End If
+            If BuscaFacturaGlobalPendiente(FechaFact) = True Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "VALIDANDO FACTURA PENDIENTE.......................... " & vbNewLine
+                For Each dr As DataRow In dtFactPend.Rows
+                    Comprobando = "SI"
+                    obtenerXMLFolio(dtFactPend)
+                    If FactTimbrada = True Then
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA TIMBRADA SE DESCARGARAN LOS ARCHIVOS PDF Y XML..................... " & vbNewLine
+                        obtenerXML(dtFactPend)
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "XML DESCARGADO CON EXITO.................. " & vbNewLine
+                        obtenerPDF(dtFactPend)
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "PDF DESCARGADO CON EXITO.................. " & vbNewLine
+                        ActualizaMovimientosFacturados(IIf(dr("TipoComprobante") = "I", enTipoDocumento.Factura, enTipoDocumento.NotaCredito), dr("Folio"))
+                        MsgBox("Factura con Folio: " & dr("Folio").ToString & " Ya Fue Timbrada Se descargan El XML y PDF", MsgBoxStyle.Information)
+                        FactTimbrada = False
+                        dtCliente.Rows.Clear()
+                        End
+                    Else
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA NO TIMBRADA SE CONTINUA PROCESO: " & vbNewLine
+                        intSiguienteFolio = dr("Folio")
+                        BorrarFacturaGlobalPendiente(dr("Folio"), FechaFact)
+                        MovBorrados = True
+                    End If
+                Next dr
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "------------------------------------------------------------" & vbNewLine
+            End If
 
             ''--------------------------------------
 
@@ -430,6 +441,7 @@ Intento:
                                 End If
                             Next drDeta2
                         End If
+
 
                         'DEVOLUCIONES
                         SQLServer.Init(, strBDAQ, strServerAQ, strUsrAQ, strPwdAQ)
@@ -580,7 +592,7 @@ Intento:
             TipoError = "Busca PE003"
 
             'SE VALIDA SI YA SE FACTURA LA FECHA
-            SeFacturoGlobal()
+            'SeFacturoGlobal()
 
             If dtDetalle Is Nothing OrElse dtDetalle.Rows.Count <= 0 Then
                 If FechaFacturada = True Then
@@ -680,7 +692,7 @@ Intento:
                 texto = ""
                 Dim x1 As String = ""
                 Dim x2 As String = ""
-                GeneraNotasdeCredito(x1, x2)
+                GeneraNotasdeCredito2(x1, x2)
             End If
 
             Limpia()
@@ -696,6 +708,7 @@ NoseHaceNada:
             My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
             FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
             nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+            TipoError = TipoError & " " & ex.Message
             EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
             End
         End Try

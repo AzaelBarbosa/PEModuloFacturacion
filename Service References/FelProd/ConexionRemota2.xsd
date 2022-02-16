@@ -304,7 +304,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q44:Credenciales" />
-        <xs:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="uuids" nillable="true" type="q45:ArrayOfstring" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="uuids" nillable="true" type="q45:ArrayOfUUIDMotivoCancelacionCR" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -351,6 +351,22 @@ Module modMain
         Dim data As Net.Mail.Attachment = New Net.Mail.Attachment(RutaArchivo)
         Dim asuntoCorreo As String = ""
         Dim cuerpoCorreo As String = ""
+        Dim sSQL As String
+
+
+        'INGRESO REGISTRO POR SI NO SE MANDA CORREO SAYT
+        SQLServer.Init(, "SAyT", "192.168.2.8\SQLSAYT", "sa", "masterkey")
+        sSQL = "INSERT INTO tmpSucursalesFacturas(NoSucursal,FechaFactura,TipoFactura,OrigenNC,Error) "
+        sSQL &= "VALUES (" & intNoSucursal.ToString & ",'" & Fecha & "','" & strTipoFactura & "',' ','" & TipoError & "')"
+        SQLServer.ExecSQL(sSQL)
+        ConectaBD()
+
+        'INGRESO REGISTRO POR SI NO SE MANDA CORREO LOCAL
+        sSQL = "INSERT INTO tmpSucursalesFacturas(NoSucursal,FechaFactura,TipoFactura,OrigenNC,Error) "
+        sSQL &= "VALUES (" & intNoSucursal.ToString & ",'" & Fecha & "','" & strTipoFactura & "',' ','" & TipoError & "')"
+        SQLServer.ExecSQL(sSQL)
+
+        'INICIO CORREO
         data.Name = NombreArchivo
 
 
@@ -406,6 +422,8 @@ Module modMain
             'MessageBox.Show("Error: " & ex.Message, _
             '                "Error al enviar correo", _
             '                 MessageBoxButtons.OK)
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & ex.Message & vbNewLine
+            My.Computer.FileSystem.WriteAllText("C:\SPE\VINO\LOG\LogCorreo.txt", texto, True)
         End Try
     End Sub
     Public Sub EnviarCorreoPrueba()
@@ -497,12 +515,15 @@ Module modMain
 
             If RespuestaServicio.OperacionExitosa = True Then
                 creditos = RespuestaServicio.CreditosRestantes
+                bolObtuvoCred = True
             Else
                 If strmodoFactura = "AUTOMATICA" Then
                     texto = texto & "Error General: " & RespuestaServicio.ErrorGeneral & vbNewLine
                     texto = texto & "Error Detallado: " & RespuestaServicio.ErrorDetallado & vbNewLine
+                    bolObtuvoCred = False
                 Else
                     MsgBox("Error General: " & vbCrLf & vbCrLf & RespuestaServicio.ErrorGeneral & vbCrLf & vbCrLf & "Error Detallado: " & vbCrLf & vbCrLf & RespuestaServicio.ErrorDetallado & vbCrLf & vbCrLf & "Por favor avise a sistemas", MsgBoxStyle.Exclamation, "Facturación")
+                    bolObtuvoCred = False
                 End If
             End If
 
@@ -527,7 +548,6 @@ Module modMain
             End If
         Finally
             obtenerNoCreditos = creditos
-            bolObtuvoCred = True
         End Try
     End Function
 
@@ -1072,7 +1092,7 @@ Module modMain
                         SQLServer.ExecSQL("USE BDSPEXPRESS")
                     Catch ex1 As Exception
                         'al pasar por aqui, de plano no se puede conectar al servidor de la sucursal
-                        MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
+                        'MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
                         End
                     End Try
                 End Try
@@ -1814,8 +1834,10 @@ Module modMain
 
         'OBJETOS USADOS PARA EL SERVICIO DE FEL
         Dim ConexionRemota33 As Object
+        Dim ConexionRemota40 As Object
         Dim datosUsuario As Object
         Dim Comprobante As Object
+        Dim Comprobante40 As Object
         Dim listaCFDIRel As Object
         Dim CFDIRel1 As Object
         Dim listaConcepto As Object
@@ -1865,9 +1887,9 @@ Module modMain
 
             'PRUEBA DE ESCRITURA BLOC DE NOTA
             'nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
-            If (System.IO.File.Exists(nombreArchi)) Then
-                File.Delete(nombreArchi)
-            End If
+            'If (System.IO.File.Exists(nombreArchi)) Then
+            '    File.Delete(nombreArchi)
+            'End If
 
             'Const fic As String = nombreArchi.
             If strmodoFactura = "AUTOMATICA" Then
@@ -1877,22 +1899,24 @@ Module modMain
                     texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO FACTURA GLOBAL MANUAL........................................................." & vbNewLine
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FECHA MOVIMIENTO: " & strFechaBusqueda.ToString & " " & vbNewLine
+                    nombreArchi = "C:\SPE\VINO\LOG\"
                 Else
                     texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO FACTURA INDIVIDUAL........................................................." & vbNewLine
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FECHA MOVIMIENTO: " & strFechaBusqueda.ToString & " " & vbNewLine
+                    nombreArchi = sRuta & "LOG\"
                 End If
             End If
 
             If TipoDocumento = enTipoDocumento.Factura Then
                 FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
                 nombreLog = "LogFactura_FA_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
-                nombreArchi = sRuta & "LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                nombreArchi = nombreArchi & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FOLIO FACTURA: " & intSiguienteFolio & vbNewLine
             ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
                 FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
                 nombreLog = "LogFactura_NC_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
-                nombreArchi = sRuta & "\LOG\" & "LogFactura_NC_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                nombreArchi = nombreArchi & "LogFactura_NC_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
                 texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO NOTA DE CREDITO........................................................." & vbNewLine
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FOLIO FACTURA: " & intSiguienteFolioNC & vbNewLine
@@ -1903,9 +1927,10 @@ Module modMain
             End If
 
 
+            'MODIFICADO 05/10/2021 PARA OBTENER EL RFC DE BPFCATALGOEMPRESAS
             'Tipo Error
             TipoError = "PE001"
-            'obteniendo las claves fiscales (Regimen Fiscal, Forma de Pago, Moneda, Uso CFDI, Metodo de Pago)
+            'obteniendo las claves fiscales (RFC, Regimen Fiscal, Forma de Pago, Moneda, Uso CFDI, Metodo de Pago)
             sSQL = "SELECT * FROM BPFCatalogoEmpresas WHERE NoEmpresa=1"
             dtClavesFiscales = SQLServer.ExecSQLReturnDT(sSQL, "BPFCatalogoEmpresas")
             If dtClavesFiscales Is Nothing OrElse dtClavesFiscales.Rows.Count <= 0 Then
@@ -1958,8 +1983,10 @@ Module modMain
             '**********************************************
             If strAreaServicioTimbrado = "PRUEBAS" Then
                 ConexionRemota33 = New FelTest.ConexionRemotaClient
+                ConexionRemota40 = New FelTest.ConexionRemotaClient
             Else
                 ConexionRemota33 = New FelProd.ConexionRemotaClient
+                ConexionRemota40 = New FelProd.ConexionRemotaClient
             End If
 
             '*************************************************************************************
@@ -1998,6 +2025,7 @@ Module modMain
             TipoError = "PE005: Error en Comprobante"
             If strAreaServicioTimbrado = "PRUEBAS" Then
                 Comprobante = New FelTest.Comprobante33R
+                Comprobante40 = New FelTest.Comprobante40R
             Else
                 Comprobante = New FelProd.Comprobante33R
             End If
@@ -2040,6 +2068,8 @@ Module modMain
                 End If
             End If
 
+            'PRUEBA PARA ADDENDA TITULO PERSONALIZADO
+            'COMAdenda.TituloPersonalizado = "Fecha Operacion: 09/02/2022"
 
             'Tipo Error
             TipoError = "PE006: Error en Datos Fiscales"
@@ -2369,13 +2399,13 @@ Module modMain
                         End If
                     Else
                         If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" Then
-                            Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper
-                            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & vbNewLine
+                            Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " - " & Mid(strFechaBusqueda, 9, 2) & "/" & Mid(strFechaBusqueda, 6, 2) & "/" & Mid(strFechaBusqueda, 1, 4)
+                            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & " - " & Mid(strFechaBusqueda, 9, 2) & "/" & Mid(strFechaBusqueda, 6, 2) & "/" & Mid(strFechaBusqueda, 1, 4) & vbNewLine
                         End If
                     End If
                 Else
                     If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" Then
-                        Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper
+                        Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " - " & Mid(strFechaBusqueda, 7, 2) & "/" & Mid(strFechaBusqueda, 5, 2) & "/" & Mid(strFechaBusqueda, 1, 4)
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & vbNewLine
                     End If
                 End If
@@ -2862,6 +2892,1246 @@ BuscaDatos:
                         'ERROR #PE01201
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error General PE01201: " & vbNewLine & oRespuestaPDF.ErrorGeneral & vbNewLine & "Error Detallado: " & vbNewLine & oRespuestaPDF.ErrorDetallado & vbNewLine
                         My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                        TipoError = TipoError & ": " & oRespuestaPDF.ErrorGeneral
+                        EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    Else
+                        MsgBox("Error General: " & vbCrLf & vbCrLf & oRespuestaPDF.ErrorGeneral & vbCrLf & vbCrLf & "Error Detallado: " & vbCrLf & vbCrLf & oRespuestaPDF.ErrorDetallado & vbCrLf & vbCrLf & "Por favor avise a sistemas", MsgBoxStyle.Exclamation, "Facturación")
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error General PE01201: " & vbNewLine & oRespuestaPDF.ErrorGeneral & vbNewLine & "Error Detallado: " & vbNewLine & oRespuestaPDF.ErrorDetallado & vbNewLine
+                        My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                        TipoError = TipoError & ": " & oRespuestaPDF.ErrorGeneral
+                        EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    End If
+                End If
+                strEstatusGeneracion = "OK"
+
+                ''Tipo Error
+                'TipoError = "PE046"
+                ''CONSULTA CREDITOS DISPONIBLES
+                'If Factura = "GLOBAL" Then
+                '    Dim NumCreditosFel As String = ""
+                '    NumCreditosFel = obtenerNoCreditos()
+                '    BuscaCreditosLimite()
+                '    If NumCreditosFel <= CreditosLimite Then
+                '        EnviarCorreo(NumCreditosFel)
+                '    End If
+                'End If
+
+
+                'Tipo Error
+                TipoError = "PE047"
+                'ENVIA CORREO CON PDF Y XML
+                If Factura = "INDIVIDUAL" Then
+                    If correoFact <> "" Then
+                        dtEmail.Clear()
+                        dtEmail.Columns.Add("FolioFiscal", GetType(String))
+                        dtEmail.Columns.Add("Estatus", GetType(String))
+
+                        drEmail = dtEmail.NewRow
+                        drEmail("FolioFiscal") = strUUID
+                        drEmail("Estatus") = "A"
+                        dtEmail.Rows.Add(drEmail)
+                        dtEmail.AcceptChanges()
+                        enviarEmail(dtEmail, correoFact)
+                    End If
+                End If
+
+                'Tipo Error
+                TipoError = "PE048"
+                'ABRIR PDF
+                If Factura = "INDIVIDUAL" Then
+                    If File.Exists(strCarpetaFacturas & "\" & strNombreArchivoPDF) Then
+                        Process.Start(strCarpetaFacturas & "\" & strNombreArchivoPDF)
+                    Else
+                        If strmodoFactura = "AUTOMATICA" Then
+                            'ERROR #PE01203
+                            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error General PE01203: " & vbNewLine & oRespuestaPDF.ErrorGeneral & vbNewLine & "Error Detallado: " & vbNewLine & oRespuestaPDF.ErrorDetallado & vbNewLine
+                            My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+
+                        Else
+                            MsgBox("No se pudo obtener el archivo PDF, descarguelo en Consulta de Facturas!", MsgBoxStyle.Exclamation, "Facturacion")
+                        End If
+                    End If
+                End If
+
+                'Tipo Error
+                TipoError = "PE049"
+                frmDatosClienteFacturacion.Cursor = Cursors.WaitCursor
+
+            Else
+                'Tipo Error
+                TipoError = "PE050"
+                If strmodoFactura = "AUTOMATICA" Then
+                    'ERROR #PE01202
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUB-TOTAL: " & ImporteSub & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error General PE01202: " & vbNewLine & RespuestaServicio.ErrorGeneral & vbNewLine & "Error Detallado: " & vbNewLine & RespuestaServicio.ErrorDetallado & vbNewLine
+                    My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    TipoError = TipoError & ": " & RespuestaServicio.ErrorGeneral
+                    EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                Else
+                    MsgBox("Error General: " & vbCrLf & vbCrLf & RespuestaServicio.ErrorGeneral & vbCrLf & vbCrLf & "Error Detallado: " & vbCrLf & vbCrLf & RespuestaServicio.ErrorDetallado & vbCrLf & vbCrLf & "Por favor avise a sistemas", MsgBoxStyle.Exclamation, "Facturación")
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUB-TOTAL: " & ImporteSub & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error General PE01202: " & vbNewLine & RespuestaServicio.ErrorGeneral & vbNewLine & "Error Detallado: " & vbNewLine & RespuestaServicio.ErrorDetallado & vbNewLine
+                    My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    TipoError = TipoError & ": " & RespuestaServicio.ErrorGeneral
+                    EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                End If
+                'Tipo Error
+                TipoError = "PE051"
+                RespuestaoXML = RespuestaServicio.ErrorGeneral & vbCrLf & vbCrLf & RespuestaServicio.ErrorDetallado
+                If TipoDocumento = enTipoDocumento.NotaCredito Then
+                    errorNC = True
+                Else
+                    If strTipoFactura = "GLOBAL" Then
+                        errorFG = True
+                    End If
+                End If
+            End If
+
+        Catch e As TimeoutException
+            'Error #PE01100
+            frmDatosClienteFacturacion.Cursor = Cursors.Default
+            If strmodoFactura = "AUTOMATICA" Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Tiempo de espera demasiado largo para realizar la operación, puede deberse a lentitud o falla en el servicio de internet & vbNewLine" & vbNewLine
+                My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                TipoError = TipoError & ": " & e.Message
+                EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+            Else
+                MsgBox("Tiempo de espera demasiado largo para realizar la operación, puede deberse a lentitud o falla en el servicio de internet, por favor avise a sistemas", MsgBoxStyle.Critical, "Facturacion")
+                If strTipoFactura = "GLOBAL" Then
+                    frmFacturaGlobalDiaria.lblTextoAnuncio.Text = "Tratando de recuperar información..."
+                    frmFacturaGlobalDiaria.lblTextoAnuncio.Visible = True
+                    frmFacturaGlobalDiaria.lblTextoAnuncio.Refresh()
+                Else
+                    frmFacturaIndividual.lblTextoAnuncio.Text = "Tratando de recuperar información..."
+                    frmFacturaIndividual.lblTextoAnuncio.Visible = True
+                    frmFacturaIndividual.lblTextoAnuncio.Refresh()
+                End If
+            End If
+            GoTo BuscaDatos
+        Catch ex As Exception
+            'Error #PE01200
+            If strmodoFactura = "AUTOMATICA" Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error PE01200--Tipo Error: " & TipoError & vbNewLine
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Descripcion Error VS: " & ex.Message & vbNewLine
+                My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                TipoError = TipoError & ": " & ex.Message
+                EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+            Else
+                MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturacion")
+            End If
+
+        End Try
+    End Sub
+
+    Public Sub GeneraFactura40(ByVal TipoDocumento As enTipoDocumento,
+                             ByVal SubTotal As Double, _
+                             ByVal Descuento As Double, _
+                             ByVal IVA As Double, _
+                             ByVal Total As Double, _
+                             ByVal Datos As DataTable, _
+                             ByVal CondicionesPago As String, _
+                             ByRef RespuestaoXML As String, _
+                             ByVal IncluyeDireccionFiscal As Boolean, _
+                             ByVal IncluyeDireccionSucursal As Boolean, _
+                             ByVal IncluyeDireccionCliente As Boolean, _
+                             Optional ByRef CBB As String = Nothing, _
+                             Optional ByVal CFDIRelacionado As String = "", _
+                             Optional ByVal TipoRelacion As String = "", _
+                             Optional ByVal TipoDocumentoAfectarPorNC As enTipoDocumentoAfectar = enTipoDocumentoAfectar.FacturaIndividual, _
+                             Optional ByVal UUIDsRealcionados As ArrayList = Nothing)
+
+        ObtenerParametros()
+
+
+
+
+        'OBJETOS USADOS PARA EL SERVICIO DE FEL
+        'Dim ConexionRemota33 As Object
+        Dim ConexionRemota40 As Object
+        Dim datosUsuario As Object
+        Dim Comprobante40 As Object
+        Dim listaCFDIRel As Object
+        Dim CFDIRel1 As Object
+        Dim listaConcepto As Object
+        Dim Concepto1 As Object
+        Dim ConceptoImpuestos1 As Object
+        Dim ListaTraslado1 As Object
+        Dim traslado1 As Object
+        Dim COMAdenda As Object
+        Dim oDomicilioEmisor As Object
+        Dim oDomicilioSucursal As Object
+        Dim oDomicilioCliente As Object
+        Dim RespuestaServicio As Object
+        Dim oRespuestaPDF As Object
+        Dim sSQL As String = ""
+        Dim dtEmail As New DataTable
+        Dim drEmail As DataRow
+        Dim ImporteSub As Decimal
+        Dim ImporteIVA As Decimal
+        strEstatusGeneracion = "ERROR"
+
+        'VARIABLE ETIQUETA
+
+
+        dtClavesFiscales = New DataTable
+        'drClavesFiscales As DataRow
+
+        strRegimenFiscal = ""
+        strClaveProductoSAT = ""
+        strUnidadMedidaSAT = ""
+        strUnidadMedidaPE = ""
+
+
+
+
+
+        If strTipoFactura = "GLOBAL" Then
+            frmFacturaGlobalDiaria.lblTextoAnuncio.Text = "Extrayendo datos del Ticket..."
+            frmFacturaGlobalDiaria.lblTextoAnuncio.Visible = True
+            frmFacturaGlobalDiaria.lblTextoAnuncio.Refresh()
+        Else
+            frmFacturaIndividual.lblTextoAnuncio.Text = "Extrayendo datos del Ticket..."
+            frmFacturaIndividual.lblTextoAnuncio.Visible = True
+            frmFacturaIndividual.lblTextoAnuncio.Refresh()
+        End If
+
+        Try
+
+            'PRUEBA DE ESCRITURA BLOC DE NOTA
+            'nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+            'If (System.IO.File.Exists(nombreArchi)) Then
+            '    File.Delete(nombreArchi)
+            'End If
+
+            'Const fic As String = nombreArchi.
+            If strmodoFactura = "AUTOMATICA" Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Recopilando información inicial" & vbNewLine
+            Else
+                If strTipoFactura = "GLOBAL" Then
+                    texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO FACTURA GLOBAL MANUAL........................................................." & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FECHA MOVIMIENTO: " & strFechaBusqueda.ToString & " " & vbNewLine
+                    nombreArchi = "C:\SPE\VINO\LOG\"
+                Else
+                    texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO FACTURA INDIVIDUAL........................................................." & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FECHA MOVIMIENTO: " & strFechaBusqueda.ToString & " " & vbNewLine
+                    nombreArchi = sRuta & "LOG\"
+                End If
+            End If
+
+            If TipoDocumento = enTipoDocumento.Factura Then
+                FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
+                nombreLog = "LogFactura_FA_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                nombreArchi = nombreArchi & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FOLIO FACTURA: " & intSiguienteFolio & vbNewLine
+            ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
+                nombreLog = "LogFactura_NC_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                nombreArchi = nombreArchi & "LogFactura_NC_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO NOTA DE CREDITO........................................................." & vbNewLine
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FOLIO FACTURA: " & intSiguienteFolioNC & vbNewLine
+            End If
+
+            If (System.IO.File.Exists(nombreArchi)) Then
+                File.Delete(nombreArchi)
+            End If
+
+
+            'MODIFICADO 05/10/2021 PARA OBTENER EL RFC DE BPFCATALGOEMPRESAS
+            'Tipo Error
+            TipoError = "PE001"
+            'obteniendo las claves fiscales (RFC, Regimen Fiscal, Forma de Pago, Moneda, Uso CFDI, Metodo de Pago)
+            sSQL = "SELECT * FROM BPFCatalogoEmpresas WHERE NoEmpresa=1"
+            dtClavesFiscales = SQLServer.ExecSQLReturnDT(sSQL, "BPFCatalogoEmpresas")
+            If dtClavesFiscales Is Nothing OrElse dtClavesFiscales.Rows.Count <= 0 Then
+                If strmodoFactura = "AUTOMATICA" Then
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: No hay información de Claves Del SAT" & vbNewLine
+                    My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    FechaLog = Format(Now, "yyyy-MM-dd HHmm").ToString
+                    nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                    EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    End
+                Else
+                    MsgBox("No hay información de Claves Del SAT, por favor avise a sistemas!", MsgBoxStyle.Exclamation, "Facturación")
+                    Exit Sub
+                End If
+            End If
+
+            drClavesFiscales = dtClavesFiscales.Rows(0)
+            strEmiNombreCliente = drClavesFiscales.Item("Descripcion").ToString.Trim.ToUpper
+            strRegimenFiscal = drClavesFiscales.Item("ClaveRegimenFiscalSAT").ToString.Trim.ToUpper
+
+            'Tipo Error
+            TipoError = "PE002"
+            If strTipoFactura = "GLOBAL" Then
+                With drClavesFiscales
+                    strEmiNombreCliente = .Item("Descripcion").ToString.Trim.ToUpper
+                    strRegimenFiscal = .Item("ClaveRegimenFiscalSAT").ToString.Trim.ToUpper
+                    strMonedaClave = .Item("ClaveMonedaSAT").ToString.Trim.ToUpper
+                    strUsoCFDIClave = .Item("ClaveUsoCFDISATFAC").ToString.Trim.ToUpper
+                    strFormaPagoClave = .Item("ClaveFormaPagoSAT").ToString.Trim.ToUpper
+                    strMetodoPagoClave = .Item("ClaveMetodoPagoSAT").ToString.Trim.ToUpper
+                End With
+                If TipoDocumento = enTipoDocumento.NotaCredito Then
+                    strUsoCFDIClave = drClavesFiscales.Item("ClaveUsoCFDISATCRE").ToString.Trim.ToUpper
+                End If
+            Else
+                strMonedaClave = strMonedaClaveIND
+                If TipoDocumento = enTipoDocumento.Factura Then
+                    strUsoCFDIClave = strUsoCFDIClaveIND
+                Else
+                    strUsoCFDIClave = drClavesFiscales.Item("ClaveUsoCFDISATCRE").ToString.Trim.ToUpper
+                End If
+                strFormaPagoClave = strFormaPagoClaveIND
+                strMetodoPagoClave = strMetodoPagoClaveIND
+            End If
+
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                strEmiNombreCliente = "Compuhipermegared"
+            End If
+            'Tipo Error
+            TipoError = "PE003: No hay Archivo de Configuracion "
+            '**********************************************
+            ' Instanciar al Web Service de Conexión Remota.
+            '**********************************************
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                'ConexionRemota33 = New FelTest.ConexionRemotaClient
+                ConexionRemota40 = New FelTest.ConexionRemotaClient
+            Else
+                'ConexionRemota33 = New FelProd.ConexionRemotaClient
+                ConexionRemota40 = New FelProd.ConexionRemotaClient
+            End If
+
+            '*************************************************************************************
+            ' Sección de variables para la autenticación del usuario remoto.
+            ' Ingreso de credenciales para la autenticacion del usuario remoto.
+            '*************************************************************************************
+            'Tipo Error
+            TipoError = "PE004: Error en Credenciales de Conexion"
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                datosUsuario = New FelTest.Credenciales
+            Else
+                datosUsuario = New FelProd.Credenciales
+            End If
+            'texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FOLIO FACTURA: " & intSiguienteFolio & vbNewLine
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DEL USUARIO......................................................... " & vbNewLine
+            If strCuentaServicioTimbrado <> "" Then
+                datosUsuario.Cuenta = strCuentaServicioTimbrado
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DE USUARIO (CUENTA): " & strCuentaServicioTimbrado & vbNewLine
+            End If
+            If strContrasenaServicioTimbrado <> "" Then
+                datosUsuario.Password = strContrasenaServicioTimbrado
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DE USUARIO (CONTRASEÑA): " & strContrasenaServicioTimbrado & vbNewLine
+            End If
+            If strUsuarioServicioTimbrado <> "" Then
+                datosUsuario.Usuario = strUsuarioServicioTimbrado
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DE USUARIO (USUARIO): " & strUsuarioServicioTimbrado & vbNewLine
+            End If
+
+
+
+
+            '*************************************************************************************
+            ' Sección de variables para agregar los valores al comprobante CFDi.
+            '*************************************************************************************
+            'Tipo Error
+            TipoError = "PE005: Error en Comprobante"
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                'Comprobante = New FelTest.Comprobante33R
+                Comprobante40 = New FelTest.Comprobante40R
+            Else
+                Comprobante40 = New FelProd.Comprobante33R
+            End If
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE............................................................... " & vbNewLine
+
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                COMAdenda = New FelTest.AddendaCFD40R
+                oDomicilioEmisor = New FelTest.DomicilioCliente40R
+                oDomicilioSucursal = New FelTest.DomicilioCliente40R
+                oDomicilioCliente = New FelTest.DomicilioCliente40R
+            Else
+                COMAdenda = New FelProd.AddendaCFDR
+                oDomicilioEmisor = New FelProd.DomicilioClienteR
+                oDomicilioSucursal = New FelProd.DomicilioClienteR
+                oDomicilioCliente = New FelProd.DomicilioClienteR
+            End If
+
+            '**********************************************
+            ' Etiquetas Perzonalizadas.
+            '**********************************************
+            If TipoDocumento = enTipoDocumento.Factura Then
+                If strAreaServicioTimbrado = "PRUEBAS" Then
+                    Dim ListaEtiquetaPerso As List(Of FelTest.EtiquetaPersonalizada40R) = New List(Of FelTest.EtiquetaPersonalizada40R)
+                    Dim EtiquetaPerso = New FelTest.EtiquetaPersonalizada40R
+                    strFechaBusqueda = Mid(strFechaBusqueda, 1, 4) & "-" & Mid(strFechaBusqueda, 5, 2) & "-" & Mid(strFechaBusqueda, 7, 2)
+                    EtiquetaPerso.Valor = Utilerias.FechaFormato(CDate(strFechaBusqueda))
+                    EtiquetaPerso.Nombre = "FECHA OPERACION"
+
+                    ListaEtiquetaPerso.Add(EtiquetaPerso)
+                    COMAdenda.EtiquetasPersonalizadas = ListaEtiquetaPerso.ToArray
+                Else
+                    Dim ListaEtiquetaPerso As List(Of FelProd.EtiquetaPersonalizadaR) = New List(Of FelProd.EtiquetaPersonalizadaR)
+                    Dim EtiquetaPerso = New FelProd.EtiquetaPersonalizadaR
+                    strFechaBusqueda = Mid(strFechaBusqueda, 1, 4) & "-" & Mid(strFechaBusqueda, 5, 2) & "-" & Mid(strFechaBusqueda, 7, 2)
+                    EtiquetaPerso.Valor = Utilerias.FechaFormato(CDate(strFechaBusqueda))
+                    EtiquetaPerso.Nombre = "FECHA OPERACION"
+
+                    ListaEtiquetaPerso.Add(EtiquetaPerso)
+                    COMAdenda.EtiquetasPersonalizadas = ListaEtiquetaPerso.ToArray
+                End If
+            End If
+
+
+            'Tipo Error
+            TipoError = "PE006: Error en Datos Fiscales"
+            If IncluyeDireccionFiscal = True Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DEL EMISOR.......................................................... " & vbNewLine
+                If dtOrganizacion.Rows(0).Item("Calle").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.Calle = dtOrganizacion.Rows(0).Item("Calle").ToString.Trim.ToUpper
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(CALLE): " & dtOrganizacion.Rows(0).Item("Calle").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtOrganizacion.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.CodigoPostal = dtOrganizacion.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(CODIGO POSTAL): " & dtOrganizacion.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtOrganizacion.Rows(0).Item("Colonia").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.Colonia = dtOrganizacion.Rows(0).Item("Colonia").ToString.Trim.ToUpper
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(COLONIA): " & dtOrganizacion.Rows(0).Item("Colonia").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtOrganizacion.Rows(0).Item("Estado").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.Estado = dtOrganizacion.Rows(0).Item("Estado").ToString.Trim.ToUpper
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(ESTADO): " & dtOrganizacion.Rows(0).Item("Estado").ToString.Trim.ToUpper & vbNewLine
+                End If
+                'If dtOrganizacion.Rows(0).Item("Municipio").ToString.Trim.ToUpper <> "" Then
+                '    oDomicilioEmisor.Localidad = dtOrganizacion.Rows(0).Item("Municipio").ToString.Trim.ToUpper
+                '    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(LOCALIDAD): " & dtOrganizacion.Rows(0).Item("Municipio").ToString.Trim.ToUpper & vbNewLine
+                'End If
+                If dtOrganizacion.Rows(0).Item("Municipio").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.Municipio = dtOrganizacion.Rows(0).Item("Municipio").ToString.Trim.ToUpper     '"MONTEMORELOS"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(MUNICIPIO): " & dtOrganizacion.Rows(0).Item("Municipio").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.NumeroExterior = dtLugarEmision.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper     '"1201"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(NUM. EXTERIOR): " & dtLugarEmision.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.NumeroInterior = dtLugarEmision.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper     '"L-10"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(NUM. INTERIOR): " & dtLugarEmision.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.Pais = dtLugarEmision.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper     '"MEXICO"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(PAIS): " & dtLugarEmision.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtOrganizacion.Rows(0).Item("Telefono01").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioEmisor.Telefono = dtOrganizacion.Rows(0).Item("Telefono01").ToString.Trim.ToUpper     '"19-46-36-00"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO EMISOR(TELEFONO): " & dtOrganizacion.Rows(0).Item("Telefono01").ToString.Trim.ToUpper & vbNewLine
+                End If
+                COMAdenda.DomicilioEmisor = oDomicilioEmisor
+            End If
+            'Tipo Error
+            TipoError = "PE007: Error en Datos de Sucursal"
+            If IncluyeDireccionSucursal = True Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DE LA SUCURSAL....................................................... " & vbNewLine
+                If dtLugarEmision.Rows(0).Item("Calle").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.Calle = dtLugarEmision.Rows(0).Item("Calle").ToString.Trim.ToUpper     '"SIMON BOLIVAR"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(CALLE): " & dtLugarEmision.Rows(0).Item("Calle").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.CodigoPostal = dtLugarEmision.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper     '"67550"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(CODIGO POSTAL): " & dtLugarEmision.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("Colonia").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.Colonia = dtLugarEmision.Rows(0).Item("Colonia").ToString.Trim.ToUpper     '"MEXIQUITO"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(COLONIA): " & dtLugarEmision.Rows(0).Item("Colonia").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("Estado").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.Estado = dtLugarEmision.Rows(0).Item("Estado").ToString.Trim.ToUpper     '"NUEVO LEON"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(ESTADO): " & dtLugarEmision.Rows(0).Item("Estado").ToString.Trim.ToUpper & vbNewLine
+                End If
+                'If dtLugarEmision.Rows(0).Item("Municipio").ToString.Trim.ToUpper <> "" Then
+                '    oDomicilioSucursal.Localidad = dtLugarEmision.Rows(0).Item("Municipio").ToString.Trim.ToUpper     '"CENTRO"
+                '    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(LOCALDAD): " & dtLugarEmision.Rows(0).Item("Municipio").ToString.Trim.ToUpper & vbNewLine
+                'End If
+                If dtLugarEmision.Rows(0).Item("Municipio").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.Municipio = dtLugarEmision.Rows(0).Item("Municipio").ToString.Trim.ToUpper     '"MONTEMORELOS"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(MUNICIPIO): " & dtLugarEmision.Rows(0).Item("Municipio").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.NumeroExterior = dtLugarEmision.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper     '"1201"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(NUM. EXTERIOR): " & dtLugarEmision.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.NumeroInterior = dtLugarEmision.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper     '"L-10"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(NUM. INTERIOR): " & dtLugarEmision.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.Pais = dtLugarEmision.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper     '"MEXICO"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(PAIS): " & dtLugarEmision.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtLugarEmision.Rows(0).Item("Telefono01").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioSucursal.Telefono = dtLugarEmision.Rows(0).Item("Telefono01").ToString.Trim.ToUpper     '"19-46-36-00"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO SUCURSAL(TELEFONO): " & dtLugarEmision.Rows(0).Item("Telefono01").ToString.Trim.ToUpper & vbNewLine
+                End If
+                COMAdenda.DomicilioSucursal = oDomicilioSucursal
+            End If
+            'Tipo Error
+            TipoError = "PE008: Error en datos del Cliente"
+            If IncluyeDireccionCliente = True Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DATOS DEL RECEPTOR........................................................ " & vbNewLine
+                If dtCliente.Rows(0).Item("CalleFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.Calle = dtCliente.Rows(0).Item("CalleFiscal").ToString.Trim.ToUpper '"BRAVO"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(CALLE): " & dtCliente.Rows(0).Item("CalleFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("CodigoPostalFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.CodigoPostal = dtCliente.Rows(0).Item("CodigoPostalFiscal").ToString.Trim.ToUpper '"64345"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(CODIGO POSTAL): " & dtCliente.Rows(0).Item("CodigoPostalFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("ColoniaFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.Colonia = dtCliente.Rows(0).Item("ColoniaFiscal").ToString.Trim.ToUpper '"CENTRO"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(COLONIA): " & dtCliente.Rows(0).Item("ColoniaFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("EstadoFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.Estado = dtCliente.Rows(0).Item("EstadoFiscal").ToString.Trim.ToUpper '"NUEVO LEON"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(ESTADO): " & dtCliente.Rows(0).Item("EstadoFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("MunicipioFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.Municipio = dtCliente.Rows(0).Item("MunicipioFiscal").ToString.Trim.ToUpper '"SAN NICOLAS DE LOS GARZA"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(MUNICIPIO): " & dtCliente.Rows(0).Item("MunicipioFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("RazonSocial").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.NombreCliente = dtCliente.Rows(0).Item("RazonSocial").ToString.Trim.ToUpper '"NOMBRE DE CLIENTE, S.A. DE C.V."
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(NOMBRE CLIENTE): " & dtCliente.Rows(0).Item("RazonSocial").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.NumeroExterior = dtCliente.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper '"510"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(NUM. EXTERIOR): " & dtCliente.Rows(0).Item("NoExteriorFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.NumeroInterior = dtCliente.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper '"L-1"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(NUM. INTERIOR): " & dtCliente.Rows(0).Item("NoInteriorFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.Pais = dtCliente.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper '"MEXICO"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(PAIS): " & dtCliente.Rows(0).Item("PaisFiscal").ToString.Trim.ToUpper & vbNewLine
+                End If
+                If dtCliente.Rows(0).Item("Telefono01").ToString.Trim.ToUpper <> "" Then
+                    oDomicilioCliente.Telefono = dtCliente.Rows(0).Item("Telefono01").ToString.Trim.ToUpper '"8376-0054"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "DOMICILIO CLIENTE(TELEFONO): " & dtCliente.Rows(0).Item("Telefono01").ToString.Trim.ToUpper & vbNewLine
+                End If
+                COMAdenda.DomicilioReceptor = oDomicilioCliente
+            End If
+
+            Comprobante40.Addenda = COMAdenda
+
+            'Tipo Error
+            TipoError = "PE009"
+            If strTipoFactura = "GLOBAL" Then
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Text = "Buscando UUIDs relacionados..."
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Visible = True
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Refresh()
+            Else
+                frmFacturaIndividual.lblTextoAnuncio.Text = "Buscando UUIDs relacionados..."
+                frmFacturaIndividual.lblTextoAnuncio.Visible = True
+                frmFacturaIndividual.lblTextoAnuncio.Refresh()
+            End If
+
+            'INFORMACION DE FECHA OPERACIONES
+            If strTipoFactura = "GLOBAL" Then
+                Comprobante40.InformacionGlobal = New FelTest.InformacionGlobal40R
+                Comprobante40.InformacionGlobal.Periodicidad = "01"
+                Comprobante40.InformacionGlobal.Meses = "02"
+                Comprobante40.InformacionGlobal.Año = "2022"
+            End If
+
+            'Tipo Error
+            TipoError = "PE010"
+            'UUIDs RELACIONADOS
+            strCFDIRel = ""
+            strTipoRel = ""
+            If Not UUIDsRealcionados Is Nothing Then
+                If UUIDsRealcionados.Count > 0 Then
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "UUIDsRelacionados......................................................... " & vbNewLine
+                    If strAreaServicioTimbrado = "PRUEBAS" Then
+                        Comprobante40.CfdiRelacionados = New FelTest.CfdiRelacionados40R
+                        listaCFDIRel = New List(Of FelTest.CfdiRelacionado40R)()
+                    Else
+                        Comprobante40.CfdiRelacionados = New FelProd.CfdiRelacionadosR
+                        listaCFDIRel = New List(Of FelProd.CfdiRelacionadoR)()
+                    End If
+                    If TipoRelacion.Trim <> "" Then
+                        strTipoRel = TipoRelacion.Trim
+                        Comprobante40.CfdiRelacionados.TipoRelacion = TipoRelacion.Trim
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CFDI RELACIONADOS (TIPO RELACION)): " & TipoRelacion.Trim & vbNewLine
+                    End If
+
+                    Dim x As Integer = 0
+                    For x = 0 To UUIDsRealcionados.Count - 1
+                        If strAreaServicioTimbrado = "PRUEBAS" Then
+                            CFDIRel1 = New FelTest.CfdiRelacionado40R
+                        Else
+                            CFDIRel1 = New FelProd.CfdiRelacionadoR
+                        End If
+                        CFDIRel1.UUID = UUIDsRealcionados(x).ToString
+                        If strCFDIRel = "" Then
+                            strCFDIRel = UUIDsRealcionados(x).ToString
+                        Else
+                            strCFDIRel = strCFDIRel & "," & UUIDsRealcionados(x).ToString
+                        End If
+
+                        listaCFDIRel.Add(CFDIRel1)
+                    Next x
+                    If strCFDIRel <> "" Then
+                        Comprobante40.CfdiRelacionados.CfdiRelacionado = listaCFDIRel.ToArray
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CFDI RELACIONADOS (UUIDs)): " & strCFDIRel & vbNewLine
+                    End If
+                End If
+            Else
+                'Tipo Error
+                TipoError = "PE011"
+                'Documento relacionado (solo 1)
+                If CFDIRelacionado.Trim <> "" Then
+                    If strAreaServicioTimbrado = "PRUEBAS" Then
+                        Comprobante40.CfdiRelacionados = New FelTest.CfdiRelacionados40R
+                    Else
+                        Comprobante40.CfdiRelacionados = New FelProd.CfdiRelacionadosR
+                    End If
+
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "UUIDsRelacionados........................................................ " & vbNewLine
+                    strTipoRel = TipoRelacion.Trim
+                    Comprobante40.CfdiRelacionados.TipoRelacion = TipoRelacion.Trim
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CFDI RELACIONADOS (TIPO RELACION)): " & TipoRelacion.Trim & vbNewLine
+
+                    'Dim listaCFDIRel As List(Of FelTest.CfdiRelacionadoR) = New List(Of FelTest.CfdiRelacionadoR)()
+                    'Dim CFDIRel1 As FelTest.CfdiRelacionadoR = New FelTest.CfdiRelacionadoR
+                    If strAreaServicioTimbrado = "PRUEBAS" Then
+                        listaCFDIRel = New List(Of FelTest.CfdiRelacionado40R)()
+                        CFDIRel1 = New FelTest.CfdiRelacionado40R
+                    Else
+                        listaCFDIRel = New List(Of FelProd.CfdiRelacionadoR)()
+                        CFDIRel1 = New FelProd.CfdiRelacionadoR
+                    End If
+
+                    CFDIRel1.UUID = CFDIRelacionado.Trim
+                    strCFDIRel = CFDIRelacionado.Trim
+                    listaCFDIRel.Add(CFDIRel1)
+                    Comprobante40.CfdiRelacionados.CfdiRelacionado = listaCFDIRel.ToArray
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CFDI RELACIONADOS (UUID)): " & strCFDIRel.Trim & vbNewLine
+                End If
+            End If
+
+            'Tipo Error
+            TipoError = "PE012"
+            If TipoDocumento = enTipoDocumento.Factura Then
+                Comprobante40.ClaveCFDI = "FAC"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CLAVE CFDI): " & "FAC" & vbNewLine
+            ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                Comprobante40.ClaveCFDI = "CRE"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CLAVE CFDI): " & "CRE" & vbNewLine
+            Else
+            End If
+
+            'Tipo Error
+            TipoError = "PE013"
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                listaConcepto = New List(Of FelTest.Concepto40R)()
+                Concepto1 = New FelTest.Concepto40R
+                ConceptoImpuestos1 = New FelTest.ImpuestosConcepto40R
+                ListaTraslado1 = New List(Of FelTest.TrasladoConcepto40R)()
+                traslado1 = New FelTest.TrasladoConcepto40R
+            Else
+                listaConcepto = New List(Of FelProd.ConceptoR)()
+                Concepto1 = New FelProd.ConceptoR
+                ConceptoImpuestos1 = New FelProd.ImpuestosConceptoR
+                ListaTraslado1 = New List(Of FelProd.TrasladoConceptoR)()
+                traslado1 = New FelProd.TrasladoConceptoR
+            End If
+
+            'Tipo Error
+            TipoError = "PE014"
+            If strTipoFactura = "GLOBAL" Then
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Text = "LLenando conceptos..."
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Visible = True
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Refresh()
+            Else
+                frmFacturaIndividual.lblTextoAnuncio.Text = "LLenando conceptos..."
+                frmFacturaIndividual.lblTextoAnuncio.Visible = True
+                frmFacturaIndividual.lblTextoAnuncio.Refresh()
+            End If
+
+            'Tipo Error
+            TipoError = "PE015"
+            'LLENANDO LOS CONCEPTOS
+            For Each dr As DataRow In Datos.Rows
+                'Tipo Error
+                TipoError = "PE015-1"
+                If strTipoFactura = "GLOBAL" Then
+                    strClaveProductoSAT = CodigoProductoSAT(TipoDocumento, dr("DescripcionSAT").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                    strUnidadMedidaSAT = CodigoUMSAT(TipoDocumento, dr("DescripcionSAT").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                    strUnidadMedidaPE = CodigoUMPE(dr("DescripcionSAT").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                Else
+                    If dr("Tipo") = "VT" Then
+                        strClaveProductoSAT = CodigoProductoSAT(TipoDocumento, dr("Concepto").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                        strUnidadMedidaSAT = CodigoUMSAT(TipoDocumento, dr("Concepto").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                        strUnidadMedidaPE = CodigoUMPE(dr("Concepto").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                    Else
+                        strClaveProductoSAT = CodigoProductoSAT(TipoDocumento, dr("DescripcionSAT").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                        strUnidadMedidaSAT = CodigoUMSAT(TipoDocumento, dr("DescripcionSAT").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                        strUnidadMedidaPE = CodigoUMPE(dr("DescripcionSAT").ToString.Trim.ToUpper, TipoDocumentoAfectarPorNC)
+                    End If
+                End If
+                'Tipo Error
+                TipoError = "PE015-2"
+                If strAreaServicioTimbrado = "PRUEBAS" Then
+                    Concepto1 = New FelTest.Concepto40R()
+                Else
+                    Concepto1 = New FelProd.ConceptoR()
+                End If
+
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS................................................................. " & vbNewLine
+
+                Concepto1.Cantidad = "1.0"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (CANTIDAD): " & "1.0" & vbNewLine
+                'Tipo Error
+                TipoError = "PE015-3"
+                If strTipoFactura = "GLOBAL" Or TipoDocumento = enTipoDocumento.NotaCredito Then
+                    If strClaveProductoSAT <> "" Then
+                        Concepto1.ClaveProdServ = strClaveProductoSAT
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (CLAVE PRODUCTO O SERVICIO): " & strClaveProductoSAT & vbNewLine
+                    End If
+                Else
+                    If dr("ClaveSAT").ToString.Trim.ToUpper <> "" Then
+                        Concepto1.ClaveProdServ = dr("ClaveSAT").ToString.Trim.ToUpper
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (CLAVE PRODUCTO O SERVICIO): " & dr("ClaveSAT").ToString.Trim.ToUpper & vbNewLine
+                    End If
+                End If
+                If strUnidadMedidaSAT <> "" Then
+                    Concepto1.ClaveUnidad = strUnidadMedidaSAT    'UNIDAD DE MEDIDA DEL SAT
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (CLAVE UNIDAD): " & strUnidadMedidaSAT & vbNewLine
+                End If
+                'Tipo Error
+                TipoError = "PE015-4"
+                If strTipoFactura = "GLOBAL" Then
+                    If TipoDocumento = enTipoDocumento.NotaCredito Then
+                        If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" And dr("UUIDOriginal").ToString.Trim <> "" Then
+                            Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " " & dr("UUIDOriginal").ToString.Trim
+                            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & " " & dr("UUIDOriginal").ToString.Trim & vbNewLine
+                        End If
+                    Else
+                        If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" Then
+                            Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper
+                            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & vbNewLine
+                        End If
+                    End If
+                Else
+                    If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" Then
+                        Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & vbNewLine
+                    End If
+                End If
+
+                'Tipo Error
+                TipoError = "PE015-5"
+                Dim ConcepImporte As Double = 0
+                Dim ConcepImporte2 As Double = 0
+                Dim Ticket As String
+                Ticket = dr("NoTicket").ToString
+                If Format(dr("Interes"), "#0.000000").ToString > "0.000000" Then
+                    ConcepImporte = ConcepImporte + dr("Interes")
+                End If
+                If Format(dr("Recargo"), "#0.000000").ToString > "0.000000" Then
+                    ConcepImporte = ConcepImporte + dr("Recargo")
+                End If
+                If Format(dr("Importe"), "#0.000000").ToString > "0.000000" Then
+                    ConcepImporte = ConcepImporte + dr("Importe")
+                End If
+                'Si el Importe es Negativo
+                If Format(dr("Importe"), "#0.000000").ToString < "0.000000" Then
+                    ConcepImporte2 = ConcepImporte2 + dr("Importe")
+                End If
+                '-----
+                If Format(dr("Descuento"), "#0.000000").ToString > "0.000000" Then
+                    ConcepImporte = ConcepImporte + dr("Descuento")
+                End If
+                Concepto1.Importe = Format(Math.Round(ConcepImporte, 6), "#0.00").ToString
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (IMPORTE): " & Format(Math.Round(ConcepImporte, 6), "#0.000000").ToString & vbNewLine
+
+                ImporteSub = ImporteSub + Math.Round(ConcepImporte, 2)
+
+                'Tipo Error
+                TipoError = "PE015-6"
+                If strAreaServicioTimbrado = "PRUEBAS" Then
+                    traslado1 = New FelTest.TrasladoConcepto40R
+                Else
+                    traslado1 = New FelProd.TrasladoConceptoR
+                End If
+
+                'Tipo Error
+                TipoError = "PE015-7"
+                'TRASLADO(BASE)
+                If dr("IVA") > 0 Then
+
+                    Dim TrasBase As Double = 0
+                    If Format(dr("Interes"), "#0.000000").ToString > "0.000000" Then
+                        TrasBase = TrasBase + dr("Interes")
+                    End If
+                    If Format(dr("Recargo"), "#0.000000").ToString > "0.000000" Then
+                        TrasBase = TrasBase + dr("Recargo")
+                    End If
+                    If Format(dr("Importe"), "#0.000000").ToString > "0.000000" Then
+                        TrasBase = TrasBase + dr("Importe")
+                    End If
+
+                    traslado1.Base = Format(Math.Round(TrasBase, 6), "#0.00").ToString
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (BASE): " & Format(Math.Round(TrasBase, 6), "#0.00").ToString & vbNewLine
+
+                    'Tipo Error
+                    TipoError = "PE015-8"
+                    'TRASLADO (IMPORTE)
+                    If Format(dr("IVA"), "#0.000000").ToString <> "" Then
+                        traslado1.Importe = Format(Math.Round(dr("IVA"), 6), "#0.00").ToString
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (IMPORTE): " & Format(Math.Round(dr("IVA"), 6), "#0.00").ToString & vbNewLine
+                        ImporteIVA = ImporteIVA + Math.Round(dr("IVA"), 6)
+                    End If
+                    'TRASLADO (IMPUESTO)
+                    traslado1.Impuesto = "002"      'TO DO: OBTENER DE LA TABLA
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (IMPUESTO): " & "002" & vbNewLine
+                    'TRASLADO (TASA CUOTA)
+                    If Format(dblPorcentajeIVA, "#0.000000").ToString <> "" Then
+                        traslado1.TasaOCuota = Format(dblPorcentajeIVA, "#0.000000").ToString  '"0.160000"   TO DO: OBTENER DE LA TABLA
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (TASA CUOTA): " & Format(dblPorcentajeIVA, "#0.000000").ToString & vbNewLine
+                    End If
+                    'TRASLADO (TIPO FACTOR)
+                    traslado1.TipoFactor = "Tasa"   'TO DO: OBTENER DE LA TABLA
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (TIPO FACTOR): " & "Tasa" & vbNewLine
+
+                    'Tipo Error
+                    TipoError = "PE015-9"
+                    If strAreaServicioTimbrado = "PRUEBAS" Then
+                        ListaTraslado1 = New List(Of FelTest.TrasladoConcepto40R)()
+                        ListaTraslado1.Add(traslado1)
+                        ConceptoImpuestos1 = New FelTest.ImpuestosConcepto40R
+                        ConceptoImpuestos1.Traslados = ListaTraslado1.ToArray()
+                    Else
+                        ListaTraslado1 = New List(Of FelProd.TrasladoConceptoR)()
+                        ListaTraslado1.Add(traslado1)
+                        ConceptoImpuestos1 = New FelProd.ImpuestosConceptoR
+                        ConceptoImpuestos1.Traslados = ListaTraslado1.ToArray()
+                    End If
+                End If
+
+                'fin de impuesto del concepto
+                'Tipo Error
+                TipoError = "PE015-10"
+                If dr("IVA") > 0 Then
+                    Concepto1.Impuestos = ConceptoImpuestos1
+                    'texto = texto & vbLf & "CONCEPTOS (IMPUESTOS): " & ConceptoImpuestos1
+                End If
+                'CONCEPTOS (NO. IDENTIFICACION)
+                If dr("NoTicket").ToString.Trim.ToUpper <> "" Then
+                    Concepto1.NoIdentificacion = dr("NoTicket").ToString.Trim.ToUpper
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (NO. IDENTIFICACION): " & dr("NoTicket").ToString.Trim.ToUpper & vbNewLine
+                End If
+                'CONCEPTOS (UNIDAD)
+                If strTipoFactura = "GLOBAL" Or TipoDocumento = enTipoDocumento.NotaCredito Then
+                    Concepto1.Unidad = "SERVICIO"   'UNIDAD DE MEDIDA DE NOSOTROS
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (UNIDAD): " & "SERVICIO" & vbNewLine
+                Else
+                    If strUnidadMedidaPE <> "" Then
+                        Concepto1.Unidad = strUnidadMedidaPE
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (UNIDAD): " & strUnidadMedidaPE & vbNewLine
+                    End If
+                End If
+
+                Dim ConValorUni As Double = 0
+                'Tipo Error
+                TipoError = "PE015-11"
+                If Format(dr("Interes"), "#0.000000").ToString > "0.000000" Then
+                    ConValorUni = ConValorUni + dr("Interes")
+                End If
+                If Format(dr("Recargo"), "#0.000000").ToString > "0.000000" Then
+                    ConValorUni = ConValorUni + dr("Recargo")
+                End If
+                If Format(dr("Importe"), "#0.000000").ToString > "0.000000" Then
+                    ConValorUni = ConValorUni + dr("Importe")
+                End If
+                If Format(dr("Descuento"), "#0.000000").ToString > "0.000000" Then
+                    ConValorUni = ConValorUni + dr("Descuento")
+                End If
+                Concepto1.ValorUnitario = Format(Math.Round(ConValorUni, 6), "#0.00").ToString
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (VALOR UNITARIO): " & Format(Math.Round(ConValorUni, 6), "#0.000000").ToString & vbNewLine
+
+                'Tipo Error
+                TipoError = "PE015-12"
+                'CONCEPTOS (DESCUENTO)
+                If Format(dr("Descuento"), "#0.000000").ToString > 0 Then
+                    Concepto1.Descuento = Format(Math.Round(dr("Descuento"), 6), "#0.00").ToString       'PARA LAS NOTAS DE CREDITO O BONIFICACIONES
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCUENTO): " & Format(Math.Round(dr("Descuento"), 6), "#0.000000").ToString & vbNewLine
+                End If
+                Concepto1.ObjetoImp = "02"
+
+                listaConcepto.Add(Concepto1)
+
+            Next
+
+            'Tipo Error
+            TipoError = "PE016"
+            'SE AGREGAN LOS CONCEPTOS AL COMPROBANTE
+            Comprobante40.Conceptos = listaConcepto.ToArray
+            '*************************************************************************************
+            'Tipo Error
+            TipoError = "PE017"
+            If strTipoFactura = "GLOBAL" Then
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Text = "Extrayendo datos del comprobante..."
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Visible = True
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Refresh()
+            Else
+                frmFacturaIndividual.lblTextoAnuncio.Text = "Extrayendo datos del comprobante..."
+                frmFacturaIndividual.lblTextoAnuncio.Visible = True
+                frmFacturaIndividual.lblTextoAnuncio.Refresh()
+            End If
+
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE............................................................... " & vbNewLine
+            'Tipo Error
+            TipoError = "PE018"
+            If strCondicionesPago <> "" And enTipoDocumento.Factura Then
+                Comprobante40.CondicionesDePago = strCondicionesPago
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (CONDICIONES DE PAGO): " & strCondicionesPago & vbNewLine
+            End If
+
+            '*************************************************************************************
+            '<tes:Emisor>
+            '*************************************************************************************
+            'Tipo Error
+            TipoError = "PE019"
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                Comprobante40.Emisor = New FelTest.Emisor40R
+            Else
+                Comprobante40.Emisor = New FelProd.EmisorR
+            End If
+            'Tipo Error
+            TipoError = "PE020"
+            If strEmiNombreCliente <> "" Then
+                Comprobante40.Emisor.Nombre = strEmiNombreCliente
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (EMISOR (NOMBRE)): " & strEmiNombreCliente & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE021"
+            If strRegimenFiscal <> "" Then
+                Comprobante40.Emisor.RegimenFiscal = strRegimenFiscal
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (EMISOR (REGIMEN FISCAL)): " & strRegimenFiscal & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE022"
+            Comprobante40.Fecha = Format(Date.Now, "yyyy-MM-ddThh:mm:ss")
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (FECHA): " & Format(Date.Now, "yyyy-MM-ddThh:mm:ss") & vbNewLine
+            If TipoDocumento = enTipoDocumento.Factura Then
+                'Tipo Error
+                TipoError = "PE022-1"
+                If intSiguienteFolio.ToString <> "" Then
+                    'Comprobante.Folio = strSiguienteFolio.ToString
+                    Comprobante40.Folio = intSiguienteFolio.ToString
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (FOLIO): " & intSiguienteFolio.ToString & vbNewLine
+                End If
+            ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                'Tipo Error
+                TipoError = "PE022-2"
+                If intSiguienteFolioNC.ToString <> "" Then
+                    Comprobante40.Folio = intSiguienteFolioNC.ToString
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (FOLIO): " & intSiguienteFolioNC.ToString & vbNewLine
+                End If
+            Else
+                'Tipo Error
+                TipoError = "PE022-3"
+                Comprobante40.Folio = "1"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (FOLIO): " & "1" & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE023"
+            If strFormaPagoClave <> "" Then
+                Comprobante40.FormaPago = strFormaPagoClave
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (FORMA DE PAGO): " & strFormaPagoClave & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE024"
+            If dtLugarEmision.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper <> "" Then
+                If strAreaServicioTimbrado = "PRUEBAS" Then
+                    Comprobante40.LugarExpedicion = "72000"
+                Else
+
+                    Comprobante40.LugarExpedicion = dtLugarEmision.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper '"91700"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (LUGAR DE EXPEDICION): " & dtLugarEmision.Rows(0).Item("CodigoPostal").ToString.Trim.ToUpper & vbNewLine
+
+                End If
+            End If
+            'Tipo Error
+            TipoError = "PE025"
+            If strMetodoPagoClave <> "" Then
+                Comprobante40.MetodoPago = strMetodoPagoClave
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (METODO DE PAGO): " & strMetodoPagoClave & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE026"
+            If strMonedaClave <> "" Then
+                Comprobante40.Moneda = strMonedaClave
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (MONEDA): " & strMonedaClave & vbNewLine
+            End If
+            '*************************************************************************************
+            ' Sección de variables para identificar y actualizar los datos del Cliente(Receptor).
+            '*************************************************************************************
+            'Tipo Error
+            TipoError = "PE027"
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                Comprobante40.Receptor = New FelTest.Receptor40R
+            Else
+                Comprobante40.Receptor = New FelProd.ReceptorR
+            End If
+            'Tipo Error
+            TipoError = "PE028"
+            If dtCliente.Rows(0).Item("NombreCliente").ToString.Trim.ToUpper <> "" Then
+     
+                    Comprobante40.Receptor.Nombre = dtCliente.Rows(0).Item("NombreCliente").ToString.Trim.ToUpper       '"ASESORIA Y TRAMITACION ADUANAL, SC"
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (RECEPTOR (NOMBRE)): " & dtCliente.Rows(0).Item("NombreCliente").ToString.Trim.ToUpper & vbNewLine
+
+                End If
+            'Tipo Error
+            TipoError = "PE029"
+            If dtCliente.Rows(0).Item("RFC").ToString.Trim.ToUpper <> "" Then
+
+                Comprobante40.Receptor.Rfc = dtCliente.Rows(0).Item("RFC").ToString.Trim.ToUpper          '"XAXX010101000"
+                Comprobante40.Receptor.DomicilioFiscalReceptor = "72000"
+                Comprobante40.Receptor.RegimenFiscalReceptor = "616"
+                Comprobante40.Receptor.UsoCFDI = "S01"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (RECEPTOR (RFC)): " & dtCliente.Rows(0).Item("RFC").ToString.Trim.ToUpper & vbNewLine
+
+                End If
+            'Tipo Error
+            TipoError = "PE030"
+            If strUsoCFDIClave <> "" Then
+                Comprobante40.Receptor.UsoCFDI = "S01" 'strUsoCFDIClave
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (RECEPTOR (USO CFDI)): " & strUsoCFDIClave & vbNewLine
+            End If
+            '*************************************************************************************
+            'Tipo Error
+            TipoError = "PE031"
+            If TipoDocumento = enTipoDocumento.Factura Then
+                'Tipo Error
+                TipoError = "PE031-1"
+                If intSiguienteFolio.ToString <> "" Then
+                    Comprobante40.Referencia = strSerieFactura & intSiguienteFolio.ToString
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (REFERENCIA): " & strSerieFactura & intSiguienteFolio.ToString & vbNewLine
+                End If
+            ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                'Tipo Error
+                TipoError = "PE031-2"
+                If intSiguienteFolioNC.ToString <> "" Then
+                    Comprobante40.Referencia = strSerieFactura & intSiguienteFolioNC.ToString
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (REFERENCIA): " & strSerieFactura & intSiguienteFolioNC.ToString & vbNewLine
+                End If
+            Else
+                'Tipo Error
+                TipoError = "PE031-3"
+                Comprobante40.Folio = "26"
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (FOLIO): " & "26" & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE032"
+            If strSerieFactura <> "" Then
+                Comprobante40.Serie = strSerieFactura
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (SERIE): " & strSerieFactura & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE033"
+            If Descuento > 0 Then
+                Comprobante40.Descuento = Format(Math.Round(Descuento, 8), "#0.00")
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (DESCUENTO): " & Format(Math.Round(Descuento, 8), "#0.00") & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE034"
+            If Format(Math.Round(SubTotal, 6), "#0.000000") > 0 Then
+                Comprobante40.SubTotal = Format(Math.Round(SubTotal, 8), "#0.00")
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (SUBTOTAL): " & Format(Math.Round(SubTotal, 8), "#0.00") & vbNewLine
+            End If
+            'Tipo Error
+            TipoError = "PE035"
+            If Format(Math.Round(Total, 6), "#0.000000") > 0 Then
+                Comprobante40.Total = Format(Math.Round(Total, 8), "#0.00")
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "COMPROBANTE (TOTAL): " & Format(Math.Round(Total, 8), "#0.00") & vbNewLine
+            End If
+
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FINALIZANDO FACTURA........................................................." & vbNewLine
+            'PRUEBA DE ESCRITURA BLOC DE NOTA
+
+            'My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+            'Tipo Error
+            TipoError = "PE036"
+            If strAreaServicioTimbrado = "PRUEBAS" Then
+                RespuestaServicio = New FelTest.RespuestaOperacionCR
+            Else
+                RespuestaServicio = New FelProd.RespuestaOperacionCR
+            End If
+            'Tipo Error
+            TipoError = "PE037"
+            If strTipoFactura = "GLOBAL" Then
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Text = "Esperando respuesta de timbrado..."
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Visible = True
+                frmFacturaGlobalDiaria.lblTextoAnuncio.Refresh()
+            Else
+                frmFacturaIndividual.lblTextoAnuncio.Text = "Esperando respuesta de timbrado..."
+                frmFacturaIndividual.lblTextoAnuncio.Visible = True
+                frmFacturaIndividual.lblTextoAnuncio.Refresh()
+            End If
+
+            'GUARDO DATOS
+            '------------------------------------------------
+            If TipoDocumento = enTipoDocumento.Factura Then
+                MarcaMovimientosFacturados(TipoDocumento, Datos)
+            ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                MarcaMovimientosFacturados(TipoDocumento, Datos)
+            End If
+            '-----------------------------------------------------
+
+            'Tipo Error
+            TipoError = "PE046"
+            'CONSULTA CREDITOS DISPONIBLES
+            Dim NumCreditosFel As String = ""
+            If Factura = "GLOBAL" Then
+                NumCreditosFel = obtenerNoCreditos()
+                If bolObtuvoCred Then
+                    BuscaCreditosLimite()
+                    If NumCreditosFel <= CreditosLimite Then
+                        EnviarCorreo(NumCreditosFel)
+                    End If
+                Else
+                    EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                    Exit Sub
+                End If
+            End If
+
+
+            'NO HAY CREDITOS SALGO DE FUNCION
+            If Factura = "GLOBAL" Then
+                If NumCreditosFel = 0 Then
+                    Exit Sub
+                End If
+            End If
+
+
+            Comprobante40.Exportacion = "01"
+
+            Try
+                'MANDO FACTURA
+                RespuestaServicio = ConexionRemota40.GenerarCFDI40(datosUsuario, Comprobante40)
+                'SON 2 VARIABLES DE TIPO OBJETO QUE TRAEN LOS NODOS DEL WEB SERVICE, LOS DATOS DEL USUARIO Y LOS DATOS DEL COMPROBANTE
+            Catch ex As Exception
+                'Error #PE01000
+                If strmodoFactura = "AUTOMATICA" Then
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error PE01000: " & ex.Message & vbNewLine
+                    My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                Else
+                    MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturacion")
+                End If
+            End Try
+            'Tipo Error
+            TipoError = "PE038"
+            frmDatosClienteFacturacion.lblTextoAnuncio.Visible = False
+
+            frmDatosClienteFacturacion.Cursor = Cursors.Default
+
+            strNombreArchivoPDF = ""
+            strNombreArchivoXML = ""
+            'Tipo Error
+            TipoError = "PE039"
+
+            If RespuestaServicio.OperacionExitosa Then
+
+BuscaDatos:
+                Dim strCarpetaFacturas As String = VerificaCarpetaFacturacion(intNoSucursal, Comprobante40.Fecha)
+                strNombreArchivoXML = Format(intNoSucursal, "000") & "_" & FechaFact & "_" & Comprobante40.ClaveCFDI & "_" & Format(CLng(Comprobante40.Folio), "000000") & "_" & Comprobante40.Serie & "_" & Comprobante40.Receptor.Rfc & ".XML"
+                strNombreArchivoPDF = Format(intNoSucursal, "000") & "_" & FechaFact & "_" & Comprobante40.ClaveCFDI & "_" & Format(CLng(Comprobante40.Folio), "000000") & "_" & Comprobante40.Serie & "_" & Comprobante40.Receptor.Rfc & ".PDF"
+
+                Dim strDatosArchivoPDF As String = ""
+                'Tipo Error
+                TipoError = "PE040: Proceso de Guardar XML"
+                'OBTENER XML
+                If RespuestaServicio.XML IsNot Nothing Then
+                    RespuestaoXML = RespuestaServicio.XML
+                    GuardaXML(strCarpetaFacturas & "\" & strNombreArchivoXML, RespuestaoXML)
+                End If
+                If RespuestaServicio.CBB IsNot Nothing Then
+                    CBB = RespuestaServicio.CBB
+                End If
+                'Tipo Error
+                TipoError = "PE041"
+                strUUID = GetXML(RespuestaoXML, "<tfd:TimbreFiscalDigital", "UUID", Chr(34))
+                strFechaTimbrado = GetXML(RespuestaoXML, "<tfd:TimbreFiscalDigital", "FechaTimbrado", Chr(34))
+                'Tipo Error
+                TipoError = "PE042"
+                'ACTUALIZO REGISTROS
+                If TipoDocumento = enTipoDocumento.Factura Then
+                    ActualizaMovimientosFacturados(TipoDocumento, intSiguienteFolio)
+                ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                    ActualizaMovimientosFacturados(TipoDocumento, intSiguienteFolioNC)
+                End If
+
+                'GUARDAR FACTURA EN TABLAS
+                'If TipoDocumento = enTipoDocumento.Factura Then
+                '    MarcaMovimientosFacturados(TipoDocumento, Datos)
+                'ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                '    MarcaMovimientosFacturados(TipoDocumento, Datos)
+                'End If
+                'Tipo Error
+                TipoError = "PE043"
+                'MENSAJE DE EXITO EN TIMBRADO
+                'If strmodoFactura = "" Then
+                If TipoDocumento = enTipoDocumento.Factura Then
+                    If strmodoFactura = "AUTOMATICA" Then
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Factura generada con éxito!" & vbNewLine
+                        My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    Else
+                        MsgBox("Factura generada con éxito!", MsgBoxStyle.Exclamation, "Facturación")
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Factura generada con éxito!" & vbNewLine
+                        My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    End If
+                ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
+                    If strmodoFactura = "AUTOMATICA" Then
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Nota de Crédito generada con éxito!" & vbNewLine
+                        My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    Else
+                        MsgBox("Nota de Crédito generada con éxito!", MsgBoxStyle.Exclamation, "Facturación")
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Nota de Crédito generada con éxito!" & vbNewLine
+                        My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                    End If
+                End If
+                'End If
+                'Tipo Error
+                TipoError = "PE044"
+                'OBTENER PDF
+                If strAreaServicioTimbrado = "PRUEBAS" Then
+                    oRespuestaPDF = New FelTest.RespuestaOperacionCR
+                Else
+                    oRespuestaPDF = New FelProd.RespuestaOperacionCR
+                End If
+                'Tipo Error
+                TipoError = "PE045: Proceso de Guardar PDF"
+                oRespuestaPDF = ConexionRemota40.ObtenerPDF(datosUsuario, strUUID, "")
+                If oRespuestaPDF.OperacionExitosa Then
+                    'Tipo Error
+                    TipoError = "PE045-1"
+                    Dim oDatosPDF() As Byte = Convert.FromBase64String(oRespuestaPDF.PDF)
+                    Dim ms As MemoryStream = New MemoryStream
+                    ms.Write(oDatosPDF, 0, oDatosPDF.Length)
+                    My.Computer.FileSystem.WriteAllBytes(strCarpetaFacturas & "\" & strNombreArchivoPDF, oDatosPDF, False)
+                    ms.Dispose()
+                Else
+                    'Tipo Error
+                    TipoError = "PE045-2"
+                    If strmodoFactura = "AUTOMATICA" Then
+                        'ERROR #PE01201
+                        texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error General PE01201: " & vbNewLine & oRespuestaPDF.ErrorGeneral & vbNewLine & "Error Detallado: " & vbNewLine & oRespuestaPDF.ErrorDetallado & vbNewLine
+                        My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
                         EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
                     Else
                         MsgBox("Error General: " & vbCrLf & vbCrLf & oRespuestaPDF.ErrorGeneral & vbCrLf & vbCrLf & "Error Detallado: " & vbCrLf & vbCrLf & oRespuestaPDF.ErrorDetallado & vbCrLf & vbCrLf & "Por favor avise a sistemas", MsgBoxStyle.Exclamation, "Facturación")
@@ -3265,6 +4535,48 @@ BuscaDatos:
         End Try
     End Function
 
+    Public Function GeneraTablaDetDev2(ByVal Datos As DataTable) As DataTable
+        Dim intFila As Integer = 0
+        Dim SumoCosto As Boolean = False
+        Dim dtReturn As New DataTable
+        Dim drNew As DataRow
+
+        dtReturn = dtDevsDeta.Clone
+        Try
+            For intFila = 0 To Datos.Rows.Count - 1
+                If CDbl(Datos.Rows(intFila).Item("IVA").ToString) > 0 Then
+                    drNew = dtReturn.NewRow
+                    drNew("Concepto") = "INTERESES"
+                    drNew("Fecha") = Datos.Rows(intFila).Item("Fecha").ToString
+                    drNew("Tipo") = Datos.Rows(intFila).Item("Tipo").ToString
+                    drNew("NoTicket") = Datos.Rows(intFila).Item("Prefijo").ToString & "-" & Datos.Rows(intFila).Item("NoTicket").ToString
+                    drNew("TipoMov") = Datos.Rows(intFila).Item("TipoMov").ToString
+                    drNew("Importe") = Datos.Rows(intFila).Item("Importe").ToString
+                    drNew("Descuento") = Datos.Rows(intFila).Item("Descuento").ToString
+                    drNew("IVA") = Datos.Rows(intFila).Item("IVA").ToString
+                    drNew("Total") = Datos.Rows(intFila).Item("ImportePagado").ToString
+                    drNew("Costo") = Datos.Rows(intFila).Item("Costo").ToString
+                    drNew("ImportePagado") = CDbl(Datos.Rows(intFila).Item("ImportePagado").ToString) - CDbl(Datos.Rows(intFila).Item("Costo").ToString)
+                    drNew("Interes") = Datos.Rows(intFila).Item("Interes").ToString
+                    drNew("Recargo") = Datos.Rows(intFila).Item("Recargo").ToString
+                    drNew("DocOriginal") = Datos.Rows(intFila).Item("DocOriginal").ToString
+                    drNew("SerieOrigen") = Datos.Rows(intFila).Item("SerieOrigen").ToString
+                    drNew("FolioOrigen") = Datos.Rows(intFila).Item("FolioOrigen").ToString
+                    drNew("FechaOrigen") = Datos.Rows(intFila).Item("FechaOrigen").ToString
+                    drNew("UUIDOriginal") = Datos.Rows(intFila).Item("UUIDOriginal").ToString
+                    drNew("DescripcionSAT") = Datos.Rows(intFila).Item("DescripcionSAT").ToString
+                    dtReturn.Rows.Add(drNew)
+                    dtReturn.AcceptChanges()
+                End If
+            Next intFila
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
+        Finally
+            GeneraTablaDetDev2 = dtReturn
+        End Try
+    End Function
+
     Public Function GeneraTablaDetAVR(ByVal Datos As DataTable) As DataTable
         Dim intFila As Integer = 0
         Dim SumoCosto As Boolean = False
@@ -3357,7 +4669,7 @@ BuscaDatos:
             dtDetaNCInd.Rows.Clear()
             drNvaBusDevAVR = dtDevsDeta.Clone()
 
-            'Dim Cuenta As Integer = 1
+            Dim Cuenta As Integer = 1
             For Each dr As DataRow In dtDevsDeta.Rows
                 tipoFact = ""
                 strUUIDRelacionado = ""
@@ -3476,6 +4788,7 @@ BuscaDatos:
             dblSubtotal = 0
 
             If dtDetaNC.Rows.Count > 0 Then
+
                 drNvaBusDevAVR = NuevaBusquedaAVR(dtDetaNC)
 
                 For Each dr As DataRow In drNvaBusDevAVR.Rows
@@ -3513,7 +4826,132 @@ BuscaDatos:
             'MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturacion - Genera Notas de Crédito")
         End Try
     End Sub
+    Public Sub GeneraNotasdeCredito2(ByRef Respuesta As String, ByRef CodigoBarras As String)
+        Dim strUUIDRelacionado As String = ""
+        Dim strUUIDRelacionadoAVR As String = ""
+        Dim arrUUIDRelacionados As New ArrayList
+        Dim arrUUIDRelacionadosAVR As New ArrayList
+        Dim sSQL As String = ""
+        Dim tipoFact As String = ""
+        Dim dtBusca As New DataTable
+        Dim dtDetaNC, dtDetaNCInd, drNvaBusDevAVR As New DataTable
+        Dim drNew, drNuevo As DataRow
+        Dim dblImporte As Double = 0
+        Dim dblDescuento As Double = 0
+        Dim dblIVA As Double = 0
+        Dim dblTotal As Double = 0
+        Dim Concepto As String = ""
+        Dim NvoConcepto As String = ""
 
+        Try
+            dblSumaImporte = 0
+            dblSumaDescuento = 0
+            dblSumaIVA = 0
+            dblSumaTotal = 0
+            dblSumaInteres = 0
+            dblSumaRecargo = 0
+            dblSubtotal = 0
+
+            dtDetaNC = New DataTable
+            dtDetaNCInd = New DataTable
+            dtDetaNC = dtDevsDeta.Copy
+            dtDetaNCInd = dtDevsDeta.Copy
+            dtDetaNC.Rows.Clear()
+            dtDetaNCInd.Rows.Clear()
+            drNvaBusDevAVR = dtDevsDeta.Clone()
+
+            Dim Cuenta As Integer = 1
+
+            For Each dr As DataRow In dtDevsDeta.Rows
+                tipoFact = ""
+                strUUIDRelacionado = ""
+                strUUIDRelacionadoAVR = ""
+                'BUSCANDO LA FACTURA TICKET EN LA FECHA DEL DOCUMENT0 ORIGEN
+                Dim fechaOrigen As String = Mid(dr("FechaOrigen"), 1, 4) & Mid(dr("FechaOrigen"), 6, 2) & Mid(dr("FechaOrigen"), 9, 2)
+                sSQL = "SELECT TOP 1 a.FolioFiscal,a.TipoFactura "
+                sSQL &= "FROM BPFFacturas a "
+                sSQL &= "WHERE a.Estatus = 'A' AND a.FechaFactura = '" & Mid(strFechaBusqueda, 1, 4) & Mid(strFechaBusqueda, 6, 2) & Mid(strFechaBusqueda, 9, 2) & "'"
+                dtBusca = SQLServer.ExecSQLReturnDT(sSQL, "Busca")
+                If Not dtBusca Is Nothing AndAlso dtBusca.Rows.Count > 0 Then
+                    tipoFact = dtBusca.Rows(0).Item("TipoFactura").ToString
+                End If
+                If tipoFact = "GLOBAL" Then
+                    strUUIDRelacionadoAVR = dtBusca.Rows(0).Item("FolioFiscal").ToString
+                    If strUUIDRelacionadoAVR <> "" And dr("Fecha") <> fechaOrigen Then
+                        drNew = dtDetaNC.NewRow
+                        drNew("Concepto") = dr("Concepto")
+                        drNew("Fecha") = dr("Fecha")
+                        drNew("Tipo") = dr("Tipo")
+                        drNew("Prefijo") = dr("Prefijo")
+                        drNew("NoTicket") = dr("NoTicket")
+                        drNew("TipoMov") = dr("TipoMov")
+                        drNew("Importe") = dr("Importe")
+                        drNew("Descuento") = dr("Descuento")
+                        drNew("IVA") = dr("IVA")
+                        drNew("Total") = dr("Total")
+                        drNew("Costo") = dr("Costo")
+                        drNew("ImportePagado") = dr("ImportePagado")
+                        drNew("Interes") = dr("Interes")
+                        drNew("Recargo") = dr("Recargo")
+                        drNew("DocOriginal") = dr("DocOriginal")
+                        drNew("SerieOrigen") = dr("SerieOrigen")
+                        drNew("FolioOrigen") = dr("FolioOrigen")
+                        drNew("FechaOrigen") = dr("FechaOrigen")
+                        drNew("UUIDOriginal") = strUUIDRelacionadoAVR
+                        drNew("DescripcionSAT") = dr("DescripcionSAT")
+                        dtDetaNC.Rows.Add(drNew)
+                        dtDetaNC.AcceptChanges()
+                    End If
+                End If
+            Next dr
+
+            dblSumaImporte = 0
+            dblSumaDescuento = 0
+            dblSumaIVA = 0
+            dblSumaTotal = 0
+            dblSumaInteres = 0
+            dblSumaRecargo = 0
+            dblSubtotal = 0
+
+            If dtDetaNC.Rows.Count > 0 Then
+                drNvaBusDevAVR = dtDetaNC
+                'drNvaBusDevAVR = NuevaBusquedaAVR(dtDetaNC)
+
+                For Each dr As DataRow In drNvaBusDevAVR.Rows
+                    Concepto = ""
+                    NombreMov(dr("Tipo").ToString, dr("TipoMov").ToString, Concepto)
+                    dr("TipoMov") = Concepto
+                Next dr
+
+                dtDetDevAvr = GeneraTablaDetDev2(drNvaBusDevAVR)
+
+                For Each dr As DataRow In dtDetDevAvr.Rows
+                    Concepto = dr("Concepto").ToString
+                    NombreMovFac(dr("Tipo").ToString, dr("TipoMov").ToString, Concepto, Mid(dr("NoTicket").ToString, 1, 1), NvoConcepto)
+                    dr("TipoMov") = NvoConcepto
+                    dr("DescripcionSAT") = NvoConcepto
+                Next dr
+
+                For Each dr As DataRow In dtDetDevAvr.Rows
+                    dblSumaTotal += Math.Round(dr("ImportePagado"), 6)
+                    dblSumaImporte += Math.Round(dr("Importe"), 6)
+                    dblSumaDescuento += Math.Round(dr("Descuento"), 6)
+                    dblSumaInteres += Math.Round(dr("Interes"), 6)
+                    dblSumaRecargo += Math.Round(dr("Recargo"), 6)
+                    dblSumaIVA += Math.Round(dr("IVA"), 6)
+                Next
+
+                dblSubtotal = Format((dblSumaTotal + dblSumaDescuento) - dblSumaIVA, "$ #,##0.00")
+
+                GeneraFactura(enTipoDocumento.NotaCredito, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetDevAvr, strCondicionesPago, Respuesta, False, False, False, CodigoBarras, strUUIDRelacionadoAVR, "03", , arrUUIDRelacionadosAVR)
+            End If
+
+            ObtenerParametros()
+
+        Catch ex As Exception
+            'MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturacion - Genera Notas de Crédito")
+        End Try
+    End Sub
     Public Function FolioFiscalOrigen(ByVal FechaDocumentoOrigen As String, ByVal ImporteMinimo As Double, ByVal FechaFacturaActual As String, Optional ByVal Primero As Boolean = True) As String
         Dim strReturn As String = ""
         Dim sSQL As String = ""
@@ -4278,7 +5716,60 @@ BuscaDatos:
             End If
         End Try
     End Sub
+    Function DameNumeroClienteSiguiente() As Long
+        Dim SQL As String = ""
+        Dim dtCliente As New DataTable
+        Dim drCliente As DataRow
 
+        SQL = "SELECT Max(NoCliente) AS Ultimo FROM BPFCatalogoClientes WHERE NoCliente <= 500000"
+        dtCliente = SQLServer.ExecSQLReturnDT(SQL, "BPFCatalogoClientes")
+
+        If dtCliente Is Nothing OrElse dtCliente.Rows.Count <= 0 Then
+            DameNumeroClienteSiguiente = 1
+        Else
+            drCliente = dtCliente.Rows(0)
+            DameNumeroClienteSiguiente = drCliente("Ultimo") + 1
+        End If
+
+    End Function
+    Public Sub ActualizaCreCliente(ByVal CreaAct As Integer, Optional ByVal NoCliente As Integer = 0)
+        '-------------------------------------
+        '--- Valor de Variable de CreaAct  ---
+        '--- 1 = Creara el Cliente         ---
+        '--- 2 = Actualizara el Cliente    ---
+        '-------------------------------------
+
+        Dim sSQL As String = ""
+
+
+        Try
+            'Creo o Actualizo el Cliente
+            If CreaAct = 1 Then
+
+                sSQL = "INSERT INTO BPFCatalogoClientes (NoCliente, NombreCliente, Calle, Colonia, Municipio, Estado, CodigoPostal, Identificacion, Telefono01, Telefono02, Clasificacion, Observacion, TipoCliente, FechaAlta, FechaUM, RFC, "
+                sSQL = sSQL & "Ocupacion, CliRFCObligado, CliOcupacionObligado, FechaNacimiento, PaisNacimiento, NoExt, NoInt, Pais, CorreoE, CURP, TipoIdentificacion, PaisNacimientoID, PaisNacionalidad, "
+                sSQL = sSQL & "PaisNacionalidadID, PaisID, RazonSocial, CalleFiscal, NoExteriorFiscal, NoInteriorFiscal, ColoniaFiscal, PoblacionFiscal, MunicipioFiscal, EstadoFiscal, CodigoPostalFiscal, PaisFiscal) "
+                sSQL = sSQL & "VALUES ( )"
+
+            ElseIf CreaAct = 2 Then
+
+
+            End If
+
+        Catch ex As Exception
+            If strmodoFactura = "AUTOMATICA" Then
+                texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: " & ex.Message & vbNewLine
+                My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+                FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
+                nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+                EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
+                End
+            Else
+                MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturacion - Marca Movimientos Facturados")
+            End If
+
+        End Try
+    End Sub
     Public Sub MarcaMovimientosFacturados(ByVal TipoDocumento As enTipoDocumento, Optional ByVal Detalle As DataTable = Nothing)
         Dim sSQL As String = ""
         Dim intNoPartida As Integer = 1
@@ -4286,8 +5777,13 @@ BuscaDatos:
         If TipoCancelacion = "SUSTITUCION" Then
             fechaActual = FechaCancelado
         Else
-            fechaActual = FechaFact
+            If strTipoFactura = "INDIVIDUAL" Then
+                fechaActual = Format(Now.Date, "yyyyMMdd")
+            Else
+                fechaActual = FechaFact
+            End If
         End If
+
         Dim sTipoTicket(2) As String
         Dim subtotal As Double = 0
         'Dim Cuenta As Integer = 1

@@ -138,13 +138,13 @@ Seguir:
             cboFormaPago.DisplayMember = "Description"
             cboFormaPago.ValueMember = "ID"
 
-            arrMetodoPago = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=103 AND Elemento<>0", "DescCorta")
+            arrMetodoPago = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=103 AND Elemento<>0 AND Estatus='A'", "DescCorta")
             arrMetodoPago.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
             cboMetodoPago.DataSource = arrMetodoPago
             cboMetodoPago.DisplayMember = "Description"
             cboMetodoPago.ValueMember = "ID"
 
-            arrUsoCFDI = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=105 AND Elemento<>0", "DescCorta")
+            arrUsoCFDI = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=105 AND Elemento<>0 AND Estatus='A'", "DescCorta")
             arrUsoCFDI.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
             cboUsoCFDI.DataSource = arrUsoCFDI
             cboUsoCFDI.DisplayMember = "Description"
@@ -194,22 +194,24 @@ Seguir:
             Else
                 'si ya existe, le actualizo la info
                 If txtNombre.Text.Trim.ToUpper <> "PUBLICO EN GENERAL" Then
-                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFCatalogoClientes SET RFC='" & txtRFC.Text.Trim.ToUpper & "', "
-                    sSQL &= "RazonSocial='" & txtRazonSocial.Text.Trim.ToUpper & "', "
-                    sSQL &= "Callefiscal='" & txtCalle.Text.Trim.ToUpper & "', "
-                    sSQL &= "NoExteriorFiscal='" & txtNoExt.Text.Trim.ToUpper & "', "
-                    sSQL &= "NoInteriorFiscal='" & txtNoInt.Text.Trim.ToUpper & "', "
-                    sSQL &= "CorreoE='" & txtCorreo.Text.Trim.ToLower & "', "
-                    sSQL &= "ColoniaFiscal='" & txtColonia.Text.Trim.ToUpper & "', "
-                    sSQL &= "PoblacionFiscal='" & txtCiudad.Text.Trim.ToUpper & "', "
-                    sSQL &= "MunicipioFiscal='" & txtCiudad.Text.Trim.ToUpper & "', "
-                    sSQL &= "EstadoFiscal='" & txtEstado.Text.Trim.ToUpper & "', "
-                    sSQL &= "CodigoPostalFiscal='" & txtCP.Text.Trim.ToUpper & "', "
-                    sSQL &= "PaisFiscal='" & txtPais.Text.Trim.ToUpper & "', "
-                    sSQL &= "Telefono01='" & txtTelefono.Text.Trim & "' "
-                    sSQL &= "WHERE NoCliente=" & dtBusca.Rows(0).Item("NoCliente").ToString
-                    SQLServer.ExecSQL(sSQL)
-                    DatosCliente(dtBusca.Rows(0).Item("NoCliente"))
+                    If dtBusca.Rows(0).Item("NoCliente").ToString <> 0 Then
+                        sSQL = "UPDATE BDSPEXPRESS.dbo.BPFCatalogoClientes SET RFC='" & txtRFC.Text.Trim.ToUpper & "', "
+                        sSQL &= "RazonSocial='" & txtRazonSocial.Text.Trim.ToUpper & "', "
+                        sSQL &= "Callefiscal='" & txtCalle.Text.Trim.ToUpper & "', "
+                        sSQL &= "NoExteriorFiscal='" & txtNoExt.Text.Trim.ToUpper & "', "
+                        sSQL &= "NoInteriorFiscal='" & txtNoInt.Text.Trim.ToUpper & "', "
+                        sSQL &= "CorreoE='" & txtCorreo.Text.Trim.ToLower & "', "
+                        sSQL &= "ColoniaFiscal='" & txtColonia.Text.Trim.ToUpper & "', "
+                        sSQL &= "PoblacionFiscal='" & txtCiudad.Text.Trim.ToUpper & "', "
+                        sSQL &= "MunicipioFiscal='" & txtCiudad.Text.Trim.ToUpper & "', "
+                        sSQL &= "EstadoFiscal='" & txtEstado.Text.Trim.ToUpper & "', "
+                        sSQL &= "CodigoPostalFiscal='" & txtCP.Text.Trim.ToUpper & "', "
+                        sSQL &= "PaisFiscal='" & txtPais.Text.Trim.ToUpper & "', "
+                        sSQL &= "Telefono01='" & txtTelefono.Text.Trim & "' "
+                        sSQL &= "WHERE NoCliente=" & dtBusca.Rows(0).Item("NoCliente").ToString
+                        SQLServer.ExecSQL(sSQL)
+                        DatosCliente(dtBusca.Rows(0).Item("NoCliente"))
+                    End If
                 End If
             End If
         Catch ex As Exception
@@ -256,7 +258,11 @@ Seguir:
 
         If bolMostrarAvisoRFC Then
             bolMostrarAvisoRFC = False
-            MsgBox("El Cliente no tiene registrado su RFC, se usará el genérico:" & vbCrLf & vbCr & strRFCGenerico, MsgBoxStyle.Exclamation, "Facturación")
+            If MsgBox("No existe el Cliente." & vbCrLf & "Desea utilizar cliente Publico en General.?" & vbCrLf & vbCr, MsgBoxStyle.YesNo, "Facturación") = vbYes Then
+                chbPublicoGeneral.Checked = True
+            Else
+                Limpia()
+            End If
         End If
 
     End Sub
@@ -285,7 +291,7 @@ Seguir:
                 txtColonia.Focus()
                 Exit Sub
             End If
-            If strDirCli = True And txtCP.Text = "" Then
+            If txtCP.Text = "" Then
                 MsgBox("Por favor capture la Codigo Postal...", MsgBoxStyle.Exclamation, "Facturacion")
                 txtCP.Focus()
                 Exit Sub
@@ -305,7 +311,11 @@ Seguir:
                 txtPais.Focus()
                 Exit Sub
             End If
-
+            If txtCorreo.Text = "" Then
+                MsgBox("Por favor capture la Direccion de correo electronico...", MsgBoxStyle.Exclamation, "Facturacion")
+                txtCorreo.Focus()
+                Exit Sub
+            End If
             ErrorProvider1.Clear()
             If txtCorreo.Text <> "" Then
                 If validar_Mail(LCase(txtCorreo.Text)) = False Then
@@ -315,6 +325,10 @@ Seguir:
                     txtCorreo.SelectAll()
                     Exit Sub
                 End If
+            End If
+
+            If MsgBox("Los datos Capturados son Correctos?, Desea continuar con la emisión de la Factura?", MsgBoxStyle.YesNo, Me.Text) = MsgBoxResult.No Then
+                Exit Sub
             End If
 
             correoFact = txtCorreo.Text.Trim.ToLower
@@ -413,5 +427,58 @@ Seguir:
         Else
             Limpia()
         End If
+    End Sub
+
+    Private Sub btnBuscaCliente_Click(sender As Object, e As EventArgs) Handles btnBuscaCliente.Click
+        Dim sSQL As String = ""
+        Dim dtBusca As New DataTable
+        Try
+            If txtRFC.Text.Trim = "" Then
+                MsgBox("Por favor capture el RFC para buscar al cliente!", MsgBoxStyle.Exclamation, "Facturacion")
+                Exit Sub
+            End If
+            If txtRFC.Text.Trim.Length < 12 Or txtRFC.Text.Trim.Length > 13 Then
+                MsgBox("Por favor capture el RFC para buscar al cliente!", MsgBoxStyle.Exclamation, "Facturacion")
+                Exit Sub
+            End If
+
+            sSQL = "SELECT * FROM BPFCatalogoClientes WHERE RFC='" & txtRFC.Text.Trim.ToUpper & "'"
+            dtBusca = SQLServer.ExecSQLReturnDT(sSQL, "BPFCatalogoClientes")
+
+            If dtBusca Is Nothing OrElse dtBusca.Rows.Count <= 0 Then
+                MsgBox("Cliente no encontrado! Por favor verifique.", MsgBoxStyle.Information, "Facturacion")
+                Limpia()
+                Exit Sub
+            End If
+
+            dtCliente = New DataTable
+            dtCliente = dtBusca.Copy
+
+            Muestra()
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturacion" & " - Buscar Cliente")
+        End Try
+    End Sub
+
+    Private Sub chbValoresFP_CheckedChanged(sender As Object, e As EventArgs) Handles chbValoresFP.CheckedChanged
+        If chbValoresFP.Checked = True Then
+            DeterminaFormadePagoMayor()
+        End If
+    End Sub
+
+    Private Sub cboMetodoPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetodoPago.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub cboMetodoPago_TextChanged(sender As Object, e As EventArgs) Handles cboMetodoPago.TextChanged
+        'If cboMetodoPago.SelectedIndex = 2 Then
+        '    cboFormaPago.SelectedIndex = 5
+        'Else
+        '    DeterminaFormadePagoMayor()
+        'End If
+    End Sub
+
+    Private Sub lblTextoAnuncio_Click(sender As Object, e As EventArgs) Handles lblTextoAnuncio.Click
+
     End Sub
 End Class
