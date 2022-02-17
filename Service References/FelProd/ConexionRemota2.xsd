@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.fel.mx/CR33/ConexionRemota.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" />
+  <xs:import schemaLocation="http://www.fel.mx/CR33/ConexionRemota.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="CancelarCFDIs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q1:Credenciales" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="uuids" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarCFDIsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="CancelarCFDIsResult" nillable="true" type="q3:RespuestaCancelacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerarCFDI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q4:Credenciales" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="cfdi" nillable="true" type="q5:Comprobante33R" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerarCFDIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="GenerarCFDIResult" nillable="true" type="q6:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerarTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q7:Credenciales" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ticket" nillable="true" type="q8:Comprobante33R" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerarTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="GenerarTicketResult" nillable="true" type="q9:RespuestaTicketCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarCFDI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q10:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="titulo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombrePlantilla" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnviarCFDIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="EnviarCFDIResult" nillable="true" type="q11:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q12:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombrePlantilla" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerPDFResult" nillable="true" type="q13:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLPorReferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q14:Credenciales" />
+        <xs:element minOccurs="0" name="referencia" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLPorReferenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerXMLPorReferenciaResult" nillable="true" type="q15:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLPorUUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q16:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLPorUUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerXMLPorUUIDResult" nillable="true" type="q17:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLyAddendaPorUUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q18:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLyAddendaPorUUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerXMLyAddendaPorUUIDResult" nillable="true" type="q19:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerNumerosCreditos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q20:Credenciales" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerNumerosCreditosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerNumerosCreditosResult" nillable="true" type="q21:RespuestaNumeroCreditosCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerComprobantes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q22:Credenciales" />
+        <xs:element minOccurs="0" name="fechaInicial" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFinal" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="filaInicial" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerComprobantesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerComprobantesResult" nillable="true" type="q23:RespuestaReporteCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAcuseEnvio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q24:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAcuseEnvioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerAcuseEnvioResult" nillable="true" type="q25:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAcuseCancelacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q26:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerAcuseCancelacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerAcuseCancelacionResult" nillable="true" type="q27:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarRFC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q28:Credenciales" />
+        <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarRFCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ValidarRFCResult" nillable="true" type="q29:RespuestaValidacionRFCCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTickets">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q30:Credenciales" />
+        <xs:element minOccurs="0" name="fechaInicial" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFinal" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="filaInicial" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTicketsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerTicketsResult" nillable="true" type="q31:RespuestaReporteTicketsCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTicketsPorEstatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q32:Credenciales" />
+        <xs:element minOccurs="0" name="fechaInicial" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFinal" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="tamanoPagina" type="xs:short" />
+        <xs:element minOccurs="0" name="filaInicial" type="xs:int" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="Estatus" type="q33:EstatusTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTicketsPorEstatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerTicketsPorEstatusResult" nillable="true" type="q34:RespuestaReporteTicketsCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q35:Credenciales" />
+        <xs:element minOccurs="0" name="referencia" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="CancelarTicketResult" nillable="true" type="q36:RespuestaTicketCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarTickets">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q37:Credenciales" />
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="referencias" nillable="true" type="q38:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarTicketsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="CancelarTicketsResult" nillable="true" type="q39:RespuestaTicketCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivarPaquete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q40:Credenciales" />
+        <xs:element minOccurs="0" name="NumCreditos" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivarPaqueteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ActivarPaqueteResult" nillable="true" type="q41:RespuestaNumeroCreditosCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TraspasarPaquete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q42:Credenciales" />
+        <xs:element minOccurs="0" name="NumCreditos" type="xs:int" />
+        <xs:element minOccurs="0" name="cuentaDestino" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TraspasarPaqueteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="TraspasarPaqueteResult" nillable="true" type="q43:RespuestaNumeroCreditosCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarCFDIsConValidacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q44:Credenciales" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="uuids" nillable="true" type="q45:ArrayOfUUIDMotivoCancelacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarCFDIsConValidacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="CancelarCFDIsConValidacionResult" nillable="true" type="q46:RespuestaCancelacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSolicitudesPendientesCancelacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q47:Credenciales" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSolicitudesPendientesCancelacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerSolicitudesPendientesCancelacionResult" nillable="true" type="q48:RespuestaSolicitudesPendientesCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcesarSolicitudesCancelacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q49:Credenciales" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="uuids" nillable="true" type="q50:ArrayOfUUIDProcesarRespuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcesarSolicitudesCancelacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ProcesarSolicitudesCancelacionResult" nillable="true" type="q51:RespuestaProcesarSolicitudCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSolicitudesCancelacionProcesadas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q52:Credenciales" />
+        <xs:element minOccurs="0" name="fechaInicial" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFinal" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="filaInicial" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerSolicitudesCancelacionProcesadasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerSolicitudesCancelacionProcesadasResult" nillable="true" type="q53:RespuestaSolicitudesProcesadasCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarCFDIs32">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q54:Credenciales" />
+        <xs:element xmlns:q55="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="uuids" nillable="true" type="q55:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarCFDIs32Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="CancelarCFDIs32Result" nillable="true" type="q56:RespuestaCancelacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerComprobantes32">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q57:Credenciales" />
+        <xs:element minOccurs="0" name="fechaInicial" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFinal" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="filaInicial" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerComprobantes32Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerComprobantes32Result" nillable="true" type="q58:RespuestaReporteCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLPorUUID32">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q59:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerXMLPorUUID32Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerXMLPorUUID32Result" nillable="true" type="q60:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDF32">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="credenciales" nillable="true" type="q61:Credenciales" />
+        <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPDF32Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios" minOccurs="0" name="ObtenerPDF32Result" nillable="true" type="q62:RespuestaOperacionCR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
