@@ -7,9 +7,9 @@
         Try
             For Each dr As DataRow In dtEnviar.Rows
                 If conAcuse = True Then
-                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Acuse = 'SI', Estatus = 'C', MotivoCancelacion = '" & motivo & "' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Acuse = 'SI', Estatus = 'C', MotivoCancelacion = '" & motivo & "', TipoCancelacion = '" & TipoRelacionCancelado & "' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
                 Else
-                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Estatus = 'C', MotivoCancelacion = '" & motivo & "' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Estatus = 'C', MotivoCancelacion = '" & motivo & "', TipoCancelacion = '" & TipoRelacionCancelado & "' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
                 End If
                 SQLServer.ExecSQL(sSQL)
             Next
@@ -109,6 +109,8 @@
             FechaCancelado = ""
             CFDIRelacionadoCancelado = ""
             TipoRelacionCancelado = ""
+            CFDIRelacionadoSustitucion = ""
+            TipoRelacionSustitucion = ""
 
         Catch ex As Exception
             texto = texto & Format(Now, "HHmm").ToString & "~" & "Error: " & ex.Message & vbNewLine
@@ -134,23 +136,24 @@
             'cancelaFactura(dtEnviar)
             seCancelo = True
             If seCancelo = True Then
-                guardaDatosCancelacion(dtEnviar, motivo)
+                'guardaDatosCancelacion(dtEnviar, motivo)
                 If TipoCancelacion = "SUSTITUCION" Then
                     If TipoFactura = "INDIVIDUAL" Then
                         CFDIRelacionadoCancelado = dr("FolioFiscal").ToString
                         TipoRelacionCancelado = Mid(cboTipoRelacion.Text, 1, 2)
                         strFechaBusqueda = "20211221"
+                        guardaDatosCancelacion(dtEnviar, motivo)
                         ObtenerMovimientosIndividual(FechaCancelado, Folio, CFDIRelacionadoCancelado, TipoRelacionCancelado)
                         'Facturar(CFDIRelacionadoCancelado, TipoRelacionCancelado)
                     Else
                         CFDIRelacionadoCancelado = dr("FolioFiscal").ToString
-                        TipoRelacionCancelado = Mid(cboTipoRelacion.Text, 1, 2)
-
-
+                        TipoRelacionCancelado = Mid(cboTipoCancelacion.Text, 1, 2)
+                        TipoRelacionSustitucion = Mid(cboTipoRelacion.Text, 1, 2)
+                        guardaDatosCancelacion(dtEnviar, motivo)
                         ObtenerMovimientos(FechaCancelado)
-                        Facturar(CFDIRelacionadoCancelado, TipoRelacionCancelado)
-
-                        cancelaFactura(dtEnviar)
+                        Facturar(CFDIRelacionadoCancelado, TipoRelacionSustitucion)
+                        cancelaFactura(dtEnviar, CFDIRelacionadoSustitucion, TipoRelacionCancelado)
+                        guardaDatosCancelacion(dtEnviar, motivo)
                     End If
 
                 End If

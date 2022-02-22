@@ -212,6 +212,8 @@ Module modMain
     Public FechaCancelado As String = ""
     Public CFDIRelacionadoCancelado As String = ""
     Public TipoRelacionCancelado As String = ""
+    Public CFDIRelacionadoSustitucion As String = ""
+    Public TipoRelacionSustitucion As String = ""
 #End Region
 
     Public Enum enTipoDocumento As Integer
@@ -2394,7 +2396,8 @@ Module modMain
                 If strTipoFactura = "GLOBAL" Then
                     If TipoDocumento = enTipoDocumento.NotaCredito Then
                         If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" And dr("UUIDOriginal").ToString.Trim <> "" Then
-                            Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " " & dr("UUIDOriginal").ToString.Trim
+                            'Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " " & dr("UUIDOriginal").ToString.Trim
+                            Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " - " & Mid(strFechaBusqueda, 9, 2) & "/" & Mid(strFechaBusqueda, 6, 2) & "/" & Mid(strFechaBusqueda, 1, 4)
                             texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & " " & dr("UUIDOriginal").ToString.Trim & vbNewLine
                         End If
                     Else
@@ -2405,7 +2408,7 @@ Module modMain
                     End If
                 Else
                     If dr("DescripcionSAT").ToString.Trim.ToUpper <> "" Then
-                        Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper & " - " & Mid(strFechaBusqueda, 7, 2) & "/" & Mid(strFechaBusqueda, 5, 2) & "/" & Mid(strFechaBusqueda, 1, 4)
+                        Concepto1.Descripcion = dr("DescripcionSAT").ToString.Trim.ToUpper
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "CONCEPTOS (DESCRIPCION): " & dr("DescripcionSAT").ToString.Trim.ToUpper & vbNewLine
                     End If
                 End If
@@ -2481,6 +2484,7 @@ Module modMain
                         traslado1.TasaOCuota = Format(dblPorcentajeIVA, "#0.000000").ToString  '"0.160000"   TO DO: OBTENER DE LA TABLA
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (TASA CUOTA): " & Format(dblPorcentajeIVA, "#0.000000").ToString & vbNewLine
                     End If
+
                     'TRASLADO (TIPO FACTOR)
                     traslado1.TipoFactor = "Tasa"   'TO DO: OBTENER DE LA TABLA
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (TIPO FACTOR): " & "Tasa" & vbNewLine
@@ -2498,12 +2502,56 @@ Module modMain
                         ConceptoImpuestos1 = New FelProd.ImpuestosConceptoR
                         ConceptoImpuestos1.Traslados = ListaTraslado1.ToArray()
                     End If
+
+                Else
+
+                    Dim TrasBase As Double = 0
+                    If Format(dr("Interes"), "#0.000000").ToString > "0.000000" Then
+                        TrasBase = TrasBase + dr("Interes")
+                    End If
+                    If Format(dr("Recargo"), "#0.000000").ToString > "0.000000" Then
+                        TrasBase = TrasBase + dr("Recargo")
+                    End If
+                    If Format(dr("Importe"), "#0.000000").ToString > "0.000000" Then
+                        TrasBase = TrasBase + dr("Importe")
+                    End If
+
+                    traslado1.Base = Format(Math.Round(TrasBase, 6), "#0.000000").ToString
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (BASE): " & Format(Math.Round(TrasBase, 6), "#0.000000").ToString & vbNewLine
+
+                    'Tipo Error
+                    TipoError = "PE015-8"
+                    'TRASLADO (IMPORTE)
+                    'TRASLADO (IMPUESTO)
+                    traslado1.Impuesto = "002"      'TO DO: OBTENER DE LA TABLA
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (IMPUESTO): " & "002" & vbNewLine
+
+                    'TRASLADO (TIPO FACTOR)
+                    traslado1.TipoFactor = "Exento"   'TO DO: OBTENER DE LA TABLA
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "TRASLADO (TIPO FACTOR): " & "Exento" & vbNewLine
+
+                    'Tipo Error
+                    TipoError = "PE015-9"
+                    If strAreaServicioTimbrado = "PRUEBAS" Then
+                        ListaTraslado1 = New List(Of FelTest.TrasladoConceptoR)()
+                        ListaTraslado1.Add(traslado1)
+                        ConceptoImpuestos1 = New FelTest.ImpuestosConceptoR
+                        ConceptoImpuestos1.Traslados = ListaTraslado1.ToArray()
+                    Else
+                        ListaTraslado1 = New List(Of FelProd.TrasladoConceptoR)()
+                        ListaTraslado1.Add(traslado1)
+                        ConceptoImpuestos1 = New FelProd.ImpuestosConceptoR
+                        ConceptoImpuestos1.Traslados = ListaTraslado1.ToArray()
+                    End If
+
                 End If
 
                 'fin de impuesto del concepto
                 'Tipo Error
                 TipoError = "PE015-10"
                 If dr("IVA") > 0 Then
+                    Concepto1.Impuestos = ConceptoImpuestos1
+                Else
                     Concepto1.Impuestos = ConceptoImpuestos1
                     'texto = texto & vbLf & "CONCEPTOS (IMPUESTOS): " & ConceptoImpuestos1
                 End If
@@ -2829,7 +2877,10 @@ BuscaDatos:
                 strFechaTimbrado = GetXML(RespuestaoXML, "<tfd:TimbreFiscalDigital", "FechaTimbrado", Chr(34))
                 'Tipo Error
                 TipoError = "PE042"
+
                 'ACTUALIZO REGISTROS
+                CFDIRelacionadoSustitucion = strUUID
+
                 If TipoDocumento = enTipoDocumento.Factura Then
                     ActualizaMovimientosFacturados(TipoDocumento, intSiguienteFolio)
                 ElseIf TipoDocumento = enTipoDocumento.NotaCredito Then
@@ -4877,6 +4928,9 @@ BuscaDatos:
                 End If
                 If tipoFact = "GLOBAL" Then
                     strUUIDRelacionadoAVR = dtBusca.Rows(0).Item("FolioFiscal").ToString
+                    If Not arrUUIDRelacionadosAVR.Contains(dtBusca.Rows(0).Item("FolioFiscal").ToString) And dr("Fecha") <> fechaOrigen Then
+                        arrUUIDRelacionadosAVR.Add(dtBusca.Rows(0).Item("FolioFiscal").ToString)
+                    End If
                     If strUUIDRelacionadoAVR <> "" And dr("Fecha") <> fechaOrigen Then
                         drNew = dtDetaNC.NewRow
                         drNew("Concepto") = dr("Concepto")
@@ -5110,7 +5164,7 @@ BuscaDatos:
         End Try
     End Function
 
-    Public Sub cancelaFactura(ByVal Datos As DataTable)
+    Public Sub cancelaFactura(ByVal Datos As DataTable, ByVal strCFDIRelacion As String, ByVal strTipoCancelacion As String)
         Dim RespuestaAcuse As String = ""
         Dim strNombreArchivoXML As String = ""
         Dim fecha As Date
@@ -5145,8 +5199,9 @@ BuscaDatos:
                 RespuestaServicio = New FelProd.RespuestaOperacionCR
             End If
 
-            Dim ListaUUID As List(Of String) = New List(Of String)()
-
+            'Dim ListaUUID As List(Of String) = New List(Of String)()
+            Dim ListaUUID As List(Of FelProd.UUIDMotivoCancelacionCR) = New List(Of FelProd.UUIDMotivoCancelacionCR)
+            Dim UUIDCancelar = New FelProd.UUIDMotivoCancelacionCR
 
             datosUsuario.Cuenta = strCuentaServicioTimbrado
             datosUsuario.Password = strContrasenaServicioTimbrado
@@ -5163,7 +5218,12 @@ BuscaDatos:
                 End If
                 strNombreArchivoXML = Format(intNoSucursal, "000") & "_" & Format(fecha, "yyyyMMdd") & "_" & claveCFDI & "_" & Format(dr("Folio"), "000000") & "_" & dr("Serie") & "_" & dr("RFC") & "_CANCELADA" & ".XML"
                 strNombreArchivoPDF = Format(intNoSucursal, "000") & "_" & Format(fecha, "yyyyMMdd") & "_" & claveCFDI & "_" & Format(dr("Folio"), "000000") & "_" & dr("Serie") & "_" & dr("RFC") & "_CANCELADA" & ".PDF"
-                ListaUUID.Add(dr("FolioFiscal"))
+
+                UUIDCancelar.FolioSustitucion = strCFDIRelacion
+                UUIDCancelar.Motivo = strTipoCancelacion
+                UUIDCancelar.UUID = dr("FolioFiscal")
+
+                ListaUUID.Add(UUIDCancelar)
                 uuidpdf = dr("FolioFiscal")
             Next
 

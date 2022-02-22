@@ -90,9 +90,9 @@ Public Class frmManejoFactura
         Panel1.Top = (Me.Height / 2) - (Panel1.Height / 2)
 
         If strUsuario <> 1 Then
-            btnCancelaFac.Enabled = False
-            btnVerPDFAcuse.Enabled = False
-            btnVerXMLAcuse.Enabled = False
+            'btnCancelaFac.Enabled = False
+            'btnVerPDFAcuse.Enabled = False
+            'btnVerXMLAcuse.Enabled = False
             'btnSustitucion.Enabled = False
         End If
 

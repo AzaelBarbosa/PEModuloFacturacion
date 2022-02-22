@@ -65,6 +65,23 @@
                         drNew("Recargo") = Datos.Rows(intFila).Item("Recargo").ToString
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
+                    Else
+                        drNew = dtReturn.NewRow
+                        drNew("Concepto") = "INTERESES"
+                        drNew("Fecha") = Datos.Rows(intFila).Item("Fecha").ToString
+                        drNew("Tipo") = Datos.Rows(intFila).Item("Tipo").ToString
+                        drNew("NoTicket") = Datos.Rows(intFila).Item("Prefijo").ToString & "-" & Datos.Rows(intFila).Item("NoTicket").ToString
+                        drNew("TipoMov") = Datos.Rows(intFila).Item("TipoMov").ToString
+                        drNew("Importe") = Datos.Rows(intFila).Item("Importe").ToString
+                        drNew("Descuento") = Datos.Rows(intFila).Item("Descuento").ToString
+                        drNew("IVA") = Datos.Rows(intFila).Item("IVA").ToString
+                        drNew("Total") = Datos.Rows(intFila).Item("ImportePagado").ToString
+                        drNew("Costo") = Datos.Rows(intFila).Item("Costo").ToString
+                        drNew("ImportePagado") = CDbl(Datos.Rows(intFila).Item("ImportePagado").ToString) - CDbl(Datos.Rows(intFila).Item("Costo").ToString)
+                        drNew("Interes") = Datos.Rows(intFila).Item("Interes").ToString
+                        drNew("Recargo") = Datos.Rows(intFila).Item("Recargo").ToString
+                        dtReturn.Rows.Add(drNew)
+                        dtReturn.AcceptChanges()
                     End If
                     'PARA LOS TICKETS DE APARATOS Y JOYERIA QUE EL COSTO SEA MENOR AL PRECIO PAGADO, SE DEBE DE GENERAR 2 LINEAS EN LA FACTURA
                     'UNA LINEA CON EL IMPORTE DEL COSTO Y SIN IVA
@@ -513,21 +530,24 @@
                 dblValidaIVA = dr("IVA")
                 dblValidaTotal = dr("Total")
 
-                If Format(dr("Interes"), "#0.000000").ToString > "0.000000" Then
-                    ImpAntesIVA = ImpAntesIVA + dr("Interes")
-                End If
-                If Format(dr("Recargo"), "#0.000000").ToString > "0.000000" Then
-                    ImpAntesIVA = ImpAntesIVA + dr("Recargo")
-                End If
-                If Format(dr("Importe"), "#0.000000").ToString > "0.000000" Then
-                    ImpAntesIVA = ImpAntesIVA + dr("Importe")
+                If dblValidaIVA > 0 Then
+                    If Format(dr("Interes"), "#0.000000").ToString > "0.000000" Then
+                        ImpAntesIVA = ImpAntesIVA + dr("Interes")
+                    End If
+                    If Format(dr("Recargo"), "#0.000000").ToString > "0.000000" Then
+                        ImpAntesIVA = ImpAntesIVA + dr("Recargo")
+                    End If
+                    If Format(dr("Importe"), "#0.000000").ToString > "0.000000" Then
+                        ImpAntesIVA = ImpAntesIVA + dr("Importe")
+                    End If
+
+                    ValidaRedondeos(1.0, 2, ImpAntesIVA, 6, dblPorcentajeIVA, dblValidaIVA, dblValidaTotal)
+
+                    dr("IVA") = dblValidaIVA
+                    dr("Total") = dblValidaTotal
+                    dr.AcceptChanges()
                 End If
 
-                ValidaRedondeos(1.0, 2, ImpAntesIVA, 6, dblPorcentajeIVA, dblValidaIVA, dblValidaTotal)
-
-                dr("IVA") = dblValidaIVA
-                dr("Total") = dblValidaTotal
-                dr.AcceptChanges()
 
             Next dr
 
