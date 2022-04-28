@@ -8,6 +8,7 @@ Public Class frmDatosClienteFacturacion
     Dim arrMetodoPago As New ArrayList
     Dim arrUsoCFDI As New ArrayList
     Dim arrMoneda As New ArrayList
+    Dim arrRegimenFiscal As New ArrayList
     Dim intFormaPagoID As Integer = 0
     Dim intMetodoPagoID As Integer = 0
     Dim intUsoCFDIID As Integer = 0
@@ -316,6 +317,18 @@ Seguir:
                 txtCorreo.Focus()
                 Exit Sub
             End If
+
+            If rbFisica.Checked = False And rbMoral.Checked = False Then
+                MsgBox("Por favor seleccione si es persona Moral o Fisica...", MsgBoxStyle.Exclamation, "Facturacion")
+                Exit Sub
+            End If
+
+            If cboRegimenFiscal.Text = "" Or cboRegimenFiscal.Text = "--- SELECCIONE ---" Then
+                MsgBox("Por favor seleccione el Regimen Fiscal...", MsgBoxStyle.Exclamation, "Facturacion")
+                cboRegimenFiscal.Focus()
+                Exit Sub
+            End If
+
             ErrorProvider1.Clear()
             If txtCorreo.Text <> "" Then
                 If validar_Mail(LCase(txtCorreo.Text)) = False Then
@@ -338,6 +351,7 @@ Seguir:
             strUsoCFDIClaveIND = VB.Left(cboUsoCFDI.Text, 3)
             strFormaPagoClaveIND = Format(cboFormaPago.SelectedValue, "00")
             strMetodoPagoClaveIND = VB.Left(cboMetodoPago.Text, 3)
+            strRegimenFiscalIND = VB.Left(cboRegimenFiscal.Text, 3)
             Me.DialogResult = Windows.Forms.DialogResult.OK
             Me.Close()
         Else
@@ -479,6 +493,42 @@ Seguir:
     End Sub
 
     Private Sub lblTextoAnuncio_Click(sender As Object, e As EventArgs) Handles lblTextoAnuncio.Click
+
+    End Sub
+
+    Private Sub rbMoral_CheckedChanged(sender As Object, e As EventArgs) Handles rbMoral.CheckedChanged
+        Try
+            arrRegimenFiscal = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=113 AND Elemento<>0 AND Estatus = 'A' AND Valor2T IN ('M', 'A')", "DescCorta")
+            arrRegimenFiscal.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
+            cboRegimenFiscal.DataSource = arrRegimenFiscal
+            cboRegimenFiscal.DisplayMember = "Description"
+            cboRegimenFiscal.ValueMember = "ID"
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
+        End Try
+
+    End Sub
+
+    Private Sub rbFisica_CheckedChanged(sender As Object, e As EventArgs) Handles rbFisica.CheckedChanged
+        Try
+
+            arrRegimenFiscal = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=113 AND Elemento<>0 AND Estatus = 'A' AND Valor2T IN ('F', 'A')", "DescCorta")
+            arrRegimenFiscal.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
+            cboRegimenFiscal.DataSource = arrRegimenFiscal
+            cboRegimenFiscal.DisplayMember = "Description"
+            cboRegimenFiscal.ValueMember = "ID"
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
+        End Try
+    End Sub
+
+    Private Sub cboUsoCFDI_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboUsoCFDI.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub cboRegimenFiscal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboRegimenFiscal.SelectedIndexChanged
 
     End Sub
 End Class

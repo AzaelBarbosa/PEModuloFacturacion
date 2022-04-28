@@ -825,4 +825,161 @@ Public Class frmManejoFactura
         'End If
 
     End Sub
+    Private Sub guardaDatosCancelacion(ByVal datos As DataTable, ByVal Tipo As String)
+        Dim sSQL As String = ""
+        Dim sSQL2 As String = ""
+        Dim dtBusca As New DataTable
+        Try
+            For Each dr As DataRow In dtEnviar.Rows
+                If Tipo = "A" Then
+                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Estatus = 'A' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+
+                ElseIf Tipo = "C" Then
+                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Estatus = 'C' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                End If
+                SQLServer.ExecSQL(sSQL)
+            Next
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
+        End Try
+    End Sub
+
+    Private Sub btnNotasCredito_Click(sender As Object, e As EventArgs) Handles btnNotasCredito.Click
+        Dim frmNotasCred As New frmNotasCreditovb
+        frmNotasCred.ShowDialog()
+    End Sub
+
+    Private Sub cmdActivar_Click(sender As Object, e As EventArgs) Handles cmdActivar.Click
+        Dim intSeleccionados As Integer
+        Dim intFila As Integer = 0
+        Dim sSQL As String = ""
+        Dim bolSeleccionaron As Boolean = False
+        Dim Seleccionaron As Integer = 0
+        Dim drNew As DataRow
+        Dim TipoF As String = ""
+        Dim FolioFact As Integer = 0
+
+        If dgvResultadoFact.RowCount <= 0 Then
+            Exit Sub
+        End If
+
+        For iFila = 0 To dgvResultadoFact.RowCount - 1
+            If Not IsDBNull(dgvResultadoFact.Item("colSel", iFila).Value) Then
+                If dgvResultadoFact.Item("colSel", iFila).Value = True Then
+                    If dgvResultadoFact.Item("colEstatus", iFila).Value = "C" Then
+                        intSeleccionados = intSeleccionados + 1
+                    Else
+                        MsgBox("Esta Factura no esta Cancelada!", MsgBoxStyle.Exclamation, "Facturación")
+                        Exit Sub
+                    End If
+                End If
+            End If
+        Next iFila
+
+
+        If intSeleccionados > 1 Then
+            MsgBox("Solo debe selecciona 1 solo folio a sustituir.", MsgBoxStyle.Exclamation, "Facturación")
+            Exit Sub
+        End If
+
+        dtEnviar = dtBusqueda.Clone
+        For iFila = 0 To dgvResultadoFact.RowCount - 1
+            If Not IsDBNull(dgvResultadoFact.Item("colSel", iFila).Value) Then
+                If dgvResultadoFact.Item("colSel", iFila).Value = True Then
+                    If dgvResultadoFact.Item("colEstatus", iFila).Value = "C" Then
+                        drNew = dtEnviar.NewRow
+                        drNew("FechaFactura") = dgvResultadoFact.Item("colFecha", iFila).Value
+                        drNew("Folio") = dgvResultadoFact.Item("colFolio", iFila).Value
+                        drNew("Serie") = dgvResultadoFact.Item("colSerie", iFila).Value
+                        drNew("TipoFactura") = dgvResultadoFact.Item("colTipo", iFila).Value
+                        drNew("FolioFiscal") = dgvResultadoFact.Item("colUUID", iFila).Value
+                        drNew("NombreArchivoPDF") = dgvResultadoFact.Item("colArchivoPDF", iFila).Value
+                        drNew("NombreArchivoXML") = dgvResultadoFact.Item("colArchivoXML", iFila).Value
+                        drNew("CorreoE") = dgvResultadoFact.Item("colCorreo", iFila).Value
+                        drNew("NoCliente") = dgvResultadoFact.Item("colNoCliente", iFila).Value
+                        dtEnviar.Rows.Add(drNew)
+                        dtEnviar.AcceptChanges()
+                        FechaCancelado = dgvResultadoFact.Item("colFecha", iFila).Value
+                        TipoF = dgvResultadoFact.Item("colTipo", iFila).Value
+                        FolioFact = dgvResultadoFact.Item("colFolio", iFila).Value
+                    Else
+                        MsgBox("Esta Factura no esta cancelada!", MsgBoxStyle.Exclamation, "Facturación")
+                        Exit Sub
+                    End If
+                End If
+            End If
+        Next iFila
+
+        guardaDatosCancelacion(dtEnviar, "A")
+
+    End Sub
+
+    Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
+        Dim intSeleccionados As Integer
+        Dim intFila As Integer = 0
+        Dim sSQL As String = ""
+        Dim bolSeleccionaron As Boolean = False
+        Dim Seleccionaron As Integer = 0
+        Dim drNew As DataRow
+        Dim TipoF As String = ""
+        Dim FolioFact As Integer = 0
+
+        If dgvResultadoFact.RowCount <= 0 Then
+            Exit Sub
+        End If
+
+        For iFila = 0 To dgvResultadoFact.RowCount - 1
+            If Not IsDBNull(dgvResultadoFact.Item("colSel", iFila).Value) Then
+                If dgvResultadoFact.Item("colSel", iFila).Value = True Then
+                    If dgvResultadoFact.Item("colEstatus", iFila).Value = "A" Then
+                        intSeleccionados = intSeleccionados + 1
+                        bolSeleccionaron = True
+                    Else
+                        MsgBox("Esta Factura esta cancelada!", MsgBoxStyle.Exclamation, "Facturación")
+                        Exit Sub
+                    End If
+                End If
+            End If
+        Next iFila
+
+        If Not bolSeleccionaron Then
+            MsgBox("Por favor seleccione 1 folio a sustituir.", MsgBoxStyle.Exclamation, "Facturación")
+            Exit Sub
+        End If
+
+        If intSeleccionados > 1 Then
+            MsgBox("Solo debe selecciona 1 solo folio a sustituir.", MsgBoxStyle.Exclamation, "Facturación")
+            Exit Sub
+        End If
+
+        dtEnviar = dtBusqueda.Clone
+        For iFila = 0 To dgvResultadoFact.RowCount - 1
+            If Not IsDBNull(dgvResultadoFact.Item("colSel", iFila).Value) Then
+                If dgvResultadoFact.Item("colSel", iFila).Value = True Then
+                    If dgvResultadoFact.Item("colEstatus", iFila).Value = "A" Then
+                        drNew = dtEnviar.NewRow
+                        drNew("FechaFactura") = dgvResultadoFact.Item("colFecha", iFila).Value
+                        drNew("Folio") = dgvResultadoFact.Item("colFolio", iFila).Value
+                        drNew("Serie") = dgvResultadoFact.Item("colSerie", iFila).Value
+                        drNew("TipoFactura") = dgvResultadoFact.Item("colTipo", iFila).Value
+                        drNew("FolioFiscal") = dgvResultadoFact.Item("colUUID", iFila).Value
+                        drNew("NombreArchivoPDF") = dgvResultadoFact.Item("colArchivoPDF", iFila).Value
+                        drNew("NombreArchivoXML") = dgvResultadoFact.Item("colArchivoXML", iFila).Value
+                        drNew("CorreoE") = dgvResultadoFact.Item("colCorreo", iFila).Value
+                        drNew("NoCliente") = dgvResultadoFact.Item("colNoCliente", iFila).Value
+                        dtEnviar.Rows.Add(drNew)
+                        dtEnviar.AcceptChanges()
+                        FechaCancelado = dgvResultadoFact.Item("colFecha", iFila).Value
+                        TipoF = dgvResultadoFact.Item("colTipo", iFila).Value
+                        FolioFact = dgvResultadoFact.Item("colFolio", iFila).Value
+                    Else
+                        MsgBox("Esta Factura ya esta cancelada!", MsgBoxStyle.Exclamation, "Facturación")
+                        Exit Sub
+                    End If
+                End If
+            End If
+        Next iFila
+
+        guardaDatosCancelacion(dtEnviar, "C")
+    End Sub
 End Class

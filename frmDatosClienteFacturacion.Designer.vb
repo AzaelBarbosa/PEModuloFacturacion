@@ -55,6 +55,10 @@ Partial Class frmDatosClienteFacturacion
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblTextoAnuncio = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.rbFisica = New System.Windows.Forms.RadioButton()
+        Me.cboRegimenFiscal = New System.Windows.Forms.ComboBox()
+        Me.rbMoral = New System.Windows.Forms.RadioButton()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.chbValoresFP = New System.Windows.Forms.CheckBox()
         Me.cboUsoCFDI = New System.Windows.Forms.ComboBox()
         Me.cboMetodoPago = New System.Windows.Forms.ComboBox()
@@ -112,11 +116,11 @@ Partial Class frmDatosClienteFacturacion
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(21, 36)
+        Me.GroupBox1.Location = New System.Drawing.Point(21, 51)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(757, 286)
+        Me.GroupBox1.Size = New System.Drawing.Size(757, 271)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Receptor:"
@@ -405,10 +409,10 @@ Partial Class frmDatosClienteFacturacion
         Me.lblTextoAnuncio.BackColor = System.Drawing.Color.Transparent
         Me.lblTextoAnuncio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTextoAnuncio.ForeColor = System.Drawing.Color.Blue
-        Me.lblTextoAnuncio.Location = New System.Drawing.Point(105, 453)
+        Me.lblTextoAnuncio.Location = New System.Drawing.Point(109, 503)
         Me.lblTextoAnuncio.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTextoAnuncio.Name = "lblTextoAnuncio"
-        Me.lblTextoAnuncio.Size = New System.Drawing.Size(747, 69)
+        Me.lblTextoAnuncio.Size = New System.Drawing.Size(747, 54)
         Me.lblTextoAnuncio.TabIndex = 19
         Me.lblTextoAnuncio.Text = "Facturando..."
         Me.lblTextoAnuncio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -416,6 +420,10 @@ Partial Class frmDatosClienteFacturacion
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.rbFisica)
+        Me.GroupBox2.Controls.Add(Me.cboRegimenFiscal)
+        Me.GroupBox2.Controls.Add(Me.rbMoral)
+        Me.GroupBox2.Controls.Add(Me.Label21)
         Me.GroupBox2.Controls.Add(Me.chbValoresFP)
         Me.GroupBox2.Controls.Add(Me.cboUsoCFDI)
         Me.GroupBox2.Controls.Add(Me.cboMetodoPago)
@@ -425,18 +433,60 @@ Partial Class frmDatosClienteFacturacion
         Me.GroupBox2.Controls.Add(Me.Label17)
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Location = New System.Drawing.Point(21, 319)
+        Me.GroupBox2.Location = New System.Drawing.Point(21, 317)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(757, 114)
+        Me.GroupBox2.Size = New System.Drawing.Size(757, 182)
         Me.GroupBox2.TabIndex = 14
         Me.GroupBox2.TabStop = False
+        '
+        'rbFisica
+        '
+        Me.rbFisica.AutoSize = True
+        Me.rbFisica.Location = New System.Drawing.Point(149, 110)
+        Me.rbFisica.Name = "rbFisica"
+        Me.rbFisica.Size = New System.Drawing.Size(122, 21)
+        Me.rbFisica.TabIndex = 24
+        Me.rbFisica.TabStop = True
+        Me.rbFisica.Text = "Persona Fisica"
+        Me.rbFisica.UseVisualStyleBackColor = True
+        '
+        'cboRegimenFiscal
+        '
+        Me.cboRegimenFiscal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboRegimenFiscal.FormattingEnabled = True
+        Me.cboRegimenFiscal.Location = New System.Drawing.Point(139, 143)
+        Me.cboRegimenFiscal.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboRegimenFiscal.Name = "cboRegimenFiscal"
+        Me.cboRegimenFiscal.Size = New System.Drawing.Size(398, 24)
+        Me.cboRegimenFiscal.TabIndex = 24
+        '
+        'rbMoral
+        '
+        Me.rbMoral.AutoSize = True
+        Me.rbMoral.Location = New System.Drawing.Point(19, 110)
+        Me.rbMoral.Name = "rbMoral"
+        Me.rbMoral.Size = New System.Drawing.Size(121, 21)
+        Me.rbMoral.TabIndex = 23
+        Me.rbMoral.TabStop = True
+        Me.rbMoral.Text = "Persona Moral"
+        Me.rbMoral.UseVisualStyleBackColor = True
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(15, 143)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(108, 17)
+        Me.Label21.TabIndex = 23
+        Me.Label21.Text = "Regimen Fiscal:"
         '
         'chbValoresFP
         '
         Me.chbValoresFP.AutoSize = True
-        Me.chbValoresFP.Location = New System.Drawing.Point(600, 81)
+        Me.chbValoresFP.Location = New System.Drawing.Point(605, 154)
         Me.chbValoresFP.Name = "chbValoresFP"
         Me.chbValoresFP.Size = New System.Drawing.Size(145, 21)
         Me.chbValoresFP.TabIndex = 22
@@ -477,7 +527,7 @@ Partial Class frmDatosClienteFacturacion
         '
         Me.cboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboMoneda.FormattingEnabled = True
-        Me.cboMoneda.Location = New System.Drawing.Point(544, 20)
+        Me.cboMoneda.Location = New System.Drawing.Point(544, 22)
         Me.cboMoneda.Margin = New System.Windows.Forms.Padding(4)
         Me.cboMoneda.Name = "cboMoneda"
         Me.cboMoneda.Size = New System.Drawing.Size(201, 24)
@@ -506,7 +556,7 @@ Partial Class frmDatosClienteFacturacion
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(416, 20)
+        Me.Label15.Location = New System.Drawing.Point(416, 23)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(63, 17)
@@ -527,7 +577,7 @@ Partial Class frmDatosClienteFacturacion
         '
         Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAceptar.Image = CType(resources.GetObject("btnAceptar.Image"), System.Drawing.Image)
-        Me.btnAceptar.Location = New System.Drawing.Point(13, 197)
+        Me.btnAceptar.Location = New System.Drawing.Point(13, 238)
         Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(167, 69)
@@ -540,7 +590,7 @@ Partial Class frmDatosClienteFacturacion
         '
         Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancelar.Image = CType(resources.GetObject("btnCancelar.Image"), System.Drawing.Image)
-        Me.btnCancelar.Location = New System.Drawing.Point(11, 289)
+        Me.btnCancelar.Location = New System.Drawing.Point(11, 330)
         Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(169, 60)
@@ -554,7 +604,7 @@ Partial Class frmDatosClienteFacturacion
         Me.btnLimpiar.BackColor = System.Drawing.Color.White
         Me.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnLimpiar.Image = CType(resources.GetObject("btnLimpiar.Image"), System.Drawing.Image)
-        Me.btnLimpiar.Location = New System.Drawing.Point(11, 16)
+        Me.btnLimpiar.Location = New System.Drawing.Point(11, 57)
         Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(169, 69)
@@ -569,11 +619,11 @@ Partial Class frmDatosClienteFacturacion
         Me.GroupBox3.Controls.Add(Me.btnCancelar)
         Me.GroupBox3.Controls.Add(Me.btnAceptar)
         Me.GroupBox3.Controls.Add(Me.btnLimpiar)
-        Me.GroupBox3.Location = New System.Drawing.Point(789, 36)
+        Me.GroupBox3.Location = New System.Drawing.Point(789, 51)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(188, 397)
+        Me.GroupBox3.Size = New System.Drawing.Size(188, 448)
         Me.GroupBox3.TabIndex = 22
         Me.GroupBox3.TabStop = False
         '
@@ -583,7 +633,7 @@ Partial Class frmDatosClienteFacturacion
         Me.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBuscar.Image = CType(resources.GetObject("btnBuscar.Image"), System.Drawing.Image)
-        Me.btnBuscar.Location = New System.Drawing.Point(13, 107)
+        Me.btnBuscar.Location = New System.Drawing.Point(13, 148)
         Me.btnBuscar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(167, 69)
@@ -595,7 +645,7 @@ Partial Class frmDatosClienteFacturacion
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(811, 586)
+        Me.Label22.Location = New System.Drawing.Point(811, 630)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(52, 17)
@@ -606,7 +656,7 @@ Partial Class frmDatosClienteFacturacion
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(809, 565)
+        Me.Label20.Location = New System.Drawing.Point(809, 609)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(48, 17)
@@ -617,7 +667,7 @@ Partial Class frmDatosClienteFacturacion
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(865, 565)
+        Me.Label19.Location = New System.Drawing.Point(865, 609)
         Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(56, 17)
@@ -628,7 +678,7 @@ Partial Class frmDatosClienteFacturacion
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(865, 586)
+        Me.Label18.Location = New System.Drawing.Point(865, 630)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(54, 17)
@@ -647,7 +697,7 @@ Partial Class frmDatosClienteFacturacion
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(989, 547)
+        Me.Panel1.Size = New System.Drawing.Size(989, 573)
         Me.Panel1.TabIndex = 23
         '
         'ErrorProvider1
@@ -659,7 +709,7 @@ Partial Class frmDatosClienteFacturacion
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1001, 559)
+        Me.ClientSize = New System.Drawing.Size(1002, 585)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.Panel1)
@@ -735,4 +785,8 @@ Partial Class frmDatosClienteFacturacion
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents chbPublicoGeneral As System.Windows.Forms.CheckBox
     Friend WithEvents chbValoresFP As System.Windows.Forms.CheckBox
+    Friend WithEvents cboRegimenFiscal As System.Windows.Forms.ComboBox
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents rbFisica As System.Windows.Forms.RadioButton
+    Friend WithEvents rbMoral As System.Windows.Forms.RadioButton
 End Class

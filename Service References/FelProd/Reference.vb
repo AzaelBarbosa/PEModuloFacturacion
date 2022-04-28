@@ -20273,6 +20273,5024 @@ Namespace FelProd
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Comprobante40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Comprobante40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AddendaField As FelProd.AddendaCFD40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AerolineasField As FelProd.AerolineasR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CFDIRegistroFiscalField As FelProd.CFDIRegistroFiscalR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CartaPorte20Field As FelProd.CartaPorte20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CertificadoDestruccionField As FelProd.CertificadoDestruccionR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CfdiRelacionadosField() As FelProd.CfdiRelacionados40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClaveCFDIField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ComercioExteriorField As FelProd.ComercioExterior11R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ConceptosField() As FelProd.Concepto40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CondicionesDePagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ConfirmacionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ConsumoDeCombustibles11Field As FelProd.ConsumoDeCombustibles11R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescuentoField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DivisasField As FelProd.DivisaR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DonatariasField As FelProd.DonatariasR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EmisorField As FelProd.Emisor40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EstadoDeCuentaCombustible12Field As FelProd.EstadoDeCuentaCombustible12R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ExportacionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FechaField As System.Nullable(Of Date)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FolioField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FormaPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private GastosHidrocarburosField As FelProd.GastosHidrocarburosR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private INEField As FelProd.INER
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InformacionGlobalField As FelProd.InformacionGlobal40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IngresosHidrocarburosField As FelProd.IngresosHidrocarburosR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IntegranteCoordinadoField As FelProd.IntegranteCoordinadoR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LeyendasFiscalesField As FelProd.LeyendaFiscalR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LugarExpedicionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MetodoPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MonedaField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NominaField() As FelProd.Nomina12R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NotariosPublicosField As FelProd.NotariosPublicosR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ObrasArteAntiguedadesField As FelProd.ObrasArteAntiguedadesR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PagoEnEspecieField As FelProd.PagoEnEspecieR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PagosField As FelProd.Pagos20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ParcialesconstruccionField As FelProd.ParcialesConstruccionR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReceptorField As FelProd.Receptor40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReferenciaField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RenovacionYSustitucionVehiculosField As FelProd.RenovacionYSustitucionVehiculosR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SPEIField As FelProd.SPEIR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SerieField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SubTotalField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoCambioField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TuristaPasajeroExtranjeroField As FelProd.TuristaPasajeroExtranjeroR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ValesDeDespensaField As FelProd.ValesDeDespensaR
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private VehiculoUsadoField As FelProd.VehiculoUsadoR
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Addenda() As FelProd.AddendaCFD40R
+            Get
+                Return Me.AddendaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AddendaField, value) <> true) Then
+                    Me.AddendaField = value
+                    Me.RaisePropertyChanged("Addenda")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Aerolineas() As FelProd.AerolineasR
+            Get
+                Return Me.AerolineasField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AerolineasField, value) <> true) Then
+                    Me.AerolineasField = value
+                    Me.RaisePropertyChanged("Aerolineas")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CFDIRegistroFiscal() As FelProd.CFDIRegistroFiscalR
+            Get
+                Return Me.CFDIRegistroFiscalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CFDIRegistroFiscalField, value) <> true) Then
+                    Me.CFDIRegistroFiscalField = value
+                    Me.RaisePropertyChanged("CFDIRegistroFiscal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CartaPorte20() As FelProd.CartaPorte20R
+            Get
+                Return Me.CartaPorte20Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CartaPorte20Field, value) <> true) Then
+                    Me.CartaPorte20Field = value
+                    Me.RaisePropertyChanged("CartaPorte20")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CertificadoDestruccion() As FelProd.CertificadoDestruccionR
+            Get
+                Return Me.CertificadoDestruccionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CertificadoDestruccionField, value) <> true) Then
+                    Me.CertificadoDestruccionField = value
+                    Me.RaisePropertyChanged("CertificadoDestruccion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CfdiRelacionados() As FelProd.CfdiRelacionados40R()
+            Get
+                Return Me.CfdiRelacionadosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CfdiRelacionadosField, value) <> true) Then
+                    Me.CfdiRelacionadosField = value
+                    Me.RaisePropertyChanged("CfdiRelacionados")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClaveCFDI() As String
+            Get
+                Return Me.ClaveCFDIField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClaveCFDIField, value) <> true) Then
+                    Me.ClaveCFDIField = value
+                    Me.RaisePropertyChanged("ClaveCFDI")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ComercioExterior() As FelProd.ComercioExterior11R
+            Get
+                Return Me.ComercioExteriorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ComercioExteriorField, value) <> true) Then
+                    Me.ComercioExteriorField = value
+                    Me.RaisePropertyChanged("ComercioExterior")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Conceptos() As FelProd.Concepto40R()
+            Get
+                Return Me.ConceptosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ConceptosField, value) <> true) Then
+                    Me.ConceptosField = value
+                    Me.RaisePropertyChanged("Conceptos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CondicionesDePago() As String
+            Get
+                Return Me.CondicionesDePagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CondicionesDePagoField, value) <> true) Then
+                    Me.CondicionesDePagoField = value
+                    Me.RaisePropertyChanged("CondicionesDePago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Confirmacion() As String
+            Get
+                Return Me.ConfirmacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ConfirmacionField, value) <> true) Then
+                    Me.ConfirmacionField = value
+                    Me.RaisePropertyChanged("Confirmacion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ConsumoDeCombustibles11() As FelProd.ConsumoDeCombustibles11R
+            Get
+                Return Me.ConsumoDeCombustibles11Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ConsumoDeCombustibles11Field, value) <> true) Then
+                    Me.ConsumoDeCombustibles11Field = value
+                    Me.RaisePropertyChanged("ConsumoDeCombustibles11")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Descuento() As System.Nullable(Of Decimal)
+            Get
+                Return Me.DescuentoField
+            End Get
+            Set
+                If (Me.DescuentoField.Equals(value) <> true) Then
+                    Me.DescuentoField = value
+                    Me.RaisePropertyChanged("Descuento")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Divisas() As FelProd.DivisaR
+            Get
+                Return Me.DivisasField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DivisasField, value) <> true) Then
+                    Me.DivisasField = value
+                    Me.RaisePropertyChanged("Divisas")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Donatarias() As FelProd.DonatariasR
+            Get
+                Return Me.DonatariasField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DonatariasField, value) <> true) Then
+                    Me.DonatariasField = value
+                    Me.RaisePropertyChanged("Donatarias")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Emisor() As FelProd.Emisor40R
+            Get
+                Return Me.EmisorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EmisorField, value) <> true) Then
+                    Me.EmisorField = value
+                    Me.RaisePropertyChanged("Emisor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EstadoDeCuentaCombustible12() As FelProd.EstadoDeCuentaCombustible12R
+            Get
+                Return Me.EstadoDeCuentaCombustible12Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EstadoDeCuentaCombustible12Field, value) <> true) Then
+                    Me.EstadoDeCuentaCombustible12Field = value
+                    Me.RaisePropertyChanged("EstadoDeCuentaCombustible12")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Exportacion() As String
+            Get
+                Return Me.ExportacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ExportacionField, value) <> true) Then
+                    Me.ExportacionField = value
+                    Me.RaisePropertyChanged("Exportacion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Fecha() As System.Nullable(Of Date)
+            Get
+                Return Me.FechaField
+            End Get
+            Set
+                If (Me.FechaField.Equals(value) <> true) Then
+                    Me.FechaField = value
+                    Me.RaisePropertyChanged("Fecha")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Folio() As String
+            Get
+                Return Me.FolioField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FolioField, value) <> true) Then
+                    Me.FolioField = value
+                    Me.RaisePropertyChanged("Folio")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FormaPago() As String
+            Get
+                Return Me.FormaPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FormaPagoField, value) <> true) Then
+                    Me.FormaPagoField = value
+                    Me.RaisePropertyChanged("FormaPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property GastosHidrocarburos() As FelProd.GastosHidrocarburosR
+            Get
+                Return Me.GastosHidrocarburosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.GastosHidrocarburosField, value) <> true) Then
+                    Me.GastosHidrocarburosField = value
+                    Me.RaisePropertyChanged("GastosHidrocarburos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property INE() As FelProd.INER
+            Get
+                Return Me.INEField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.INEField, value) <> true) Then
+                    Me.INEField = value
+                    Me.RaisePropertyChanged("INE")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InformacionGlobal() As FelProd.InformacionGlobal40R
+            Get
+                Return Me.InformacionGlobalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InformacionGlobalField, value) <> true) Then
+                    Me.InformacionGlobalField = value
+                    Me.RaisePropertyChanged("InformacionGlobal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IngresosHidrocarburos() As FelProd.IngresosHidrocarburosR
+            Get
+                Return Me.IngresosHidrocarburosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IngresosHidrocarburosField, value) <> true) Then
+                    Me.IngresosHidrocarburosField = value
+                    Me.RaisePropertyChanged("IngresosHidrocarburos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IntegranteCoordinado() As FelProd.IntegranteCoordinadoR
+            Get
+                Return Me.IntegranteCoordinadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IntegranteCoordinadoField, value) <> true) Then
+                    Me.IntegranteCoordinadoField = value
+                    Me.RaisePropertyChanged("IntegranteCoordinado")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LeyendasFiscales() As FelProd.LeyendaFiscalR
+            Get
+                Return Me.LeyendasFiscalesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LeyendasFiscalesField, value) <> true) Then
+                    Me.LeyendasFiscalesField = value
+                    Me.RaisePropertyChanged("LeyendasFiscales")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property LugarExpedicion() As String
+            Get
+                Return Me.LugarExpedicionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LugarExpedicionField, value) <> true) Then
+                    Me.LugarExpedicionField = value
+                    Me.RaisePropertyChanged("LugarExpedicion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property MetodoPago() As String
+            Get
+                Return Me.MetodoPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MetodoPagoField, value) <> true) Then
+                    Me.MetodoPagoField = value
+                    Me.RaisePropertyChanged("MetodoPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Moneda() As String
+            Get
+                Return Me.MonedaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MonedaField, value) <> true) Then
+                    Me.MonedaField = value
+                    Me.RaisePropertyChanged("Moneda")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nomina() As FelProd.Nomina12R()
+            Get
+                Return Me.NominaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NominaField, value) <> true) Then
+                    Me.NominaField = value
+                    Me.RaisePropertyChanged("Nomina")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NotariosPublicos() As FelProd.NotariosPublicosR
+            Get
+                Return Me.NotariosPublicosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NotariosPublicosField, value) <> true) Then
+                    Me.NotariosPublicosField = value
+                    Me.RaisePropertyChanged("NotariosPublicos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ObrasArteAntiguedades() As FelProd.ObrasArteAntiguedadesR
+            Get
+                Return Me.ObrasArteAntiguedadesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ObrasArteAntiguedadesField, value) <> true) Then
+                    Me.ObrasArteAntiguedadesField = value
+                    Me.RaisePropertyChanged("ObrasArteAntiguedades")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property PagoEnEspecie() As FelProd.PagoEnEspecieR
+            Get
+                Return Me.PagoEnEspecieField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PagoEnEspecieField, value) <> true) Then
+                    Me.PagoEnEspecieField = value
+                    Me.RaisePropertyChanged("PagoEnEspecie")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Pagos() As FelProd.Pagos20R
+            Get
+                Return Me.PagosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PagosField, value) <> true) Then
+                    Me.PagosField = value
+                    Me.RaisePropertyChanged("Pagos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Parcialesconstruccion() As FelProd.ParcialesConstruccionR
+            Get
+                Return Me.ParcialesconstruccionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ParcialesconstruccionField, value) <> true) Then
+                    Me.ParcialesconstruccionField = value
+                    Me.RaisePropertyChanged("Parcialesconstruccion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Receptor() As FelProd.Receptor40R
+            Get
+                Return Me.ReceptorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ReceptorField, value) <> true) Then
+                    Me.ReceptorField = value
+                    Me.RaisePropertyChanged("Receptor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Referencia() As String
+            Get
+                Return Me.ReferenciaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ReferenciaField, value) <> true) Then
+                    Me.ReferenciaField = value
+                    Me.RaisePropertyChanged("Referencia")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RenovacionYSustitucionVehiculos() As FelProd.RenovacionYSustitucionVehiculosR
+            Get
+                Return Me.RenovacionYSustitucionVehiculosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RenovacionYSustitucionVehiculosField, value) <> true) Then
+                    Me.RenovacionYSustitucionVehiculosField = value
+                    Me.RaisePropertyChanged("RenovacionYSustitucionVehiculos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SPEI() As FelProd.SPEIR
+            Get
+                Return Me.SPEIField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SPEIField, value) <> true) Then
+                    Me.SPEIField = value
+                    Me.RaisePropertyChanged("SPEI")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Serie() As String
+            Get
+                Return Me.SerieField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SerieField, value) <> true) Then
+                    Me.SerieField = value
+                    Me.RaisePropertyChanged("Serie")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SubTotal() As Decimal
+            Get
+                Return Me.SubTotalField
+            End Get
+            Set
+                If (Me.SubTotalField.Equals(value) <> true) Then
+                    Me.SubTotalField = value
+                    Me.RaisePropertyChanged("SubTotal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoCambio() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TipoCambioField
+            End Get
+            Set
+                If (Me.TipoCambioField.Equals(value) <> true) Then
+                    Me.TipoCambioField = value
+                    Me.RaisePropertyChanged("TipoCambio")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Total() As Decimal
+            Get
+                Return Me.TotalField
+            End Get
+            Set
+                If (Me.TotalField.Equals(value) <> true) Then
+                    Me.TotalField = value
+                    Me.RaisePropertyChanged("Total")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TuristaPasajeroExtranjero() As FelProd.TuristaPasajeroExtranjeroR
+            Get
+                Return Me.TuristaPasajeroExtranjeroField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TuristaPasajeroExtranjeroField, value) <> true) Then
+                    Me.TuristaPasajeroExtranjeroField = value
+                    Me.RaisePropertyChanged("TuristaPasajeroExtranjero")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ValesDeDespensa() As FelProd.ValesDeDespensaR
+            Get
+                Return Me.ValesDeDespensaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ValesDeDespensaField, value) <> true) Then
+                    Me.ValesDeDespensaField = value
+                    Me.RaisePropertyChanged("ValesDeDespensa")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property VehiculoUsado() As FelProd.VehiculoUsadoR
+            Get
+                Return Me.VehiculoUsadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.VehiculoUsadoField, value) <> true) Then
+                    Me.VehiculoUsadoField = value
+                    Me.RaisePropertyChanged("VehiculoUsado")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="AddendaCFD40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class AddendaCFD40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CorreoAlternoClienteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CorreoClienteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DetallesConceptosField() As FelProd.DetallesConcepto40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DomicilioEmisorField As FelProd.DomicilioCliente40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DomicilioReceptorField As FelProd.DomicilioCliente40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DomicilioSucursalField As FelProd.DomicilioCliente40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EtiquetaDescuentoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EtiquetaSubtotalField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EtiquetaTotalField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EtiquetasPersonalizadasField() As FelProd.EtiquetaPersonalizada40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FactorajeFinancieroField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FechaTipoDeCambioField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FirmasField() As FelProd.FirmaOnLine40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdiomaPDFField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreComercialClienteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PagareField As FelProd.Pagare40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TelefonoClienteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TelefonoMovilClienteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TituloPersonalizadoField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CorreoAlternoCliente() As String
+            Get
+                Return Me.CorreoAlternoClienteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CorreoAlternoClienteField, value) <> true) Then
+                    Me.CorreoAlternoClienteField = value
+                    Me.RaisePropertyChanged("CorreoAlternoCliente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CorreoCliente() As String
+            Get
+                Return Me.CorreoClienteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CorreoClienteField, value) <> true) Then
+                    Me.CorreoClienteField = value
+                    Me.RaisePropertyChanged("CorreoCliente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DetallesConceptos() As FelProd.DetallesConcepto40R()
+            Get
+                Return Me.DetallesConceptosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DetallesConceptosField, value) <> true) Then
+                    Me.DetallesConceptosField = value
+                    Me.RaisePropertyChanged("DetallesConceptos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DomicilioEmisor() As FelProd.DomicilioCliente40R
+            Get
+                Return Me.DomicilioEmisorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DomicilioEmisorField, value) <> true) Then
+                    Me.DomicilioEmisorField = value
+                    Me.RaisePropertyChanged("DomicilioEmisor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DomicilioReceptor() As FelProd.DomicilioCliente40R
+            Get
+                Return Me.DomicilioReceptorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DomicilioReceptorField, value) <> true) Then
+                    Me.DomicilioReceptorField = value
+                    Me.RaisePropertyChanged("DomicilioReceptor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DomicilioSucursal() As FelProd.DomicilioCliente40R
+            Get
+                Return Me.DomicilioSucursalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DomicilioSucursalField, value) <> true) Then
+                    Me.DomicilioSucursalField = value
+                    Me.RaisePropertyChanged("DomicilioSucursal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EtiquetaDescuento() As String
+            Get
+                Return Me.EtiquetaDescuentoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EtiquetaDescuentoField, value) <> true) Then
+                    Me.EtiquetaDescuentoField = value
+                    Me.RaisePropertyChanged("EtiquetaDescuento")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EtiquetaSubtotal() As String
+            Get
+                Return Me.EtiquetaSubtotalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EtiquetaSubtotalField, value) <> true) Then
+                    Me.EtiquetaSubtotalField = value
+                    Me.RaisePropertyChanged("EtiquetaSubtotal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EtiquetaTotal() As String
+            Get
+                Return Me.EtiquetaTotalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EtiquetaTotalField, value) <> true) Then
+                    Me.EtiquetaTotalField = value
+                    Me.RaisePropertyChanged("EtiquetaTotal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EtiquetasPersonalizadas() As FelProd.EtiquetaPersonalizada40R()
+            Get
+                Return Me.EtiquetasPersonalizadasField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EtiquetasPersonalizadasField, value) <> true) Then
+                    Me.EtiquetasPersonalizadasField = value
+                    Me.RaisePropertyChanged("EtiquetasPersonalizadas")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FactorajeFinanciero() As Boolean
+            Get
+                Return Me.FactorajeFinancieroField
+            End Get
+            Set
+                If (Me.FactorajeFinancieroField.Equals(value) <> true) Then
+                    Me.FactorajeFinancieroField = value
+                    Me.RaisePropertyChanged("FactorajeFinanciero")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FechaTipoDeCambio() As String
+            Get
+                Return Me.FechaTipoDeCambioField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FechaTipoDeCambioField, value) <> true) Then
+                    Me.FechaTipoDeCambioField = value
+                    Me.RaisePropertyChanged("FechaTipoDeCambio")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Firmas() As FelProd.FirmaOnLine40R()
+            Get
+                Return Me.FirmasField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FirmasField, value) <> true) Then
+                    Me.FirmasField = value
+                    Me.RaisePropertyChanged("Firmas")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IdiomaPDF() As String
+            Get
+                Return Me.IdiomaPDFField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IdiomaPDFField, value) <> true) Then
+                    Me.IdiomaPDFField = value
+                    Me.RaisePropertyChanged("IdiomaPDF")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NombreComercialCliente() As String
+            Get
+                Return Me.NombreComercialClienteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreComercialClienteField, value) <> true) Then
+                    Me.NombreComercialClienteField = value
+                    Me.RaisePropertyChanged("NombreComercialCliente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Pagare() As FelProd.Pagare40R
+            Get
+                Return Me.PagareField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PagareField, value) <> true) Then
+                    Me.PagareField = value
+                    Me.RaisePropertyChanged("Pagare")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TelefonoCliente() As String
+            Get
+                Return Me.TelefonoClienteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TelefonoClienteField, value) <> true) Then
+                    Me.TelefonoClienteField = value
+                    Me.RaisePropertyChanged("TelefonoCliente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TelefonoMovilCliente() As String
+            Get
+                Return Me.TelefonoMovilClienteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TelefonoMovilClienteField, value) <> true) Then
+                    Me.TelefonoMovilClienteField = value
+                    Me.RaisePropertyChanged("TelefonoMovilCliente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TituloPersonalizado() As String
+            Get
+                Return Me.TituloPersonalizadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TituloPersonalizadoField, value) <> true) Then
+                    Me.TituloPersonalizadoField = value
+                    Me.RaisePropertyChanged("TituloPersonalizado")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Emisor40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Emisor40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FacAtrAdquirenteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RegimenFiscalField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FacAtrAdquirente() As String
+            Get
+                Return Me.FacAtrAdquirenteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FacAtrAdquirenteField, value) <> true) Then
+                    Me.FacAtrAdquirenteField = value
+                    Me.RaisePropertyChanged("FacAtrAdquirente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nombre() As String
+            Get
+                Return Me.NombreField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreField, value) <> true) Then
+                    Me.NombreField = value
+                    Me.RaisePropertyChanged("Nombre")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RegimenFiscal() As String
+            Get
+                Return Me.RegimenFiscalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RegimenFiscalField, value) <> true) Then
+                    Me.RegimenFiscalField = value
+                    Me.RaisePropertyChanged("RegimenFiscal")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="InformacionGlobal40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class InformacionGlobal40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AñoField As Short
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MesesField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PeriodicidadField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Año() As Short
+            Get
+                Return Me.AñoField
+            End Get
+            Set
+                If (Me.AñoField.Equals(value) <> true) Then
+                    Me.AñoField = value
+                    Me.RaisePropertyChanged("Año")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Meses() As String
+            Get
+                Return Me.MesesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MesesField, value) <> true) Then
+                    Me.MesesField = value
+                    Me.RaisePropertyChanged("Meses")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Periodicidad() As String
+            Get
+                Return Me.PeriodicidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PeriodicidadField, value) <> true) Then
+                    Me.PeriodicidadField = value
+                    Me.RaisePropertyChanged("Periodicidad")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Pagos20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Pagos20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PagoField() As FelProd.PagosPago20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalesField As FelProd.PagosTotales20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private VersionField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Pago() As FelProd.PagosPago20R()
+            Get
+                Return Me.PagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PagoField, value) <> true) Then
+                    Me.PagoField = value
+                    Me.RaisePropertyChanged("Pago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Totales() As FelProd.PagosTotales20R
+            Get
+                Return Me.TotalesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TotalesField, value) <> true) Then
+                    Me.TotalesField = value
+                    Me.RaisePropertyChanged("Totales")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Version() As String
+            Get
+                Return Me.VersionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.VersionField, value) <> true) Then
+                    Me.VersionField = value
+                    Me.RaisePropertyChanged("Version")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Receptor40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Receptor40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DomicilioFiscalReceptorField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumRegIdTribField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RegimenFiscalReceptorField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ResidenciaFiscalField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RfcField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UsoCFDIField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DomicilioFiscalReceptor() As String
+            Get
+                Return Me.DomicilioFiscalReceptorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DomicilioFiscalReceptorField, value) <> true) Then
+                    Me.DomicilioFiscalReceptorField = value
+                    Me.RaisePropertyChanged("DomicilioFiscalReceptor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nombre() As String
+            Get
+                Return Me.NombreField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreField, value) <> true) Then
+                    Me.NombreField = value
+                    Me.RaisePropertyChanged("Nombre")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NumRegIdTrib() As String
+            Get
+                Return Me.NumRegIdTribField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumRegIdTribField, value) <> true) Then
+                    Me.NumRegIdTribField = value
+                    Me.RaisePropertyChanged("NumRegIdTrib")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RegimenFiscalReceptor() As String
+            Get
+                Return Me.RegimenFiscalReceptorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RegimenFiscalReceptorField, value) <> true) Then
+                    Me.RegimenFiscalReceptorField = value
+                    Me.RaisePropertyChanged("RegimenFiscalReceptor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ResidenciaFiscal() As String
+            Get
+                Return Me.ResidenciaFiscalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ResidenciaFiscalField, value) <> true) Then
+                    Me.ResidenciaFiscalField = value
+                    Me.RaisePropertyChanged("ResidenciaFiscal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Rfc() As String
+            Get
+                Return Me.RfcField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RfcField, value) <> true) Then
+                    Me.RfcField = value
+                    Me.RaisePropertyChanged("Rfc")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UsoCFDI() As String
+            Get
+                Return Me.UsoCFDIField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UsoCFDIField, value) <> true) Then
+                    Me.UsoCFDIField = value
+                    Me.RaisePropertyChanged("UsoCFDI")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CfdiRelacionados40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class CfdiRelacionados40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CfdiRelacionadoField() As FelProd.CfdiRelacionado40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoRelacionField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CfdiRelacionado() As FelProd.CfdiRelacionado40R()
+            Get
+                Return Me.CfdiRelacionadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CfdiRelacionadoField, value) <> true) Then
+                    Me.CfdiRelacionadoField = value
+                    Me.RaisePropertyChanged("CfdiRelacionado")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoRelacion() As String
+            Get
+                Return Me.TipoRelacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoRelacionField, value) <> true) Then
+                    Me.TipoRelacionField = value
+                    Me.RaisePropertyChanged("TipoRelacion")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Concepto40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Concepto40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ACuentaTercerosField As FelProd.ACuentaTerceros40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CantidadField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClaveProdServField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClaveUnidadField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CuentaPredialField() As FelProd.CuentaPredial40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescripcionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescuentoField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestosField As FelProd.ImpuestosConcepto40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InformacionAduaneraField() As FelProd.InformacionAduanera40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InstEducativasField As FelProd.InstEducativas40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NoIdentificacionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ObjetoImpField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PartesField() As FelProd.Parte40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UnidadField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ValorUnitarioField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private VentaVehiculosField As FelProd.VentaVehiculos40R
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ACuentaTerceros() As FelProd.ACuentaTerceros40R
+            Get
+                Return Me.ACuentaTercerosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ACuentaTercerosField, value) <> true) Then
+                    Me.ACuentaTercerosField = value
+                    Me.RaisePropertyChanged("ACuentaTerceros")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Cantidad() As Decimal
+            Get
+                Return Me.CantidadField
+            End Get
+            Set
+                If (Me.CantidadField.Equals(value) <> true) Then
+                    Me.CantidadField = value
+                    Me.RaisePropertyChanged("Cantidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClaveProdServ() As String
+            Get
+                Return Me.ClaveProdServField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClaveProdServField, value) <> true) Then
+                    Me.ClaveProdServField = value
+                    Me.RaisePropertyChanged("ClaveProdServ")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClaveUnidad() As String
+            Get
+                Return Me.ClaveUnidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClaveUnidadField, value) <> true) Then
+                    Me.ClaveUnidadField = value
+                    Me.RaisePropertyChanged("ClaveUnidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CuentaPredial() As FelProd.CuentaPredial40R()
+            Get
+                Return Me.CuentaPredialField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CuentaPredialField, value) <> true) Then
+                    Me.CuentaPredialField = value
+                    Me.RaisePropertyChanged("CuentaPredial")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Descripcion() As String
+            Get
+                Return Me.DescripcionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DescripcionField, value) <> true) Then
+                    Me.DescripcionField = value
+                    Me.RaisePropertyChanged("Descripcion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Descuento() As System.Nullable(Of Decimal)
+            Get
+                Return Me.DescuentoField
+            End Get
+            Set
+                If (Me.DescuentoField.Equals(value) <> true) Then
+                    Me.DescuentoField = value
+                    Me.RaisePropertyChanged("Descuento")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Importe() As Decimal
+            Get
+                Return Me.ImporteField
+            End Get
+            Set
+                If (Me.ImporteField.Equals(value) <> true) Then
+                    Me.ImporteField = value
+                    Me.RaisePropertyChanged("Importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Impuestos() As FelProd.ImpuestosConcepto40R
+            Get
+                Return Me.ImpuestosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestosField, value) <> true) Then
+                    Me.ImpuestosField = value
+                    Me.RaisePropertyChanged("Impuestos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InformacionAduanera() As FelProd.InformacionAduanera40R()
+            Get
+                Return Me.InformacionAduaneraField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InformacionAduaneraField, value) <> true) Then
+                    Me.InformacionAduaneraField = value
+                    Me.RaisePropertyChanged("InformacionAduanera")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InstEducativas() As FelProd.InstEducativas40R
+            Get
+                Return Me.InstEducativasField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InstEducativasField, value) <> true) Then
+                    Me.InstEducativasField = value
+                    Me.RaisePropertyChanged("InstEducativas")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NoIdentificacion() As String
+            Get
+                Return Me.NoIdentificacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NoIdentificacionField, value) <> true) Then
+                    Me.NoIdentificacionField = value
+                    Me.RaisePropertyChanged("NoIdentificacion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ObjetoImp() As String
+            Get
+                Return Me.ObjetoImpField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ObjetoImpField, value) <> true) Then
+                    Me.ObjetoImpField = value
+                    Me.RaisePropertyChanged("ObjetoImp")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Partes() As FelProd.Parte40R()
+            Get
+                Return Me.PartesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PartesField, value) <> true) Then
+                    Me.PartesField = value
+                    Me.RaisePropertyChanged("Partes")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Unidad() As String
+            Get
+                Return Me.UnidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UnidadField, value) <> true) Then
+                    Me.UnidadField = value
+                    Me.RaisePropertyChanged("Unidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ValorUnitario() As Decimal
+            Get
+                Return Me.ValorUnitarioField
+            End Get
+            Set
+                If (Me.ValorUnitarioField.Equals(value) <> true) Then
+                    Me.ValorUnitarioField = value
+                    Me.RaisePropertyChanged("ValorUnitario")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property VentaVehiculos() As FelProd.VentaVehiculos40R
+            Get
+                Return Me.VentaVehiculosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.VentaVehiculosField, value) <> true) Then
+                    Me.VentaVehiculosField = value
+                    Me.RaisePropertyChanged("VentaVehiculos")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DomicilioCliente40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DomicilioCliente40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CalleField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CodigoPostalField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColoniaField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EstadoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LocalidadField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MunicipioField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreClienteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumeroExteriorField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumeroInteriorField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PaisField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReferenciaField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TelefonoField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Calle() As String
+            Get
+                Return Me.CalleField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CalleField, value) <> true) Then
+                    Me.CalleField = value
+                    Me.RaisePropertyChanged("Calle")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CodigoPostal() As String
+            Get
+                Return Me.CodigoPostalField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CodigoPostalField, value) <> true) Then
+                    Me.CodigoPostalField = value
+                    Me.RaisePropertyChanged("CodigoPostal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Colonia() As String
+            Get
+                Return Me.ColoniaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ColoniaField, value) <> true) Then
+                    Me.ColoniaField = value
+                    Me.RaisePropertyChanged("Colonia")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Estado() As String
+            Get
+                Return Me.EstadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EstadoField, value) <> true) Then
+                    Me.EstadoField = value
+                    Me.RaisePropertyChanged("Estado")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Localidad() As String
+            Get
+                Return Me.LocalidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LocalidadField, value) <> true) Then
+                    Me.LocalidadField = value
+                    Me.RaisePropertyChanged("Localidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Municipio() As String
+            Get
+                Return Me.MunicipioField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MunicipioField, value) <> true) Then
+                    Me.MunicipioField = value
+                    Me.RaisePropertyChanged("Municipio")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NombreCliente() As String
+            Get
+                Return Me.NombreClienteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreClienteField, value) <> true) Then
+                    Me.NombreClienteField = value
+                    Me.RaisePropertyChanged("NombreCliente")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NumeroExterior() As String
+            Get
+                Return Me.NumeroExteriorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumeroExteriorField, value) <> true) Then
+                    Me.NumeroExteriorField = value
+                    Me.RaisePropertyChanged("NumeroExterior")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NumeroInterior() As String
+            Get
+                Return Me.NumeroInteriorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumeroInteriorField, value) <> true) Then
+                    Me.NumeroInteriorField = value
+                    Me.RaisePropertyChanged("NumeroInterior")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Pais() As String
+            Get
+                Return Me.PaisField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PaisField, value) <> true) Then
+                    Me.PaisField = value
+                    Me.RaisePropertyChanged("Pais")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Referencia() As String
+            Get
+                Return Me.ReferenciaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ReferenciaField, value) <> true) Then
+                    Me.ReferenciaField = value
+                    Me.RaisePropertyChanged("Referencia")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Telefono() As String
+            Get
+                Return Me.TelefonoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TelefonoField, value) <> true) Then
+                    Me.TelefonoField = value
+                    Me.RaisePropertyChanged("Telefono")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Pagare40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Pagare40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FechaPagoField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasaInteresField As Decimal
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FechaPago() As Date
+            Get
+                Return Me.FechaPagoField
+            End Get
+            Set
+                If (Me.FechaPagoField.Equals(value) <> true) Then
+                    Me.FechaPagoField = value
+                    Me.RaisePropertyChanged("FechaPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasaInteres() As Decimal
+            Get
+                Return Me.TasaInteresField
+            End Get
+            Set
+                If (Me.TasaInteresField.Equals(value) <> true) Then
+                    Me.TasaInteresField = value
+                    Me.RaisePropertyChanged("TasaInteres")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DetallesConcepto40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DetallesConcepto40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescuentoField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RetencionesLocalesField() As FelProd.DetalleRetencionLocal40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TrasladosLocalesField() As FelProd.DetalleTrasladoLocal40R
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Descuento() As Decimal
+            Get
+                Return Me.DescuentoField
+            End Get
+            Set
+                If (Me.DescuentoField.Equals(value) <> true) Then
+                    Me.DescuentoField = value
+                    Me.RaisePropertyChanged("Descuento")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RetencionesLocales() As FelProd.DetalleRetencionLocal40R()
+            Get
+                Return Me.RetencionesLocalesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RetencionesLocalesField, value) <> true) Then
+                    Me.RetencionesLocalesField = value
+                    Me.RaisePropertyChanged("RetencionesLocales")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TrasladosLocales() As FelProd.DetalleTrasladoLocal40R()
+            Get
+                Return Me.TrasladosLocalesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TrasladosLocalesField, value) <> true) Then
+                    Me.TrasladosLocalesField = value
+                    Me.RaisePropertyChanged("TrasladosLocales")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="EtiquetaPersonalizada40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class EtiquetaPersonalizada40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ValorField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nombre() As String
+            Get
+                Return Me.NombreField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreField, value) <> true) Then
+                    Me.NombreField = value
+                    Me.RaisePropertyChanged("Nombre")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Valor() As String
+            Get
+                Return Me.ValorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ValorField, value) <> true) Then
+                    Me.ValorField = value
+                    Me.RaisePropertyChanged("Valor")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="FirmaOnLine40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class FirmaOnLine40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PuestoField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nombre() As String
+            Get
+                Return Me.NombreField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreField, value) <> true) Then
+                    Me.NombreField = value
+                    Me.RaisePropertyChanged("Nombre")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Puesto() As String
+            Get
+                Return Me.PuestoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PuestoField, value) <> true) Then
+                    Me.PuestoField = value
+                    Me.RaisePropertyChanged("Puesto")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DetalleRetencionLocal40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DetalleRetencionLocal40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nombre() As String
+            Get
+                Return Me.NombreField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreField, value) <> true) Then
+                    Me.NombreField = value
+                    Me.RaisePropertyChanged("Nombre")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DetalleTrasladoLocal40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DetalleTrasladoLocal40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Nombre() As String
+            Get
+                Return Me.NombreField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreField, value) <> true) Then
+                    Me.NombreField = value
+                    Me.RaisePropertyChanged("Nombre")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CfdiRelacionado40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class CfdiRelacionado40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UUIDField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UUID() As String
+            Get
+                Return Me.UUIDField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UUIDField, value) <> true) Then
+                    Me.UUIDField = value
+                    Me.RaisePropertyChanged("UUID")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ACuentaTerceros40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ACuentaTerceros40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DomicilioFiscalACuentaTercerosField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreACuentaTercerosField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RegimenFiscalACuentaTercerosField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RfcACuentaTercerosField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DomicilioFiscalACuentaTerceros() As String
+            Get
+                Return Me.DomicilioFiscalACuentaTercerosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DomicilioFiscalACuentaTercerosField, value) <> true) Then
+                    Me.DomicilioFiscalACuentaTercerosField = value
+                    Me.RaisePropertyChanged("DomicilioFiscalACuentaTerceros")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NombreACuentaTerceros() As String
+            Get
+                Return Me.NombreACuentaTercerosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreACuentaTercerosField, value) <> true) Then
+                    Me.NombreACuentaTercerosField = value
+                    Me.RaisePropertyChanged("NombreACuentaTerceros")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RegimenFiscalACuentaTerceros() As String
+            Get
+                Return Me.RegimenFiscalACuentaTercerosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RegimenFiscalACuentaTercerosField, value) <> true) Then
+                    Me.RegimenFiscalACuentaTercerosField = value
+                    Me.RaisePropertyChanged("RegimenFiscalACuentaTerceros")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RfcACuentaTerceros() As String
+            Get
+                Return Me.RfcACuentaTercerosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RfcACuentaTercerosField, value) <> true) Then
+                    Me.RfcACuentaTercerosField = value
+                    Me.RaisePropertyChanged("RfcACuentaTerceros")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ImpuestosConcepto40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ImpuestosConcepto40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RetencionesField() As FelProd.RetencionConcepto40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RetencionesLocalesField() As FelProd.RetencionLocal40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TrasladosField() As FelProd.TrasladoConcepto40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TrasladosLocalesField() As FelProd.TrasladoLocal40R
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Retenciones() As FelProd.RetencionConcepto40R()
+            Get
+                Return Me.RetencionesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RetencionesField, value) <> true) Then
+                    Me.RetencionesField = value
+                    Me.RaisePropertyChanged("Retenciones")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RetencionesLocales() As FelProd.RetencionLocal40R()
+            Get
+                Return Me.RetencionesLocalesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RetencionesLocalesField, value) <> true) Then
+                    Me.RetencionesLocalesField = value
+                    Me.RaisePropertyChanged("RetencionesLocales")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Traslados() As FelProd.TrasladoConcepto40R()
+            Get
+                Return Me.TrasladosField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TrasladosField, value) <> true) Then
+                    Me.TrasladosField = value
+                    Me.RaisePropertyChanged("Traslados")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TrasladosLocales() As FelProd.TrasladoLocal40R()
+            Get
+                Return Me.TrasladosLocalesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TrasladosLocalesField, value) <> true) Then
+                    Me.TrasladosLocalesField = value
+                    Me.RaisePropertyChanged("TrasladosLocales")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="InstEducativas40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class InstEducativas40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AutRVOEField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CURPField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NivelEducativoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreAlumnoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RfcPagoField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property AutRVOE() As String
+            Get
+                Return Me.AutRVOEField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AutRVOEField, value) <> true) Then
+                    Me.AutRVOEField = value
+                    Me.RaisePropertyChanged("AutRVOE")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CURP() As String
+            Get
+                Return Me.CURPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CURPField, value) <> true) Then
+                    Me.CURPField = value
+                    Me.RaisePropertyChanged("CURP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NivelEducativo() As String
+            Get
+                Return Me.NivelEducativoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NivelEducativoField, value) <> true) Then
+                    Me.NivelEducativoField = value
+                    Me.RaisePropertyChanged("NivelEducativo")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NombreAlumno() As String
+            Get
+                Return Me.NombreAlumnoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreAlumnoField, value) <> true) Then
+                    Me.NombreAlumnoField = value
+                    Me.RaisePropertyChanged("NombreAlumno")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RfcPago() As String
+            Get
+                Return Me.RfcPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RfcPagoField, value) <> true) Then
+                    Me.RfcPagoField = value
+                    Me.RaisePropertyChanged("RfcPago")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="VentaVehiculos40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class VentaVehiculos40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClaveVehicularField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InformacionAduaneraField() As FelProd.InformacionAduaneraVentaVehiculos40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NivField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PartesField() As FelProd.VentaVehiculosParte40R
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClaveVehicular() As String
+            Get
+                Return Me.ClaveVehicularField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClaveVehicularField, value) <> true) Then
+                    Me.ClaveVehicularField = value
+                    Me.RaisePropertyChanged("ClaveVehicular")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InformacionAduanera() As FelProd.InformacionAduaneraVentaVehiculos40R()
+            Get
+                Return Me.InformacionAduaneraField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InformacionAduaneraField, value) <> true) Then
+                    Me.InformacionAduaneraField = value
+                    Me.RaisePropertyChanged("InformacionAduanera")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Niv() As String
+            Get
+                Return Me.NivField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NivField, value) <> true) Then
+                    Me.NivField = value
+                    Me.RaisePropertyChanged("Niv")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Partes() As FelProd.VentaVehiculosParte40R()
+            Get
+                Return Me.PartesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PartesField, value) <> true) Then
+                    Me.PartesField = value
+                    Me.RaisePropertyChanged("Partes")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CuentaPredial40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class CuentaPredial40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumeroField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Numero() As String
+            Get
+                Return Me.NumeroField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumeroField, value) <> true) Then
+                    Me.NumeroField = value
+                    Me.RaisePropertyChanged("Numero")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="InformacionAduanera40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class InformacionAduanera40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumeroPedimentoField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NumeroPedimento() As String
+            Get
+                Return Me.NumeroPedimentoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumeroPedimentoField, value) <> true) Then
+                    Me.NumeroPedimentoField = value
+                    Me.RaisePropertyChanged("NumeroPedimento")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Parte40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Parte40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CantidadField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClaveProdServField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescripcionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InformacionAduaneraField() As FelProd.InformacionAduanera40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NoIdentificacionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UnidadField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ValorUnitarioField As System.Nullable(Of Decimal)
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Cantidad() As Decimal
+            Get
+                Return Me.CantidadField
+            End Get
+            Set
+                If (Me.CantidadField.Equals(value) <> true) Then
+                    Me.CantidadField = value
+                    Me.RaisePropertyChanged("Cantidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClaveProdServ() As String
+            Get
+                Return Me.ClaveProdServField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClaveProdServField, value) <> true) Then
+                    Me.ClaveProdServField = value
+                    Me.RaisePropertyChanged("ClaveProdServ")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Descripcion() As String
+            Get
+                Return Me.DescripcionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DescripcionField, value) <> true) Then
+                    Me.DescripcionField = value
+                    Me.RaisePropertyChanged("Descripcion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Importe() As System.Nullable(Of Decimal)
+            Get
+                Return Me.ImporteField
+            End Get
+            Set
+                If (Me.ImporteField.Equals(value) <> true) Then
+                    Me.ImporteField = value
+                    Me.RaisePropertyChanged("Importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InformacionAduanera() As FelProd.InformacionAduanera40R()
+            Get
+                Return Me.InformacionAduaneraField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InformacionAduaneraField, value) <> true) Then
+                    Me.InformacionAduaneraField = value
+                    Me.RaisePropertyChanged("InformacionAduanera")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NoIdentificacion() As String
+            Get
+                Return Me.NoIdentificacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NoIdentificacionField, value) <> true) Then
+                    Me.NoIdentificacionField = value
+                    Me.RaisePropertyChanged("NoIdentificacion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Unidad() As String
+            Get
+                Return Me.UnidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UnidadField, value) <> true) Then
+                    Me.UnidadField = value
+                    Me.RaisePropertyChanged("Unidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ValorUnitario() As System.Nullable(Of Decimal)
+            Get
+                Return Me.ValorUnitarioField
+            End Get
+            Set
+                If (Me.ValorUnitarioField.Equals(value) <> true) Then
+                    Me.ValorUnitarioField = value
+                    Me.RaisePropertyChanged("ValorUnitario")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="RetencionConcepto40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class RetencionConcepto40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BaseField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasaOCuotaField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoFactorField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Base() As Decimal
+            Get
+                Return Me.BaseField
+            End Get
+            Set
+                If (Me.BaseField.Equals(value) <> true) Then
+                    Me.BaseField = value
+                    Me.RaisePropertyChanged("Base")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Importe() As Decimal
+            Get
+                Return Me.ImporteField
+            End Get
+            Set
+                If (Me.ImporteField.Equals(value) <> true) Then
+                    Me.ImporteField = value
+                    Me.RaisePropertyChanged("Importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Impuesto() As String
+            Get
+                Return Me.ImpuestoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestoField, value) <> true) Then
+                    Me.ImpuestoField = value
+                    Me.RaisePropertyChanged("Impuesto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasaOCuota() As Decimal
+            Get
+                Return Me.TasaOCuotaField
+            End Get
+            Set
+                If (Me.TasaOCuotaField.Equals(value) <> true) Then
+                    Me.TasaOCuotaField = value
+                    Me.RaisePropertyChanged("TasaOCuota")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoFactor() As String
+            Get
+                Return Me.TipoFactorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoFactorField, value) <> true) Then
+                    Me.TipoFactorField = value
+                    Me.RaisePropertyChanged("TipoFactor")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="RetencionLocal40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class RetencionLocal40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpLocRetenidoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreImpuestoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasadeRetencionField As Decimal
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpLocRetenido() As String
+            Get
+                Return Me.ImpLocRetenidoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpLocRetenidoField, value) <> true) Then
+                    Me.ImpLocRetenidoField = value
+                    Me.RaisePropertyChanged("ImpLocRetenido")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Importe() As Decimal
+            Get
+                Return Me.ImporteField
+            End Get
+            Set
+                If (Me.ImporteField.Equals(value) <> true) Then
+                    Me.ImporteField = value
+                    Me.RaisePropertyChanged("Importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NombreImpuesto() As String
+            Get
+                Return Me.NombreImpuestoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreImpuestoField, value) <> true) Then
+                    Me.NombreImpuestoField = value
+                    Me.RaisePropertyChanged("NombreImpuesto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasadeRetencion() As Decimal
+            Get
+                Return Me.TasadeRetencionField
+            End Get
+            Set
+                If (Me.TasadeRetencionField.Equals(value) <> true) Then
+                    Me.TasadeRetencionField = value
+                    Me.RaisePropertyChanged("TasadeRetencion")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="TrasladoConcepto40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class TrasladoConcepto40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BaseField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasaOCuotaField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoFactorField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Base() As Decimal
+            Get
+                Return Me.BaseField
+            End Get
+            Set
+                If (Me.BaseField.Equals(value) <> true) Then
+                    Me.BaseField = value
+                    Me.RaisePropertyChanged("Base")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Importe() As Decimal
+            Get
+                Return Me.ImporteField
+            End Get
+            Set
+                If (Me.ImporteField.Equals(value) <> true) Then
+                    Me.ImporteField = value
+                    Me.RaisePropertyChanged("Importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Impuesto() As String
+            Get
+                Return Me.ImpuestoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestoField, value) <> true) Then
+                    Me.ImpuestoField = value
+                    Me.RaisePropertyChanged("Impuesto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasaOCuota() As Decimal
+            Get
+                Return Me.TasaOCuotaField
+            End Get
+            Set
+                If (Me.TasaOCuotaField.Equals(value) <> true) Then
+                    Me.TasaOCuotaField = value
+                    Me.RaisePropertyChanged("TasaOCuota")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoFactor() As String
+            Get
+                Return Me.TipoFactorField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoFactorField, value) <> true) Then
+                    Me.TipoFactorField = value
+                    Me.RaisePropertyChanged("TipoFactor")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="TrasladoLocal40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class TrasladoLocal40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpLocTrasladadoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NombreImpuestoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasadeTrasladoField As Decimal
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpLocTrasladado() As String
+            Get
+                Return Me.ImpLocTrasladadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpLocTrasladadoField, value) <> true) Then
+                    Me.ImpLocTrasladadoField = value
+                    Me.RaisePropertyChanged("ImpLocTrasladado")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Importe() As Decimal
+            Get
+                Return Me.ImporteField
+            End Get
+            Set
+                If (Me.ImporteField.Equals(value) <> true) Then
+                    Me.ImporteField = value
+                    Me.RaisePropertyChanged("Importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NombreImpuesto() As String
+            Get
+                Return Me.NombreImpuestoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NombreImpuestoField, value) <> true) Then
+                    Me.NombreImpuestoField = value
+                    Me.RaisePropertyChanged("NombreImpuesto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasadeTraslado() As Decimal
+            Get
+                Return Me.TasadeTrasladoField
+            End Get
+            Set
+                If (Me.TasadeTrasladoField.Equals(value) <> true) Then
+                    Me.TasadeTrasladoField = value
+                    Me.RaisePropertyChanged("TasadeTraslado")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="InformacionAduaneraVentaVehiculos40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class InformacionAduaneraVentaVehiculos40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AduanaField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FechaField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumeroField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Aduana() As String
+            Get
+                Return Me.AduanaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AduanaField, value) <> true) Then
+                    Me.AduanaField = value
+                    Me.RaisePropertyChanged("Aduana")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Fecha() As Date
+            Get
+                Return Me.FechaField
+            End Get
+            Set
+                If (Me.FechaField.Equals(value) <> true) Then
+                    Me.FechaField = value
+                    Me.RaisePropertyChanged("Fecha")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Numero() As String
+            Get
+                Return Me.NumeroField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumeroField, value) <> true) Then
+                    Me.NumeroField = value
+                    Me.RaisePropertyChanged("Numero")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="VentaVehiculosParte40R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class VentaVehiculosParte40R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InformacionAduaneraField() As FelProd.InformacionAduaneraVentaVehiculos40R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private cantidadField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private descripcionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private importeField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private noIdentificacionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private unidadField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private valorUnitarioField As System.Nullable(Of Decimal)
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InformacionAduanera() As FelProd.InformacionAduaneraVentaVehiculos40R()
+            Get
+                Return Me.InformacionAduaneraField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InformacionAduaneraField, value) <> true) Then
+                    Me.InformacionAduaneraField = value
+                    Me.RaisePropertyChanged("InformacionAduanera")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property cantidad() As Decimal
+            Get
+                Return Me.cantidadField
+            End Get
+            Set
+                If (Me.cantidadField.Equals(value) <> true) Then
+                    Me.cantidadField = value
+                    Me.RaisePropertyChanged("cantidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property descripcion() As String
+            Get
+                Return Me.descripcionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.descripcionField, value) <> true) Then
+                    Me.descripcionField = value
+                    Me.RaisePropertyChanged("descripcion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property importe() As System.Nullable(Of Decimal)
+            Get
+                Return Me.importeField
+            End Get
+            Set
+                If (Me.importeField.Equals(value) <> true) Then
+                    Me.importeField = value
+                    Me.RaisePropertyChanged("importe")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property noIdentificacion() As String
+            Get
+                Return Me.noIdentificacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.noIdentificacionField, value) <> true) Then
+                    Me.noIdentificacionField = value
+                    Me.RaisePropertyChanged("noIdentificacion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property unidad() As String
+            Get
+                Return Me.unidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.unidadField, value) <> true) Then
+                    Me.unidadField = value
+                    Me.RaisePropertyChanged("unidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property valorUnitario() As System.Nullable(Of Decimal)
+            Get
+                Return Me.valorUnitarioField
+            End Get
+            Set
+                If (Me.valorUnitarioField.Equals(value) <> true) Then
+                    Me.valorUnitarioField = value
+                    Me.RaisePropertyChanged("valorUnitario")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosTotales20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosTotales20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MontoTotalPagosField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalRetencionesIEPSField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalRetencionesISRField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalRetencionesIVAField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosBaseIVA0Field As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosBaseIVA16Field As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosBaseIVA8Field As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosBaseIVAExentoField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosImpuestoIVA0Field As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosImpuestoIVA16Field As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TotalTrasladosImpuestoIVA8Field As System.Nullable(Of Decimal)
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property MontoTotalPagos() As Decimal
+            Get
+                Return Me.MontoTotalPagosField
+            End Get
+            Set
+                If (Me.MontoTotalPagosField.Equals(value) <> true) Then
+                    Me.MontoTotalPagosField = value
+                    Me.RaisePropertyChanged("MontoTotalPagos")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalRetencionesIEPS() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalRetencionesIEPSField
+            End Get
+            Set
+                If (Me.TotalRetencionesIEPSField.Equals(value) <> true) Then
+                    Me.TotalRetencionesIEPSField = value
+                    Me.RaisePropertyChanged("TotalRetencionesIEPS")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalRetencionesISR() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalRetencionesISRField
+            End Get
+            Set
+                If (Me.TotalRetencionesISRField.Equals(value) <> true) Then
+                    Me.TotalRetencionesISRField = value
+                    Me.RaisePropertyChanged("TotalRetencionesISR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalRetencionesIVA() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalRetencionesIVAField
+            End Get
+            Set
+                If (Me.TotalRetencionesIVAField.Equals(value) <> true) Then
+                    Me.TotalRetencionesIVAField = value
+                    Me.RaisePropertyChanged("TotalRetencionesIVA")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosBaseIVA0() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosBaseIVA0Field
+            End Get
+            Set
+                If (Me.TotalTrasladosBaseIVA0Field.Equals(value) <> true) Then
+                    Me.TotalTrasladosBaseIVA0Field = value
+                    Me.RaisePropertyChanged("TotalTrasladosBaseIVA0")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosBaseIVA16() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosBaseIVA16Field
+            End Get
+            Set
+                If (Me.TotalTrasladosBaseIVA16Field.Equals(value) <> true) Then
+                    Me.TotalTrasladosBaseIVA16Field = value
+                    Me.RaisePropertyChanged("TotalTrasladosBaseIVA16")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosBaseIVA8() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosBaseIVA8Field
+            End Get
+            Set
+                If (Me.TotalTrasladosBaseIVA8Field.Equals(value) <> true) Then
+                    Me.TotalTrasladosBaseIVA8Field = value
+                    Me.RaisePropertyChanged("TotalTrasladosBaseIVA8")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosBaseIVAExento() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosBaseIVAExentoField
+            End Get
+            Set
+                If (Me.TotalTrasladosBaseIVAExentoField.Equals(value) <> true) Then
+                    Me.TotalTrasladosBaseIVAExentoField = value
+                    Me.RaisePropertyChanged("TotalTrasladosBaseIVAExento")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosImpuestoIVA0() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosImpuestoIVA0Field
+            End Get
+            Set
+                If (Me.TotalTrasladosImpuestoIVA0Field.Equals(value) <> true) Then
+                    Me.TotalTrasladosImpuestoIVA0Field = value
+                    Me.RaisePropertyChanged("TotalTrasladosImpuestoIVA0")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosImpuestoIVA16() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosImpuestoIVA16Field
+            End Get
+            Set
+                If (Me.TotalTrasladosImpuestoIVA16Field.Equals(value) <> true) Then
+                    Me.TotalTrasladosImpuestoIVA16Field = value
+                    Me.RaisePropertyChanged("TotalTrasladosImpuestoIVA16")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TotalTrasladosImpuestoIVA8() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TotalTrasladosImpuestoIVA8Field
+            End Get
+            Set
+                If (Me.TotalTrasladosImpuestoIVA8Field.Equals(value) <> true) Then
+                    Me.TotalTrasladosImpuestoIVA8Field = value
+                    Me.RaisePropertyChanged("TotalTrasladosImpuestoIVA8")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPago20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPago20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CadPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CertPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CtaBeneficiarioField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CtaOrdenanteField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DoctoRelacionadoField() As FelProd.PagosPagoDoctoRelacionado20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FechaPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FormaDePagoPField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestosPField() As FelProd.PagosPagoImpuestosP20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MonedaPField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MontoField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NomBancoOrdExtField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumOperacionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RfcEmisorCtaBenField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RfcEmisorCtaOrdField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SelloPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoCadPagoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoCambioPField As System.Nullable(Of Decimal)
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CadPago() As String
+            Get
+                Return Me.CadPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CadPagoField, value) <> true) Then
+                    Me.CadPagoField = value
+                    Me.RaisePropertyChanged("CadPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CertPago() As String
+            Get
+                Return Me.CertPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CertPagoField, value) <> true) Then
+                    Me.CertPagoField = value
+                    Me.RaisePropertyChanged("CertPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CtaBeneficiario() As String
+            Get
+                Return Me.CtaBeneficiarioField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CtaBeneficiarioField, value) <> true) Then
+                    Me.CtaBeneficiarioField = value
+                    Me.RaisePropertyChanged("CtaBeneficiario")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CtaOrdenante() As String
+            Get
+                Return Me.CtaOrdenanteField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CtaOrdenanteField, value) <> true) Then
+                    Me.CtaOrdenanteField = value
+                    Me.RaisePropertyChanged("CtaOrdenante")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DoctoRelacionado() As FelProd.PagosPagoDoctoRelacionado20R()
+            Get
+                Return Me.DoctoRelacionadoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DoctoRelacionadoField, value) <> true) Then
+                    Me.DoctoRelacionadoField = value
+                    Me.RaisePropertyChanged("DoctoRelacionado")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FechaPago() As String
+            Get
+                Return Me.FechaPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FechaPagoField, value) <> true) Then
+                    Me.FechaPagoField = value
+                    Me.RaisePropertyChanged("FechaPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property FormaDePagoP() As String
+            Get
+                Return Me.FormaDePagoPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FormaDePagoPField, value) <> true) Then
+                    Me.FormaDePagoPField = value
+                    Me.RaisePropertyChanged("FormaDePagoP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpuestosP() As FelProd.PagosPagoImpuestosP20R()
+            Get
+                Return Me.ImpuestosPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestosPField, value) <> true) Then
+                    Me.ImpuestosPField = value
+                    Me.RaisePropertyChanged("ImpuestosP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property MonedaP() As String
+            Get
+                Return Me.MonedaPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MonedaPField, value) <> true) Then
+                    Me.MonedaPField = value
+                    Me.RaisePropertyChanged("MonedaP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Monto() As Decimal
+            Get
+                Return Me.MontoField
+            End Get
+            Set
+                If (Me.MontoField.Equals(value) <> true) Then
+                    Me.MontoField = value
+                    Me.RaisePropertyChanged("Monto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NomBancoOrdExt() As String
+            Get
+                Return Me.NomBancoOrdExtField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NomBancoOrdExtField, value) <> true) Then
+                    Me.NomBancoOrdExtField = value
+                    Me.RaisePropertyChanged("NomBancoOrdExt")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NumOperacion() As String
+            Get
+                Return Me.NumOperacionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumOperacionField, value) <> true) Then
+                    Me.NumOperacionField = value
+                    Me.RaisePropertyChanged("NumOperacion")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RfcEmisorCtaBen() As String
+            Get
+                Return Me.RfcEmisorCtaBenField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RfcEmisorCtaBenField, value) <> true) Then
+                    Me.RfcEmisorCtaBenField = value
+                    Me.RaisePropertyChanged("RfcEmisorCtaBen")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RfcEmisorCtaOrd() As String
+            Get
+                Return Me.RfcEmisorCtaOrdField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RfcEmisorCtaOrdField, value) <> true) Then
+                    Me.RfcEmisorCtaOrdField = value
+                    Me.RaisePropertyChanged("RfcEmisorCtaOrd")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SelloPago() As String
+            Get
+                Return Me.SelloPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SelloPagoField, value) <> true) Then
+                    Me.SelloPagoField = value
+                    Me.RaisePropertyChanged("SelloPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoCadPago() As String
+            Get
+                Return Me.TipoCadPagoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoCadPagoField, value) <> true) Then
+                    Me.TipoCadPagoField = value
+                    Me.RaisePropertyChanged("TipoCadPago")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoCambioP() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TipoCambioPField
+            End Get
+            Set
+                If (Me.TipoCambioPField.Equals(value) <> true) Then
+                    Me.TipoCambioPField = value
+                    Me.RaisePropertyChanged("TipoCambioP")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoDoctoRelacionado20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoDoctoRelacionado20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EquivalenciaDRField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FolioField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdDocumentoField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpPagadoField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpSaldoAntField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpSaldoInsolutoField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestosDRField As FelProd.PagosPagoDoctoRelacionadoImpuestosDR20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MonedaDRField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NumParcialidadField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ObjetoImpDRField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SerieField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EquivalenciaDR() As System.Nullable(Of Decimal)
+            Get
+                Return Me.EquivalenciaDRField
+            End Get
+            Set
+                If (Me.EquivalenciaDRField.Equals(value) <> true) Then
+                    Me.EquivalenciaDRField = value
+                    Me.RaisePropertyChanged("EquivalenciaDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Folio() As String
+            Get
+                Return Me.FolioField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FolioField, value) <> true) Then
+                    Me.FolioField = value
+                    Me.RaisePropertyChanged("Folio")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IdDocumento() As String
+            Get
+                Return Me.IdDocumentoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IdDocumentoField, value) <> true) Then
+                    Me.IdDocumentoField = value
+                    Me.RaisePropertyChanged("IdDocumento")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpPagado() As System.Nullable(Of Decimal)
+            Get
+                Return Me.ImpPagadoField
+            End Get
+            Set
+                If (Me.ImpPagadoField.Equals(value) <> true) Then
+                    Me.ImpPagadoField = value
+                    Me.RaisePropertyChanged("ImpPagado")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpSaldoAnt() As Decimal
+            Get
+                Return Me.ImpSaldoAntField
+            End Get
+            Set
+                If (Me.ImpSaldoAntField.Equals(value) <> true) Then
+                    Me.ImpSaldoAntField = value
+                    Me.RaisePropertyChanged("ImpSaldoAnt")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpSaldoInsoluto() As Decimal
+            Get
+                Return Me.ImpSaldoInsolutoField
+            End Get
+            Set
+                If (Me.ImpSaldoInsolutoField.Equals(value) <> true) Then
+                    Me.ImpSaldoInsolutoField = value
+                    Me.RaisePropertyChanged("ImpSaldoInsoluto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpuestosDR() As FelProd.PagosPagoDoctoRelacionadoImpuestosDR20R
+            Get
+                Return Me.ImpuestosDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestosDRField, value) <> true) Then
+                    Me.ImpuestosDRField = value
+                    Me.RaisePropertyChanged("ImpuestosDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property MonedaDR() As String
+            Get
+                Return Me.MonedaDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MonedaDRField, value) <> true) Then
+                    Me.MonedaDRField = value
+                    Me.RaisePropertyChanged("MonedaDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property NumParcialidad() As String
+            Get
+                Return Me.NumParcialidadField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NumParcialidadField, value) <> true) Then
+                    Me.NumParcialidadField = value
+                    Me.RaisePropertyChanged("NumParcialidad")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ObjetoImpDR() As String
+            Get
+                Return Me.ObjetoImpDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ObjetoImpDRField, value) <> true) Then
+                    Me.ObjetoImpDRField = value
+                    Me.RaisePropertyChanged("ObjetoImpDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Serie() As String
+            Get
+                Return Me.SerieField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SerieField, value) <> true) Then
+                    Me.SerieField = value
+                    Me.RaisePropertyChanged("Serie")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoImpuestosP20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoImpuestosP20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RetencionesPField() As FelProd.PagosPagoImpuestosPRetencionP20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TrasladosPField() As FelProd.PagosPagoImpuestosPTrasladoP20R
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RetencionesP() As FelProd.PagosPagoImpuestosPRetencionP20R()
+            Get
+                Return Me.RetencionesPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RetencionesPField, value) <> true) Then
+                    Me.RetencionesPField = value
+                    Me.RaisePropertyChanged("RetencionesP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TrasladosP() As FelProd.PagosPagoImpuestosPTrasladoP20R()
+            Get
+                Return Me.TrasladosPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TrasladosPField, value) <> true) Then
+                    Me.TrasladosPField = value
+                    Me.RaisePropertyChanged("TrasladosP")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoDoctoRelacionadoImpuestosDR20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoDoctoRelacionadoImpuestosDR20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RetencionesDRField() As FelProd.PagosPagoDoctoRelacionadoImpuestosDRRetencionDR20R
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TrasladosDRField() As FelProd.PagosPagoDoctoRelacionadoImpuestosDRTrasladoDR20R
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RetencionesDR() As FelProd.PagosPagoDoctoRelacionadoImpuestosDRRetencionDR20R()
+            Get
+                Return Me.RetencionesDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RetencionesDRField, value) <> true) Then
+                    Me.RetencionesDRField = value
+                    Me.RaisePropertyChanged("RetencionesDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TrasladosDR() As FelProd.PagosPagoDoctoRelacionadoImpuestosDRTrasladoDR20R()
+            Get
+                Return Me.TrasladosDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TrasladosDRField, value) <> true) Then
+                    Me.TrasladosDRField = value
+                    Me.RaisePropertyChanged("TrasladosDR")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoDoctoRelacionadoImpuestosDRRetencionDR20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoDoctoRelacionadoImpuestosDRRetencionDR20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BaseDRField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteDRField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestoDRField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasaOCuotaDRField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoFactorDRField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BaseDR() As Decimal
+            Get
+                Return Me.BaseDRField
+            End Get
+            Set
+                If (Me.BaseDRField.Equals(value) <> true) Then
+                    Me.BaseDRField = value
+                    Me.RaisePropertyChanged("BaseDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImporteDR() As Decimal
+            Get
+                Return Me.ImporteDRField
+            End Get
+            Set
+                If (Me.ImporteDRField.Equals(value) <> true) Then
+                    Me.ImporteDRField = value
+                    Me.RaisePropertyChanged("ImporteDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpuestoDR() As String
+            Get
+                Return Me.ImpuestoDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestoDRField, value) <> true) Then
+                    Me.ImpuestoDRField = value
+                    Me.RaisePropertyChanged("ImpuestoDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasaOCuotaDR() As Decimal
+            Get
+                Return Me.TasaOCuotaDRField
+            End Get
+            Set
+                If (Me.TasaOCuotaDRField.Equals(value) <> true) Then
+                    Me.TasaOCuotaDRField = value
+                    Me.RaisePropertyChanged("TasaOCuotaDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoFactorDR() As String
+            Get
+                Return Me.TipoFactorDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoFactorDRField, value) <> true) Then
+                    Me.TipoFactorDRField = value
+                    Me.RaisePropertyChanged("TipoFactorDR")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoDoctoRelacionadoImpuestosDRTrasladoDR20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoDoctoRelacionadoImpuestosDRTrasladoDR20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BaseDRField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImporteDRField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestoDRField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasaOCuotaDRField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoFactorDRField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BaseDR() As Decimal
+            Get
+                Return Me.BaseDRField
+            End Get
+            Set
+                If (Me.BaseDRField.Equals(value) <> true) Then
+                    Me.BaseDRField = value
+                    Me.RaisePropertyChanged("BaseDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImporteDR() As System.Nullable(Of Decimal)
+            Get
+                Return Me.ImporteDRField
+            End Get
+            Set
+                If (Me.ImporteDRField.Equals(value) <> true) Then
+                    Me.ImporteDRField = value
+                    Me.RaisePropertyChanged("ImporteDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpuestoDR() As String
+            Get
+                Return Me.ImpuestoDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestoDRField, value) <> true) Then
+                    Me.ImpuestoDRField = value
+                    Me.RaisePropertyChanged("ImpuestoDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasaOCuotaDR() As System.Nullable(Of Decimal)
+            Get
+                Return Me.TasaOCuotaDRField
+            End Get
+            Set
+                If (Me.TasaOCuotaDRField.Equals(value) <> true) Then
+                    Me.TasaOCuotaDRField = value
+                    Me.RaisePropertyChanged("TasaOCuotaDR")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoFactorDR() As String
+            Get
+                Return Me.TipoFactorDRField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoFactorDRField, value) <> true) Then
+                    Me.TipoFactorDRField = value
+                    Me.RaisePropertyChanged("TipoFactorDR")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoImpuestosPRetencionP20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoImpuestosPRetencionP20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImportePField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestoPField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImporteP() As Decimal
+            Get
+                Return Me.ImportePField
+            End Get
+            Set
+                If (Me.ImportePField.Equals(value) <> true) Then
+                    Me.ImportePField = value
+                    Me.RaisePropertyChanged("ImporteP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpuestoP() As String
+            Get
+                Return Me.ImpuestoPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestoPField, value) <> true) Then
+                    Me.ImpuestoPField = value
+                    Me.RaisePropertyChanged("ImpuestoP")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PagosPagoImpuestosPTrasladoP20R", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class PagosPagoImpuestosPTrasladoP20R
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BasePField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImportePField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ImpuestoPField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TasaOCuotaPField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TipoFactorPField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BaseP() As Decimal
+            Get
+                Return Me.BasePField
+            End Get
+            Set
+                If (Me.BasePField.Equals(value) <> true) Then
+                    Me.BasePField = value
+                    Me.RaisePropertyChanged("BaseP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImporteP() As Decimal
+            Get
+                Return Me.ImportePField
+            End Get
+            Set
+                If (Me.ImportePField.Equals(value) <> true) Then
+                    Me.ImportePField = value
+                    Me.RaisePropertyChanged("ImporteP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ImpuestoP() As String
+            Get
+                Return Me.ImpuestoPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ImpuestoPField, value) <> true) Then
+                    Me.ImpuestoPField = value
+                    Me.RaisePropertyChanged("ImpuestoP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TasaOCuotaP() As Decimal
+            Get
+                Return Me.TasaOCuotaPField
+            End Get
+            Set
+                If (Me.TasaOCuotaPField.Equals(value) <> true) Then
+                    Me.TasaOCuotaPField = value
+                    Me.RaisePropertyChanged("TasaOCuotaP")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TipoFactorP() As String
+            Get
+                Return Me.TipoFactorPField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TipoFactorPField, value) <> true) Then
+                    Me.TipoFactorPField = value
+                    Me.RaisePropertyChanged("TipoFactorP")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="RespuestaTicketCR", [Namespace]:="http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios"),  _
      System.SerializableAttribute()>  _
     Partial Public Class RespuestaTicketCR
@@ -21673,20 +26691,38 @@ Namespace FelProd
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/GenerarCFDI", ReplyAction:="http://tempuri.org/IConexionRemota/GenerarCFDIResponse")>  _
         Function GenerarCFDI(ByVal credenciales As FelProd.Credenciales, ByVal cfdi As FelProd.Comprobante33R) As FelProd.RespuestaOperacionCR
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/GenerarCFDI40", ReplyAction:="http://tempuri.org/IConexionRemota/GenerarCFDI40Response")>  _
+        Function GenerarCFDI40(ByVal credenciales As FelProd.Credenciales, ByVal cfdi As FelProd.Comprobante40R) As FelProd.RespuestaOperacionCR
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/GenerarTicket", ReplyAction:="http://tempuri.org/IConexionRemota/GenerarTicketResponse")>  _
         Function GenerarTicket(ByVal credenciales As FelProd.Credenciales, ByVal ticket As FelProd.Comprobante33R) As FelProd.RespuestaTicketCR
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/GenerarTicket40", ReplyAction:="http://tempuri.org/IConexionRemota/GenerarTicket40Response")>  _
+        Function GenerarTicket40(ByVal credenciales As FelProd.Credenciales, ByVal ticket As FelProd.Comprobante40R) As FelProd.RespuestaTicketCR
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/EnviarCFDI", ReplyAction:="http://tempuri.org/IConexionRemota/EnviarCFDIResponse")>  _
         Function EnviarCFDI(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal email As String, ByVal titulo As String, ByVal mensaje As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/EnviarCFDI40", ReplyAction:="http://tempuri.org/IConexionRemota/EnviarCFDI40Response")>  _
+        Function EnviarCFDI40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal email As String, ByVal titulo As String, ByVal mensaje As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerPDF", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerPDFResponse")>  _
         Function ObtenerPDF(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerPDF40", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerPDF40Response")>  _
+        Function ObtenerPDF40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferenciaResponse")>  _
         Function ObtenerXMLPorReferencia(ByVal credenciales As FelProd.Credenciales, ByVal referencia As String) As FelProd.RespuestaOperacionCR
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia40", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerXMLPorReferencia40Response")>  _
+        Function ObtenerXMLPorReferencia40(ByVal credenciales As FelProd.Credenciales, ByVal referencia As String) As FelProd.RespuestaOperacionCR
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUIDResponse")>  _
         Function ObtenerXMLPorUUID(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID40", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerXMLPorUUID40Response")>  _
+        Function ObtenerXMLPorUUID40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerXMLyAddendaPorUUID", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerXMLyAddendaPorUUIDResponse")>  _
         Function ObtenerXMLyAddendaPorUUID(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR
@@ -21697,8 +26733,14 @@ Namespace FelProd
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerComprobantes", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerComprobantesResponse")>  _
         Function ObtenerComprobantes(ByVal credenciales As FelProd.Credenciales, ByVal fechaInicial As Date, ByVal fechaFinal As Date, ByVal filaInicial As Integer) As FelProd.RespuestaReporteCR
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerComprobantes40", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerComprobantes40Response")>  _
+        Function ObtenerComprobantes40(ByVal credenciales As FelProd.Credenciales, ByVal fechaInicial As Date, ByVal fechaFinal As Date, ByVal filaInicial As Integer) As FelProd.RespuestaReporteCR
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvioResponse")>  _
         Function ObtenerAcuseEnvio(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio40", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerAcuseEnvio40Response")>  _
+        Function ObtenerAcuseEnvio40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacionResponse")>  _
         Function ObtenerAcuseCancelacion(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR
@@ -21726,6 +26768,9 @@ Namespace FelProd
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/CancelarCFDIsConValidacion", ReplyAction:="http://tempuri.org/IConexionRemota/CancelarCFDIsConValidacionResponse")>  _
         Function CancelarCFDIsConValidacion(ByVal credenciales As FelProd.Credenciales, ByVal uuids() As FelProd.UUIDMotivoCancelacionCR) As FelProd.RespuestaCancelacionCR
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/CancelarCFDIsV4", ReplyAction:="http://tempuri.org/IConexionRemota/CancelarCFDIsV4Response")>  _
+        Function CancelarCFDIsV4(ByVal credenciales As FelProd.Credenciales, ByVal uuids() As FelProd.UUIDMotivoCancelacionCR) As FelProd.RespuestaCancelacionCR
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConexionRemota/ObtenerSolicitudesPendientesCancelacion", ReplyAction:="http://tempuri.org/IConexionRemota/ObtenerSolicitudesPendientesCancelacionRespons"& _ 
             "e")>  _
@@ -21790,24 +26835,48 @@ Namespace FelProd
             Return MyBase.Channel.GenerarCFDI(credenciales, cfdi)
         End Function
         
+        Public Function GenerarCFDI40(ByVal credenciales As FelProd.Credenciales, ByVal cfdi As FelProd.Comprobante40R) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.GenerarCFDI40
+            Return MyBase.Channel.GenerarCFDI40(credenciales, cfdi)
+        End Function
+        
         Public Function GenerarTicket(ByVal credenciales As FelProd.Credenciales, ByVal ticket As FelProd.Comprobante33R) As FelProd.RespuestaTicketCR Implements FelProd.IConexionRemota.GenerarTicket
             Return MyBase.Channel.GenerarTicket(credenciales, ticket)
+        End Function
+        
+        Public Function GenerarTicket40(ByVal credenciales As FelProd.Credenciales, ByVal ticket As FelProd.Comprobante40R) As FelProd.RespuestaTicketCR Implements FelProd.IConexionRemota.GenerarTicket40
+            Return MyBase.Channel.GenerarTicket40(credenciales, ticket)
         End Function
         
         Public Function EnviarCFDI(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal email As String, ByVal titulo As String, ByVal mensaje As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.EnviarCFDI
             Return MyBase.Channel.EnviarCFDI(credenciales, uuid, email, titulo, mensaje, nombrePlantilla)
         End Function
         
+        Public Function EnviarCFDI40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal email As String, ByVal titulo As String, ByVal mensaje As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.EnviarCFDI40
+            Return MyBase.Channel.EnviarCFDI40(credenciales, uuid, email, titulo, mensaje, nombrePlantilla)
+        End Function
+        
         Public Function ObtenerPDF(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerPDF
             Return MyBase.Channel.ObtenerPDF(credenciales, uuid, nombrePlantilla)
+        End Function
+        
+        Public Function ObtenerPDF40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String, ByVal nombrePlantilla As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerPDF40
+            Return MyBase.Channel.ObtenerPDF40(credenciales, uuid, nombrePlantilla)
         End Function
         
         Public Function ObtenerXMLPorReferencia(ByVal credenciales As FelProd.Credenciales, ByVal referencia As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerXMLPorReferencia
             Return MyBase.Channel.ObtenerXMLPorReferencia(credenciales, referencia)
         End Function
         
+        Public Function ObtenerXMLPorReferencia40(ByVal credenciales As FelProd.Credenciales, ByVal referencia As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerXMLPorReferencia40
+            Return MyBase.Channel.ObtenerXMLPorReferencia40(credenciales, referencia)
+        End Function
+        
         Public Function ObtenerXMLPorUUID(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerXMLPorUUID
             Return MyBase.Channel.ObtenerXMLPorUUID(credenciales, uuid)
+        End Function
+        
+        Public Function ObtenerXMLPorUUID40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerXMLPorUUID40
+            Return MyBase.Channel.ObtenerXMLPorUUID40(credenciales, uuid)
         End Function
         
         Public Function ObtenerXMLyAddendaPorUUID(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerXMLyAddendaPorUUID
@@ -21822,8 +26891,16 @@ Namespace FelProd
             Return MyBase.Channel.ObtenerComprobantes(credenciales, fechaInicial, fechaFinal, filaInicial)
         End Function
         
+        Public Function ObtenerComprobantes40(ByVal credenciales As FelProd.Credenciales, ByVal fechaInicial As Date, ByVal fechaFinal As Date, ByVal filaInicial As Integer) As FelProd.RespuestaReporteCR Implements FelProd.IConexionRemota.ObtenerComprobantes40
+            Return MyBase.Channel.ObtenerComprobantes40(credenciales, fechaInicial, fechaFinal, filaInicial)
+        End Function
+        
         Public Function ObtenerAcuseEnvio(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerAcuseEnvio
             Return MyBase.Channel.ObtenerAcuseEnvio(credenciales, uuid)
+        End Function
+        
+        Public Function ObtenerAcuseEnvio40(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerAcuseEnvio40
+            Return MyBase.Channel.ObtenerAcuseEnvio40(credenciales, uuid)
         End Function
         
         Public Function ObtenerAcuseCancelacion(ByVal credenciales As FelProd.Credenciales, ByVal uuid As String) As FelProd.RespuestaOperacionCR Implements FelProd.IConexionRemota.ObtenerAcuseCancelacion
@@ -21860,6 +26937,10 @@ Namespace FelProd
         
         Public Function CancelarCFDIsConValidacion(ByVal credenciales As FelProd.Credenciales, ByVal uuids() As FelProd.UUIDMotivoCancelacionCR) As FelProd.RespuestaCancelacionCR Implements FelProd.IConexionRemota.CancelarCFDIsConValidacion
             Return MyBase.Channel.CancelarCFDIsConValidacion(credenciales, uuids)
+        End Function
+        
+        Public Function CancelarCFDIsV4(ByVal credenciales As FelProd.Credenciales, ByVal uuids() As FelProd.UUIDMotivoCancelacionCR) As FelProd.RespuestaCancelacionCR Implements FelProd.IConexionRemota.CancelarCFDIsV4
+            Return MyBase.Channel.CancelarCFDIsV4(credenciales, uuids)
         End Function
         
         Public Function ObtenerSolicitudesPendientesCancelacion(ByVal credenciales As FelProd.Credenciales) As FelProd.RespuestaSolicitudesPendientesCR Implements FelProd.IConexionRemota.ObtenerSolicitudesPendientesCancelacion

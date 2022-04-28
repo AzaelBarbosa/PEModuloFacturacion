@@ -183,6 +183,10 @@ Public Class frmFacGlobalAutomatica
 
         strTipoFactura = "GLOBAL"
         strmodoFactura = "AUTOMATICA"
+        'CREO LOG PARA PROCESO
+
+        sArchivoLog = "C:\SPE\VINO\LOG\LogFactura_Proceso_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmmss").ToString & ".txt"
+        wrFichero = File.AppendText(sArchivoLog)
 
         Try
 
@@ -196,6 +200,7 @@ Public Class frmFacGlobalAutomatica
 
             FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
             nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
+            nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
 
             If UsoFManual = 1 Then
                 dtpFechaIni.Value = CDate(FechaManual)
@@ -211,11 +216,9 @@ Public Class frmFacGlobalAutomatica
 
             'PRUEBA DE ESCRITURA BLOC DE NOTA   C:\SPE\VINO\LOG\
             If UsoFManual = 1 Then
-                nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
                 FechaFact = Replace(FechaManual, "-", "")
                 strFechaBusqueda = FechaFact
             Else
-                nombreArchi = "C:\SPE\VINO\LOG\" & "LogFactura_FA_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
                 FechaFact = Replace(strFechaUltimoCierre, "-", "")
                 strFechaBusqueda = FechaFact
             End If
@@ -229,10 +232,12 @@ Public Class frmFacGlobalAutomatica
                 texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO FACTURA GLOBAL AUTOMATICA.............................." & vbNewLine
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FECHA MOVIMIENTO: " & FechaManual.ToString & " " & vbNewLine
+                wrFichero.Write(texto)
             Else
                 texto = Format(Now, "HH:mm:ss").ToString & "~" & "INICIANDO FACTURA GLOBAL AUTOMATICA.............................." & vbNewLine
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "SUCURSAL: " & Format(intNoSucursal, "000").ToString & " " & strNombreSuc & vbNewLine
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FECHA MOVIMIENTO: " & strFechaUltimoCierre.ToString & " " & vbNewLine
+                wrFichero.Write(texto)
             End If
 
 
@@ -240,6 +245,9 @@ Reintento:
 
             buscar()
             facturar()
+            wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "PROCESO TERMINADO......................................................... " & vbNewLine)
+            wrFichero.Flush()
+            wrFichero.Close()
         Catch ex As Exception
             texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: " & ex.Message & vbNewLine
             My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
@@ -319,6 +327,7 @@ Reintento:
 
             If BuscaFacturaGlobalPendiente(FechaFact) = True Then
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "VALIDANDO FACTURA PENDIENTE.......................... " & vbNewLine
+                wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "VALIDANDO FACTURA PENDIENTE.......................... " & vbNewLine)
                 For Each dr As DataRow In dtFactPend.Rows
                     Comprobando = "SI"
                     obtenerXMLFolio(dtFactPend)
@@ -335,6 +344,7 @@ Reintento:
                         End
                     Else
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA NO TIMBRADA SE CONTINUA PROCESO: " & vbNewLine
+                        wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA NO TIMBRADA SE CONTINUA PROCESO.......................... " & vbNewLine)
                         intSiguienteFolio = dr("Folio")
                         BorrarFacturaGlobalPendiente(dr("Folio"), FechaFact)
                         MovBorrados = True
@@ -602,6 +612,10 @@ Intento:
                     End
                 Else
                     texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "No hay movimientos pendientes de facturar!" & vbNewLine
+                    wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "NO HAY MOVIMIENTOS PARA FACTURAR......................................................... " & vbNewLine)
+                    wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "PROCESO FINALIZADO......................................................... " & vbNewLine)
+                    wrFichero.Flush()
+                    wrFichero.Close()
                     My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
                     'EnviarCorreoLOG(nombreLog, FechaLog, nombreArchi)
                     End
@@ -631,6 +645,7 @@ Intento:
         dtDetDevAvr.Clear()
 
         Try
+            wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "SE INICIA PROCESO DE FACTURA.......................... " & vbNewLine)
             If dtDetalle Is Nothing OrElse dtDetalle.Rows.Count <= 0 Then
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "ERROR: No hay información para facturar" & vbNewLine
                 My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
@@ -681,17 +696,26 @@ Intento:
             Factura = "GLOBAL"
 
             errorFG = False
+
+            nombreArchi = ""
+
+            wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "SE INICIA PROCESO DE FACTURA EN FEL.......................... " & vbNewLine)
             GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
+
+            'GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
 
             If errorFG Then
                 GoTo NoseHaceNada
             End If
 
             'SI HAY DEVOLUCIONES, GENERA LAS NOTAS DE CREDITO
+
             If Not dtDevsEnca Is Nothing AndAlso dtDevsEnca.Rows.Count > 0 Then
+                wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "SE INICIA PROCESO DE NOTAS DE CREDITO.......................... " & vbNewLine)
                 texto = ""
                 Dim x1 As String = ""
                 Dim x2 As String = ""
+                FechaFact = Replace(strFechaUltimoCierre, "-", "")
                 GeneraNotasdeCredito2(x1, x2)
             End If
 
@@ -706,6 +730,7 @@ NoseHaceNada:
         Catch ex As Exception
             texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "Error: " & ex.Message & vbNewLine
             My.Computer.FileSystem.WriteAllText(nombreArchi, texto, True)
+
             FechaLog = Format(Now, "yyyy-MM-dd HH:mm").ToString
             nombreLog = "LogFactura_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmm").ToString & ".txt"
             TipoError = TipoError & " " & ex.Message

@@ -181,6 +181,7 @@ Public Class frmFacturaIndividual
                             drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", j).Value
                             drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", j).Value
                             drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", j).Value
+                            drNew("TipoAparato") = 0
                             dtReturn.Rows.Add(drNew)
                             dtReturn.AcceptChanges()
                         End If
@@ -203,6 +204,7 @@ Public Class frmFacturaIndividual
                         drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", j).Value
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", j).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", j).Value
+                        drNew("TipoAparato") = 0
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
                         SumoCosto = True
@@ -226,6 +228,7 @@ Public Class frmFacturaIndividual
                             drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", j).Value
                             drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", j).Value
                             drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", j).Value
+                            drNew("TipoAparato") = 0
                             dtReturn.Rows.Add(drNew)
                             dtReturn.AcceptChanges()
                         End If
@@ -234,7 +237,7 @@ Public Class frmFacturaIndividual
 
             Else
                 For intFila = 0 To dgvFacturar.Rows.Count - 1
-                    If dgvFacturar.Item("colFImporte", intFila).Value > 0 Then
+                    If dgvFacturar.Item("colFImporte", intFila).Value > 0 And dgvFacturar.Item("colTipoAparato", intFila).Value <> 648 Then
                         drNew = dtReturn.NewRow
                         drNew("Concepto") = "INTERESES VENTA"
                         drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
@@ -253,6 +256,7 @@ Public Class frmFacturaIndividual
                         drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        drNew("TipoAparato") = 0
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
 
@@ -278,8 +282,35 @@ Public Class frmFacturaIndividual
                         drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        drNew("TipoAparato") = 0
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
+
+                    ElseIf dgvFacturar.Item("colTipoAparato", intFila).Value = 648 Then
+
+                        drNew = dtReturn.NewRow
+                        drNew("Concepto") = dgvFacturar.Item("colFConcepto", intFila).Value
+                        drNew("Fecha") = dgvFacturar.Item("colFFecha", intFila).Value
+                        drNew("Tipo") = dgvFacturar.Item("colFTipo", intFila).Value
+                        drNew("NoTicket") = dgvFacturar.Item("colFPrefijo", intFila).Value & "-" & dgvFacturar.Item("colFNoticket", intFila).Value
+                        drNew("TipoMov") = dgvFacturar.Item("colFTipoMov", intFila).Value
+                        drNew("Importe") = CDbl(dgvFacturar.Item("colFImportePago", intFila).Value) - CDbl(dgvFacturar.Item("colFIVA", intFila).Value)
+                        drNew("Descuento") = dgvFacturar.Item("colFDescuento", intFila).Value
+                        drNew("IVA") = dgvFacturar.Item("colFIVA", intFila).Value
+                        drNew("Total") = CDbl(dgvFacturar.Item("colFImportePago", intFila).Value) - CDbl(dgvFacturar.Item("colFIVA", intFila).Value)
+                        drNew("Costo") = dgvFacturar.Item("colFCosto", intFila).Value
+                        drNew("ImportePagado") = dgvFacturar.Item("colFImportePago", intFila).Value
+                        drNew("Interes") = dgvFacturar.Item("colFInteres", intFila).Value
+                        drNew("Recargo") = dgvFacturar.Item("colFRecargo", intFila).Value
+                        drNew("UUIDFacturaGlobal") = dgvFacturar.Item("colFUUIDFacturaGlobal", intFila).Value
+                        drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
+                        drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
+                        drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        drNew("TipoAparato") = dgvFacturar.Item("colTipoAparato", intFila).Value
+                        drNew("DescripcionSAT2") = dgvFacturar.Item("colFDescripcionSAT2", intFila).Value
+                        dtReturn.Rows.Add(drNew)
+                        dtReturn.AcceptChanges()
+
                     Else
 
                         drNew = dtReturn.NewRow
@@ -300,6 +331,7 @@ Public Class frmFacturaIndividual
                         drNew("FormaPagoSAT") = dgvFacturar.Item("colFFormaPagoSAT", intFila).Value
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
+                        drNew("TipoAparato") = 0
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
 
@@ -349,6 +381,8 @@ Public Class frmFacturaIndividual
             dgvFacturar.Item("colFDescripcionSAT", intFilaNueva).Value = dgvResultado.Item("colRDescripcionSAT", NoFilaResultado).Value
             dgvFacturar.Item("colFTipoMov", intFilaNueva).Value = dgvResultado.Item("colRTipoMov", NoFilaResultado).Value
             dgvFacturar.Item("colFTipoFactura", intFilaNueva).Value = dgvResultado.Item("colRTipoFactura", NoFilaResultado).Value
+            dgvFacturar.Item("colTipoAparato", intFilaNueva).Value = dgvResultado.Item("colRTipoAparato", NoFilaResultado).Value
+            dgvFacturar.Item("colFDescripcionSAT2", intFilaNueva).Value = dgvResultado.Item("colRDescripcionSAT2", NoFilaResultado).Value
             If TipoFac = "" Then
                 dgvFacturar.Rows(intFilaNueva).DefaultCellStyle.BackColor = System.Drawing.Color.White
             Else
@@ -463,6 +497,8 @@ Public Class frmFacturaIndividual
         Dim sSQL As String = ""
         Dim dtResult As New DataTable
         Dim dr As DataRow
+
+
         Try
 
             sSQL = ""
@@ -528,6 +564,11 @@ Public Class frmFacturaIndividual
         Dim FolOperacion As String = ""
         Dim FolioOperacion As Long = 0
         Dim Carac As Integer = 0
+
+
+        Dim TipoTicket As String = ""
+        Dim NoTicket As Integer = 0
+
         CodIntSat = ""
         DescIntSat = ""
         CodApaSat = ""
@@ -562,16 +603,71 @@ Public Class frmFacturaIndividual
 
         If cboSistema.SelectedIndex = 0 Then
             Sistema = "EMPEÑO"
+            TipoTicket = "E"
+            If txtFolioOperacion.Text <> "" Then
+                NoTicket = txtFolioOperacion.Text
+            Else
+                NoTicket = 0
+            End If
         Else
             If cboSistema.SelectedIndex = 1 Then
                 Sistema = "ADMINPAQ"
+                TipoTicket = "A"
+                NoTicket = txtFolioOperacion.Text
             Else
                 Sistema = "JOYERIA"
+                TipoTicket = "J"
+                NoTicket = txtFolioOperacion.Text
             End If
         End If
 INICIO:
 
         Dim oParam(14) As SqlClient.SqlParameter
+
+        sArchivoLog = "S:\VINO\LOG\LogFactura_Proceso_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmmss").ToString & ".txt"
+        wrFichero = File.AppendText(sArchivoLog)
+
+        '-------------------------------------
+        '---BUSCAR FACTURA INDIVIDUAL PENDIENTE---
+        '-------------------------------------
+
+        If BuscaFacturaIndividualPendiente(NoTicket, TipoTicket) = True Then
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "VALIDANDO FACTURA PENDIENTE.......................... " & vbNewLine
+
+            For Each dr As DataRow In dtFactPend.Rows
+                Comprobando = "SI"
+                obtenerXMLFolio(dtFactPend)
+                If FactTimbrada = True Then
+                    ActualizaMovimientosFacturados(IIf(dr("TipoComprobante") = "I", enTipoDocumento.Factura, enTipoDocumento.NotaCredito), dr("Folio"))
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA TIMBRADA SE DESCARGARAN LOS ARCHIVOS PDF Y XML..................... " & vbNewLine
+
+                    obtenerXML(dtFactPend)
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "XML DESCARGADO CON EXITO.................. " & vbNewLine
+
+                    obtenerPDF(dtFactPend)
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "PDF DESCARGADO CON EXITO.................. " & vbNewLine
+
+                    ActualizaMovimientosFacturados(IIf(dr("TipoComprobante") = "I", enTipoDocumento.Factura, enTipoDocumento.NotaCredito), dr("Folio"))
+                    MsgBox("Factura con Folio: " & dr("Folio").ToString & " Ya Fue Timbrada Se descargan El XML y PDF", MsgBoxStyle.Information)
+                    FactTimbrada = False
+                    LimpiaPantalla()
+                    dtCliente.Rows.Clear()
+                    lblTextoAnuncio.Visible = False
+                    Me.Cursor = Cursors.Default
+                    Exit Sub
+                Else
+                    texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA NO TIMBRADA SE CONTINUA PROCESO: " & vbNewLine
+                    intSiguienteFolio = dr("Folio")
+                    BorrarFacturaIndividualPendiente(dr("Folio"))
+                    MovBorrados = True
+                End If
+            Next dr
+            texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "------------------------------------------------------------" & vbNewLine
+
+        End If
+
+        '--------------------------------------ftexto
+
 
         'Buscando codigos y descripcion de productos
         BuscaCodyDescProd()
@@ -1205,7 +1301,7 @@ INICIO:
                         ImpAntesIVA = ImpAntesIVA + dr("Importe")
                     End If
 
-                    ValidaRedondeos(1.0, 2, ImpAntesIVA, 6, dblPorcentajeIVA, dblValidaIVA, dblValidaTotal)
+                    'ValidaRedondeos(1.0, 2, ImpAntesIVA, 6, dblPorcentajeIVA, dblValidaIVA, dblValidaTotal)
 
                     dr("IVA") = dblValidaIVA
                     dr("Total") = dblValidaTotal
@@ -1299,6 +1395,7 @@ INICIO:
             FechaFact = Format(Now.Date, "yyyyMMdd")
             'generando factura
             GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleInd, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaIndividual, )
+            'GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleInd, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaIndividual, )
 
 NoSeHaceNada:
 

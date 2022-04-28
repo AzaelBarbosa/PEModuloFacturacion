@@ -174,3 +174,4 @@ D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.application
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.exe
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.xml
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.pdb
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmNotasCreditovb.resources

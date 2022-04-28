@@ -1,4 +1,5 @@
-﻿Public Class frmFacturaGlobalDiaria
+﻿Imports System.IO
+Public Class frmFacturaGlobalDiaria
 
 #Region "Variables"
     'Dim dblSumaImporte As Double = 0
@@ -47,7 +48,7 @@
         dtReturn = dtDetalle.Clone
         Try
             For intFila = 0 To Datos.Rows.Count - 1
-                If Datos.Rows(intFila).Item("Prefijo").ToString.ToUpper = "A" Or Datos.Rows(intFila).Item("Prefijo").ToString.ToUpper = "J" Then
+                If (Datos.Rows(intFila).Item("Prefijo").ToString.ToUpper = "A" Or Datos.Rows(intFila).Item("Prefijo").ToString.ToUpper = "J") And Datos.Rows(intFila).Item("TipoAparato").ToString.ToUpper <> 648 Then
                     If CDbl(Datos.Rows(intFila).Item("IVA").ToString) > 0 Then
                         drNew = dtReturn.NewRow
                         drNew("Concepto") = "INTERESES"
@@ -104,6 +105,23 @@
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
                     End If
+                ElseIf Datos.Rows(intFila).Item("TipoAparato").ToString.ToUpper = 648 Then
+                    drNew = dtReturn.NewRow
+                    drNew("Concepto") = "INTERESES"
+                    drNew("Fecha") = Datos.Rows(intFila).Item("Fecha").ToString
+                    drNew("Tipo") = Datos.Rows(intFila).Item("Tipo").ToString
+                    drNew("NoTicket") = Datos.Rows(intFila).Item("Prefijo").ToString & "-" & Datos.Rows(intFila).Item("NoTicket").ToString
+                    drNew("TipoMov") = Datos.Rows(intFila).Item("TipoMov").ToString
+                    drNew("Importe") = CDbl(Datos.Rows(intFila).Item("ImportePagado").ToString) - CDbl(Datos.Rows(intFila).Item("IVA").ToString)
+                    drNew("Descuento") = Datos.Rows(intFila).Item("Descuento").ToString
+                    drNew("IVA") = Datos.Rows(intFila).Item("IVA").ToString
+                    drNew("Total") = Datos.Rows(intFila).Item("ImportePagado").ToString
+                    drNew("Costo") = Datos.Rows(intFila).Item("Costo").ToString
+                    drNew("ImportePagado") = CDbl(Datos.Rows(intFila).Item("ImportePagado").ToString) - CDbl(Datos.Rows(intFila).Item("Costo").ToString)
+                    drNew("Interes") = Datos.Rows(intFila).Item("Interes").ToString
+                    drNew("Recargo") = Datos.Rows(intFila).Item("Recargo").ToString
+                    dtReturn.Rows.Add(drNew)
+                    dtReturn.AcceptChanges()
                 Else
                     If CDbl(Datos.Rows(intFila).Item("Costo").ToString) > 0 Then
                         If CDbl(Datos.Rows(intFila).Item("IVA").ToString) > 0 Then
@@ -213,7 +231,7 @@
         End Try
     End Function
 
-    
+
 
 #End Region
 
@@ -280,21 +298,31 @@
 
             strFechaBusqueda = FechaFact
 
+
+            sArchivoLog = "C:\SPE\VINO\LOG\LogFactura_Proceso_" & Format(intNoSucursal, "000").ToString & "_" & Format(Now, "yyyyMMddHHmmss").ToString & ".txt"
+            wrFichero = File.AppendText(sArchivoLog)
+
             '-------------------------------------
             '---BUSCAR FACTURA GLOBAL PENDIENTE---
             '-------------------------------------
 
             If BuscaFacturaGlobalPendiente(FechaFact) = True Then
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "VALIDANDO FACTURA PENDIENTE.......................... " & vbNewLine
+
                 For Each dr As DataRow In dtFactPend.Rows
                     Comprobando = "SI"
                     obtenerXMLFolio(dtFactPend)
                     If FactTimbrada = True Then
+                        ActualizaMovimientosFacturados(IIf(dr("TipoComprobante") = "I", enTipoDocumento.Factura, enTipoDocumento.NotaCredito), dr("Folio"))
+                        ActualizarFacturaGlobalPendiente(FechaFact)
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA TIMBRADA SE DESCARGARAN LOS ARCHIVOS PDF Y XML..................... " & vbNewLine
+
                         obtenerXML(dtFactPend)
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "XML DESCARGADO CON EXITO.................. " & vbNewLine
+
                         obtenerPDF(dtFactPend)
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "PDF DESCARGADO CON EXITO.................. " & vbNewLine
+
                         ActualizaMovimientosFacturados(IIf(dr("TipoComprobante") = "I", enTipoDocumento.Factura, enTipoDocumento.NotaCredito), dr("Folio"))
                         MsgBox("Factura con Folio: " & dr("Folio").ToString & " Ya Fue Timbrada Se descargan El XML y PDF", MsgBoxStyle.Information)
                         FactTimbrada = False
@@ -305,15 +333,17 @@
                         Exit Sub
                     Else
                         texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "FACTURA NO TIMBRADA SE CONTINUA PROCESO: " & vbNewLine
+
                         intSiguienteFolio = dr("Folio")
                         BorrarFacturaGlobalPendiente(dr("Folio"), FechaFact)
                         MovBorrados = True
                     End If
                 Next dr
                 texto = texto & Format(Now, "HH:mm:ss").ToString & "~" & "------------------------------------------------------------" & vbNewLine
+
             End If
 
-            '--------------------------------------
+            '--------------------------------------ftexto
 
             BuscaCodyDescProd()
             sSQL = "sps_VINO_FacturaPeriodica"
@@ -393,6 +423,7 @@
                                     drNew("Interes") = drDeta2("Interes")
                                     drNew("Recargo") = drDeta2("Recargo")
                                     drNew("IVA") = drDeta2("IVA")
+                                    drNew("TipoAparato") = drDeta2("TipoAparato")
                                     dtDetalle.Rows.Add(drNew)
                                     dtDetalle.AcceptChanges()
                                 Else
@@ -411,6 +442,7 @@
                                     drNew("Interes") = drDeta2("Interes")
                                     drNew("Recargo") = drDeta2("Recargo")
                                     drNew("IVA") = drDeta2("IVA")
+                                    drNew("TipoAparato") = drDeta2("TipoAparato")
                                     dtDetalle.Rows.Add(drNew)
                                     dtDetalle.AcceptChanges()
                                 End If
@@ -616,7 +648,7 @@
             Next dr
 
             txtSubTotal.Text = Format((dblSumaTotal + dblSumaDescuento) - dblSumaIVA, "$ #,##0.00")
-            dblSubtotal = Format((dblSumaTotal + dblSumaDescuento) - dblSumaIVA, "$ #,##0.00")
+            dblSubtotal = Format((dblSumaTotal + dblSumaDescuento) - dblSumaIVA, "$ #,##0.000000")
             txtDescuento.Text = Format(dblSumaDescuento, "#,##0.00")
             txtIVA.Text = Format(dblSumaIVA, "#,##0.00")
             txtTotalFactura.Text = Format(dblSumaTotal, "#,##0.00")
@@ -738,6 +770,7 @@
             lblTextoAnuncio.Refresh()
 
             errorFG = False
+
             GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
             'GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
 

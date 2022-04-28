@@ -3,15 +3,19 @@
     Public Folio As Integer = 0
     Private Sub guardaDatosCancelacion(ByVal datos As DataTable, ByVal motivo As String)
         Dim sSQL As String = ""
+        Dim sSQL2 As String = ""
         Dim dtBusca As New DataTable
         Try
             For Each dr As DataRow In dtEnviar.Rows
                 If conAcuse = True Then
-                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Acuse = 'SI', Estatus = 'C', MotivoCancelacion = '" & motivo & "', TipoCancelacion = '" & TipoRelacionCancelado & "' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Acuse = 'SI', Estatus = 'C', MotivoCancelacion = '" & motivo & "', TipoCancelacion = '" & TipoRelacionCancelado & "', FechaUM = CONVERT(VARCHAR,GETDATE(),112) WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                    sSQL2 = "UPDATE BDSPEXPRESS.dbo.BPFFacturasPartidas SET FechaUM = CONVERT(VARCHAR,GETDATE(),112) WHERE Folio = '" & dr("Folio") & "'"
                 Else
-                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Estatus = 'C', MotivoCancelacion = '" & motivo & "', TipoCancelacion = '" & TipoRelacionCancelado & "' WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                    sSQL = "UPDATE BDSPEXPRESS.dbo.BPFFacturas SET Estatus = 'C', MotivoCancelacion = '" & motivo & "', TipoCancelacion = '" & TipoRelacionCancelado & "', FechaUM = CONVERT(VARCHAR,GETDATE(),112) WHERE Folio = '" & dr("Folio") & "'  and Serie = '" & dr("Serie") & "' and FolioFiscal = '" & dr("FolioFiscal") & "'"
+                    sSQL2 = "UPDATE BDSPEXPRESS.dbo.BPFFacturasPartidas SET FechaUM = CONVERT(VARCHAR,GETDATE(),112) WHERE Folio = '" & dr("Folio") & "'"
                 End If
                 SQLServer.ExecSQL(sSQL)
+                SQLServer.ExecSQL(sSQL2)
             Next
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
@@ -107,10 +111,6 @@
 
             TipoCancelacion = ""
             FechaCancelado = ""
-            CFDIRelacionadoCancelado = ""
-            TipoRelacionCancelado = ""
-            CFDIRelacionadoSustitucion = ""
-            TipoRelacionSustitucion = ""
 
         Catch ex As Exception
             texto = texto & Format(Now, "HHmm").ToString & "~" & "Error: " & ex.Message & vbNewLine
@@ -122,12 +122,18 @@
         Dim motivo As String = ""
         Dim dr As DataRow
 
+        TipoRelacionCancelado = ""
+        TipoRelacionSustitucion = ""
+        CFDIRelacionadoSustitucion = ""
+        CFDIRelacionadoCancelado = ""
+
         dr = dtEnviar.Rows(0)
 
         If txtMotivo.Text = "" Then
             MsgBox("Por favor indique el motivo de la cancelación!", MsgBoxStyle.Exclamation, "Facturación")
             Exit Sub
         End If
+
         Try
             motivo = txtMotivo.Text
 
@@ -139,6 +145,13 @@
                 'guardaDatosCancelacion(dtEnviar, motivo)
                 If TipoCancelacion = "SUSTITUCION" Then
                     If TipoFactura = "INDIVIDUAL" Then
+                        If cboTipoCancelacion.Text = "" Then
+                            MsgBox("Por favor seleccione el Tipo de Cancelacion", MsgBoxStyle.Exclamation, "Facturacion")
+                            Exit Sub
+                        ElseIf cboTipoRelacion.Text = "" Then
+                            MsgBox("Por favor seleccione el Tipo de Relacion", MsgBoxStyle.Exclamation, "Facturacion")
+                            Exit Sub
+                        End If
                         CFDIRelacionadoCancelado = dr("FolioFiscal").ToString
                         TipoRelacionCancelado = Mid(cboTipoRelacion.Text, 1, 2)
                         strFechaBusqueda = "20211221"
@@ -146,6 +159,13 @@
                         ObtenerMovimientosIndividual(FechaCancelado, Folio, CFDIRelacionadoCancelado, TipoRelacionCancelado)
                         'Facturar(CFDIRelacionadoCancelado, TipoRelacionCancelado)
                     Else
+                        If cboTipoCancelacion.Text = "" Then
+                            MsgBox("Por favor seleccione el Tipo de Cancelacion", MsgBoxStyle.Exclamation, "Facturacion")
+                            Exit Sub
+                        ElseIf cboTipoRelacion.Text = "" Then
+                            MsgBox("Por favor seleccione el Tipo de Relacion", MsgBoxStyle.Exclamation, "Facturacion")
+                            Exit Sub
+                        End If
                         CFDIRelacionadoCancelado = dr("FolioFiscal").ToString
                         TipoRelacionCancelado = Mid(cboTipoCancelacion.Text, 1, 2)
                         TipoRelacionSustitucion = Mid(cboTipoRelacion.Text, 1, 2)
@@ -155,7 +175,14 @@
                         cancelaFactura(dtEnviar, CFDIRelacionadoSustitucion, TipoRelacionCancelado)
                         guardaDatosCancelacion(dtEnviar, motivo)
                     End If
-
+                Else
+                    If cboTipoCancelacion.Text = "" Then
+                        MsgBox("Por favor seleccione el Tipo de Cancelacion", MsgBoxStyle.Exclamation, "Facturacion")
+                        Exit Sub
+                    End If
+                    TipoRelacionCancelado = Mid(cboTipoCancelacion.Text, 1, 2)
+                    cancelaFactura(dtEnviar, "", TipoRelacionCancelado)
+                    guardaDatosCancelacion(dtEnviar, motivo)
                 End If
             End If
 
@@ -1051,50 +1078,44 @@ Intento:
             Dim x As Integer
             Dim drBorrar As DataRow
 
-            If TipoCancelacion = "SUSTITUCION" Then
-
-
-
-            Else
-                For Each dr As DataRow In dtDetalle.Rows
-                    'REVISANDO EN LAS GLOBALES
-                    If YaEnFacturaGlobal(dr("Prefijo").ToString.Trim.ToUpper, dr("NoTicket").ToString, dr("Fecha").ToString) Then
-                        'Agrega registro a borrar
-                        arrBorrar.Add(dr("Noticket"))
-                    End If
-                    'REVISANDO EN LAS INDIVIDUALES
-                    If YaEnFacturaIndividual(dr("Prefijo").ToString.Trim.ToUpper, dr("NoTicket").ToString) Then
-                        'Agrega registro a borrar
-                        arrBorrar.Add(dr("Noticket"))
-                    End If
-                    'REVISANDO SI HUBO DEVOLUCION EN EL MISMO DIA
-                    If SeDevolvio(dtDevsDeta, dr("NoTicket").ToString) Then
-                        'Agrega registro a borrar
-                        arrBorrar.Add(dr("Noticket"))
-                    End If
-                Next dr
-
-                Dim bolBorrar As Boolean = False
-                If arrBorrar.Count > 0 Then
-                    'hay algo para borrar de la tabla
-                    drBorrar = Nothing
-                    For x = 0 To arrBorrar.Count - 1
-                        'buscando
-                        For Each dr As DataRow In dtDetalle.Rows
-                            If dr("Noticket") = arrBorrar(x) Then
-                                drBorrar = dr
-                                bolBorrar = True
-                                Exit For
-                            End If
-                        Next dr
-                        'Borrando
-                        If Not drBorrar Is Nothing And bolBorrar Then
-                            dtDetalle.Rows.Remove(drBorrar)
-                            dtDetalle.AcceptChanges()
-                            bolBorrar = False
-                        End If
-                    Next x
+            For Each dr As DataRow In dtDetalle.Rows
+                'REVISANDO EN LAS GLOBALES
+                If YaEnFacturaGlobal(dr("Prefijo").ToString.Trim.ToUpper, dr("NoTicket").ToString, dr("Fecha").ToString) Then
+                    'Agrega registro a borrar
+                    arrBorrar.Add(dr("Noticket"))
                 End If
+                'REVISANDO EN LAS INDIVIDUALES
+                If YaEnFacturaIndividual(dr("Prefijo").ToString.Trim.ToUpper, dr("NoTicket").ToString) Then
+                    'Agrega registro a borrar
+                    arrBorrar.Add(dr("Noticket"))
+                End If
+                'REVISANDO SI HUBO DEVOLUCION EN EL MISMO DIA
+                If SeDevolvio(dtDevsDeta, dr("NoTicket").ToString) Then
+                    'Agrega registro a borrar
+                    arrBorrar.Add(dr("Noticket"))
+                End If
+            Next dr
+
+            Dim bolBorrar As Boolean = False
+            If arrBorrar.Count > 0 Then
+                'hay algo para borrar de la tabla
+                drBorrar = Nothing
+                For x = 0 To arrBorrar.Count - 1
+                    'buscando
+                    For Each dr As DataRow In dtDetalle.Rows
+                        If dr("Noticket") = arrBorrar(x) Then
+                            drBorrar = dr
+                            bolBorrar = True
+                            Exit For
+                        End If
+                    Next dr
+                    'Borrando
+                    If Not drBorrar Is Nothing And bolBorrar Then
+                        dtDetalle.Rows.Remove(drBorrar)
+                        dtDetalle.AcceptChanges()
+                        bolBorrar = False
+                    End If
+                Next x
 
             End If
 
