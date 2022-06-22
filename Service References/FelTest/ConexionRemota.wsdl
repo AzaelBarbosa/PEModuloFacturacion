@@ -128,6 +128,12 @@
   <wsdl:message name="IConexionRemota_ObtenerAcuseCancelacion_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerAcuseCancelacionResponse" />
   </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerAcuseCancelacion40_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAcuseCancelacion40" />
+  </wsdl:message>
+  <wsdl:message name="IConexionRemota_ObtenerAcuseCancelacion40_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAcuseCancelacion40Response" />
+  </wsdl:message>
   <wsdl:message name="IConexionRemota_ValidarRFC_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidarRFC" />
   </wsdl:message>
@@ -304,6 +310,10 @@
     <wsdl:operation name="ObtenerAcuseCancelacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion" message="tns:IConexionRemota_ObtenerAcuseCancelacion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacionResponse" message="tns:IConexionRemota_ObtenerAcuseCancelacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAcuseCancelacion40">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion40" message="tns:IConexionRemota_ObtenerAcuseCancelacion40_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion40Response" message="tns:IConexionRemota_ObtenerAcuseCancelacion40_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ValidarRFC">
       <wsdl:input wsaw:Action="http://tempuri.org/IConexionRemota/ValidarRFC" message="tns:IConexionRemota_ValidarRFC_InputMessage" />
@@ -545,6 +555,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerAcuseCancelacion">
       <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAcuseCancelacion40">
+      <soap:operation soapAction="http://tempuri.org/IConexionRemota/ObtenerAcuseCancelacion40" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

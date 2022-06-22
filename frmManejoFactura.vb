@@ -157,7 +157,7 @@ Public Class frmManejoFactura
         dtBusqueda = New DataTable
 
         Try
-            consulta = "SELECT f.FechaFactura, f.Folio, f.Serie, f.Estatus, CASE WHEN f.Estatus = 'C' AND f.Acuse = '' THEN 'NO' ELSE f.Acuse end Acuse, f.TipoFactura, f.TipoComprobante, f.ImporteTotal, f.FolioFiscal, f.NombreArchivoPDF, f.NombreArchivoXML, f.NoCliente, c.CorreoE, f.RFC " & _
+            consulta = "SELECT f.FechaFactura, f.Folio, f.Serie, f.Estatus, CASE WHEN f.Estatus = 'C' AND f.Acuse = '' THEN 'NO' ELSE f.Acuse end Acuse, f.TipoFactura, f.TipoComprobante, f.ImporteTotal, f.FolioFiscal, f.NombreArchivoPDF, f.NombreArchivoXML, f.NoCliente, c.CorreoE, f.RFC, f.VersionFactura " & _
                        "FROM BPFFacturas f LEFT JOIN dbo.BPFCatalogoClientes c ON f.NoCliente = c.NoCliente "
 
             If chbxFechas.Checked Then
@@ -573,24 +573,34 @@ Public Class frmManejoFactura
     End Sub
 
     Private Sub btnEnviarEmail_Click(sender As Object, e As EventArgs) Handles btnEnviarEmail.Click
+        Dim intSeleccionados As Integer = 0
         Dim bolSeleccionaron As Boolean = False
         Dim drNew As DataRow
 
         If dgvResultadoFact.RowCount <= 0 Then
             Exit Sub
         End If
+
         For iFila = 0 To dgvResultadoFact.RowCount - 1
             If Not IsDBNull(dgvResultadoFact.Item("colSel", iFila).Value) Then
                 If dgvResultadoFact.Item("colSel", iFila).Value = "TRUE" Then
+                    intSeleccionados = intSeleccionados + 1
                     bolSeleccionaron = True
                     Exit For
                 End If
             End If
         Next iFila
+
         If Not bolSeleccionaron Then
             MsgBox("Por favor seleccione las facturas que se van a enviar!", MsgBoxStyle.Exclamation, "Facturación")
             Exit Sub
         End If
+
+        If intSeleccionados > 1 Then
+            MsgBox("Solo debe selecciona 1 solo folio para enviar.", MsgBoxStyle.Exclamation, "Facturación")
+            Exit Sub
+        End If
+
 
         dtEnviar = dtBusqueda.Clone
 
@@ -611,6 +621,7 @@ Public Class frmManejoFactura
                     drNew("CorreoE") = dgvResultadoFact.Item("colCorreo", iFila).Value
                     drNew("NoCliente") = dgvResultadoFact.Item("colNoCliente", iFila).Value
                     drNew("Estatus") = dgvResultadoFact.Item("colEstatus", iFila).Value
+                    drNew("VersionFactura") = dgvResultadoFact.Item("colVersionFact", iFila).Value
                     dtEnviar.Rows.Add(drNew)
                     dtEnviar.AcceptChanges()
                 End If
@@ -845,6 +856,43 @@ Public Class frmManejoFactura
     End Sub
 
     Private Sub btnNotasCredito_Click(sender As Object, e As EventArgs) Handles btnNotasCredito.Click
+        Dim intSeleccionados As Integer
+        Dim intFila As Integer = 0
+        Dim sSQL As String = ""
+        Dim bolSeleccionaron As Boolean = False
+        Dim Seleccionaron As Integer = 0
+        Dim drNew As DataRow
+        Dim TipoF As String = ""
+        Dim FolioFact As Integer = 0
+
+        If dgvResultadoFact.RowCount <= 0 Then
+            Exit Sub
+        End If
+
+        For iFila = 0 To dgvResultadoFact.RowCount - 1
+            If Not IsDBNull(dgvResultadoFact.Item("colSel", iFila).Value) Then
+                If dgvResultadoFact.Item("colSel", iFila).Value = True Then
+                    If dgvResultadoFact.Item("colEstatus", iFila).Value = "A" Then
+                        intSeleccionados = intSeleccionados + 1
+                        bolSeleccionaron = True
+                    Else
+                        MsgBox("Esta Factura esta cancelada!", MsgBoxStyle.Exclamation, "Facturación")
+                        Exit Sub
+                    End If
+                End If
+            End If
+        Next iFila
+
+        If Not bolSeleccionaron Then
+            MsgBox("Por favor seleccione 1 folio para Nota de Credito.", MsgBoxStyle.Exclamation, "Facturación")
+            Exit Sub
+        End If
+
+        If intSeleccionados > 1 Then
+            MsgBox("Solo debe selecciona 1 solo folio para Nota de Credito.", MsgBoxStyle.Exclamation, "Facturación")
+            Exit Sub
+        End If
+
         Dim frmNotasCred As New frmNotasCreditovb
         frmNotasCred.ShowDialog()
     End Sub
@@ -981,5 +1029,14 @@ Public Class frmManejoFactura
         Next iFila
 
         guardaDatosCancelacion(dtEnviar, "C")
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        dtEnviar = dtBusqueda.Clone
+        obtenerEstadoCancelacion(dtEnviar)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        obtenerSolicitudesCancelacionProcesadas(CDate(dtpFechaIni.Value), CDate(dtpFechaFin.Value), 50)
     End Sub
 End Class

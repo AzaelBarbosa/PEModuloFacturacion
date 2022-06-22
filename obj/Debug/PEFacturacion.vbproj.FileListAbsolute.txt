@@ -167,6 +167,7 @@ D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaGlobalDiaria.
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmFacturaIndividual.resources
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmManejoFactura.resources
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmMenuFacturacion.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmNotasCreditovb.resources
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.Resources.resources
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.vbproj.GenerateResource.Cache
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.exe.manifest
@@ -174,4 +175,4 @@ D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.application
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.exe
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.xml
 D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.pdb
-D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmNotasCreditovb.resources
+D:\Desarrollos GIT\PEFacturacion\obj\Debug\PEFacturacion.frmDirectorio.resources

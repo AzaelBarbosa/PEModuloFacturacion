@@ -115,6 +115,12 @@
     <Compile Include="frmDatosClienteFacturacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDirectorio.Designer.vb">
+      <DependentUpon>frmDirectorio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDirectorio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEnviarCorreo.designer.vb">
       <DependentUpon>frmEnviarCorreo.vb</DependentUpon>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDatosClienteFacturacion.resx">
       <DependentUpon>frmDatosClienteFacturacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDirectorio.resx">
+      <DependentUpon>frmDirectorio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEnviarCorreo.resx">
       <DependentUpon>frmEnviarCorreo.vb</DependentUpon>

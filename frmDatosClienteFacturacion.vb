@@ -145,11 +145,11 @@ Seguir:
             cboMetodoPago.DisplayMember = "Description"
             cboMetodoPago.ValueMember = "ID"
 
-            arrUsoCFDI = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=105 AND Elemento<>0 AND Estatus='A'", "DescCorta")
-            arrUsoCFDI.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
-            cboUsoCFDI.DataSource = arrUsoCFDI
-            cboUsoCFDI.DisplayMember = "Description"
-            cboUsoCFDI.ValueMember = "ID"
+            'arrUsoCFDI = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=105 AND Elemento<>0 AND Estatus='A'", "DescCorta")
+            'arrUsoCFDI.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
+            'cboUsoCFDI.DataSource = arrUsoCFDI
+            'cboUsoCFDI.DisplayMember = "Description"
+            'cboUsoCFDI.ValueMember = "ID"
 
             arrMoneda = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=107 AND Elemento<>0", "DescCorta")
             arrMoneda.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
@@ -161,7 +161,7 @@ Seguir:
             MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Facturación")
         End Try
     End Sub
-
+    
     Private Sub AgregaCliente()
         Dim sSQL As String = ""
         Dim dtBusca As New DataTable
@@ -185,9 +185,9 @@ Seguir:
                 'agregando
                 sSQL = ""
                 sSQL = "INSERT INTO BPFCatalogoClientes(NoCliente, NombreCliente, Identificacion, Calle, Colonia, Municipio, Estado, CodigoPostal, Telefono01, Telefono02, Observacion, Clasificacion, TipoCliente, FechaAlta, FechaUM,Mercadeo,RFC,Ocupacion,FechaNacimiento,NoExt,NoInt,CorreoE,CURP,TipoIdentificacion,PaisID,PaisNacimientoID,PaisNacionalidadID,Nombres,ApellidoPaterno,ApellidoMaterno,"
-                sSQL &= "BoletasVigentes,RazonSocial,CalleFiscal,NoExteriorFiscal,NoInteriorFiscal,ColoniaFiscal,PoblacionFiscal,MunicipioFiscal,EstadoFiscal,CodigoPostalFiscal,PaisFiscal,Referencia,ClaveUsoCFDISAT)"
+                sSQL &= "BoletasVigentes,RazonSocial,CalleFiscal,NoExteriorFiscal,NoInteriorFiscal,ColoniaFiscal,PoblacionFiscal,MunicipioFiscal,EstadoFiscal,CodigoPostalFiscal,PaisFiscal,Referencia,ClaveUsoCFDISAT,TipoPersona,RegimenFiscal)"
                 sSQL &= "VALUES (" & intNoClienteNuevo.ToString & ",'" & txtNombre.Text.Trim.ToUpper & "','','" & txtCalle.Text.Trim.ToUpper & "','" & txtColonia.Text.Trim.ToUpper & "','" & txtCiudad.Text.Trim.ToUpper & "','" & txtEstado.Text.Trim.ToUpper & "','" & txtCP.Text.Trim.ToUpper & "','" & txtTelefono.Text.Trim & "','','',1,1,CONVERT(VARCHAR(8),GETDATE(),112),CONVERT(VARCHAR(8),GETDATE(),112),'NO','" & txtRFC.Text.Trim.ToUpper & "','','','" & txtNoExt.Text.Trim.ToUpper & "','" & txtNoInt.Text.Trim.ToUpper & "','" & txtCorreo.Text.Trim.ToLower & "','',0,1,1,1,'Nombres','ApellidoPaterno','ApellidoMaterno',"
-                sSQL &= "0,'" & txtRazonSocial.Text.Trim.ToUpper & "','" & txtCalle.Text.Trim.ToUpper & "','" & txtNoExt.Text.Trim.ToUpper & "','" & txtNoInt.Text.Trim.ToUpper & "','" & txtColonia.Text.Trim.ToUpper & "','" & txtCiudad.Text.Trim.ToUpper & "','" & txtCiudad.Text.Trim.ToUpper & "','" & txtEstado.Text.Trim.ToUpper & "','" & txtCP.Text.Trim.ToUpper & "','" & txtPais.Text.Trim.ToUpper & "','','P01')"
+                sSQL &= "0,'" & txtRazonSocial.Text.Trim.ToUpper & "','" & txtCalle.Text.Trim.ToUpper & "','" & txtNoExt.Text.Trim.ToUpper & "','" & txtNoInt.Text.Trim.ToUpper & "','" & txtColonia.Text.Trim.ToUpper & "','" & txtCiudad.Text.Trim.ToUpper & "','" & txtCiudad.Text.Trim.ToUpper & "','" & txtEstado.Text.Trim.ToUpper & "','" & txtCP.Text.Trim.ToUpper & "','" & txtPais.Text.Trim.ToUpper & "','','" & VB.Left(cboUsoCFDI.Text, 3) & "','" & IIf(rbFisica.Checked = True, "Fisica", "Moral") & "','" & VB.Left(cboRegimenFiscal.Text, 3) & "')"
 
                 SQLServer.ExecSQL(sSQL)
 
@@ -208,7 +208,10 @@ Seguir:
                         sSQL &= "EstadoFiscal='" & txtEstado.Text.Trim.ToUpper & "', "
                         sSQL &= "CodigoPostalFiscal='" & txtCP.Text.Trim.ToUpper & "', "
                         sSQL &= "PaisFiscal='" & txtPais.Text.Trim.ToUpper & "', "
-                        sSQL &= "Telefono01='" & txtTelefono.Text.Trim & "' "
+                        sSQL &= "Telefono01='" & txtTelefono.Text.Trim & "', "
+                        sSQL &= "ClaveUsoCFDISAT='" & VB.Left(cboUsoCFDI.Text, 3) & "', "
+                        sSQL &= "TipoPersona='" & IIf(rbFisica.Checked = True, "Fisica", "Moral") & "', "
+                        sSQL &= "RegimenFiscal='" & VB.Left(cboRegimenFiscal.Text, 3) & "' "
                         sSQL &= "WHERE NoCliente=" & dtBusca.Rows(0).Item("NoCliente").ToString
                         SQLServer.ExecSQL(sSQL)
                         DatosCliente(dtBusca.Rows(0).Item("NoCliente"))
@@ -325,6 +328,18 @@ Seguir:
 
             If cboRegimenFiscal.Text = "" Or cboRegimenFiscal.Text = "--- SELECCIONE ---" Then
                 MsgBox("Por favor seleccione el Regimen Fiscal...", MsgBoxStyle.Exclamation, "Facturacion")
+                cboRegimenFiscal.Focus()
+                Exit Sub
+            End If
+
+            If cboRegimenFiscal.Text = "" Or cboRegimenFiscal.Text = "--- SELECCIONE ---" Then
+                MsgBox("Por favor seleccione el Regimen Fiscal...", MsgBoxStyle.Exclamation, "Facturacion")
+                cboRegimenFiscal.Focus()
+                Exit Sub
+            End If
+
+            If ValidaUSOCFDI(VB.Left(cboUsoCFDI.Text, 3), VB.Left(cboRegimenFiscal.Text, 3)) = False Then
+                MsgBox("Por favor seleccione un Regimen Fiscal Valido para el Uso del CFDI...", MsgBoxStyle.Exclamation, "Facturacion")
                 cboRegimenFiscal.Focus()
                 Exit Sub
             End If
@@ -529,6 +544,20 @@ Seguir:
     End Sub
 
     Private Sub cboRegimenFiscal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboRegimenFiscal.SelectedIndexChanged
+
+        If rbMoral.Checked = True Then
+            arrUsoCFDI = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=105 AND Elemento<>0 AND Estatus='A' AND Valor2T IN ('M', 'A') AND Valor3T LIKE '% " & VB.Left(cboRegimenFiscal.Text, 3) & "%'", "DescCorta")
+            arrUsoCFDI.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
+            cboUsoCFDI.DataSource = arrUsoCFDI
+            cboUsoCFDI.DisplayMember = "Description"
+            cboUsoCFDI.ValueMember = "ID"
+        ElseIf rbFisica.Checked = True Then
+            arrUsoCFDI = Utilerias.BuildComboArray("BPFCatalogos", "DescLarga", "Elemento", "DescCorta", , "Tabla=105 AND Elemento<>0 AND Estatus='A' AND Valor2T IN ('F', 'A') AND Valor3T LIKE '% " & VB.Left(cboRegimenFiscal.Text, 3) & "%'", "DescCorta")
+            arrUsoCFDI.Insert(0, New ComboArray("--- SELECCIONE ---", 0))
+            cboUsoCFDI.DataSource = arrUsoCFDI
+            cboUsoCFDI.DisplayMember = "Description"
+            cboUsoCFDI.ValueMember = "ID"
+        End If
 
     End Sub
 End Class

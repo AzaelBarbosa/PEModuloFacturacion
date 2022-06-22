@@ -28,8 +28,9 @@ Partial Class frmMenuFacturacion
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnManejoFactura = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmdCrearDirectorio = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -107,6 +108,7 @@ Partial Class frmMenuFacturacion
         '
         Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Controls.Add(Me.cmdCrearDirectorio)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.btnFacturaIndividual)
@@ -119,6 +121,15 @@ Partial Class frmMenuFacturacion
         Me.Panel1.Size = New System.Drawing.Size(420, 206)
         Me.Panel1.TabIndex = 3
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(176, 176)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(64, 24)
+        Me.Button2.TabIndex = 4
+        Me.Button2.Text = "Correo"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(185, 87)
@@ -129,14 +140,15 @@ Partial Class frmMenuFacturacion
         Me.Button1.Text = "c"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Button2
+        'cmdCrearDirectorio
         '
-        Me.Button2.Location = New System.Drawing.Point(176, 176)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(64, 24)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Correo"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.cmdCrearDirectorio.Location = New System.Drawing.Point(367, 163)
+        Me.cmdCrearDirectorio.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdCrearDirectorio.Name = "cmdCrearDirectorio"
+        Me.cmdCrearDirectorio.Size = New System.Drawing.Size(49, 34)
+        Me.cmdCrearDirectorio.TabIndex = 5
+        Me.cmdCrearDirectorio.Text = "M"
+        Me.cmdCrearDirectorio.UseVisualStyleBackColor = True
         '
         'frmMenuFacturacion
         '
@@ -167,4 +179,5 @@ Partial Class frmMenuFacturacion
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents cmdCrearDirectorio As System.Windows.Forms.Button
 End Class

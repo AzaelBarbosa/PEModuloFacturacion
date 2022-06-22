@@ -1,6 +1,7 @@
 ﻿Public Class frmCancelarFactura
     Public TipoFactura As String = ""
     Public Folio As Integer = 0
+    Dim strTipFactura As String = ""
     Private Sub guardaDatosCancelacion(ByVal datos As DataTable, ByVal motivo As String)
         Dim sSQL As String = ""
         Dim sSQL2 As String = ""
@@ -31,6 +32,7 @@
         Dim dtTipoRela As New DataTable
         Dim drTipoRela As DataRow
 
+
         sSQL = "SELECT DescCorta, Valor1T FROM BPFCatalogos WHERE Tabla = 111 AND Elemento <> 0 AND Estatus = 'A' ORDER BY Valor1T"
         dtTipoRela = SQLServer.ExecSQLReturnDT(sSQL, "BPFCatalogos")
 
@@ -45,7 +47,14 @@
         Dim dtTipoCancel As New DataTable
         Dim drTipoCancel As DataRow
 
-        sSQL = "SELECT DescCorta, Valor1T FROM BPFCatalogos WHERE Tabla = 112 AND Elemento <> 0 AND Estatus = 'A' ORDER BY Valor1T"
+        If strTipFactura = "GLOBAL" Then
+            sSQL = "SELECT DescCorta, Valor1T FROM BPFCatalogos WHERE Tabla = 112 AND Elemento <> 0 AND Estatus = 'A' AND Valor3T = 'G' ORDER BY Valor1T"
+        ElseIf strTipFactura = "INDIVIDUAL" Then
+            sSQL = "SELECT DescCorta, Valor1T FROM BPFCatalogos WHERE Tabla = 112 AND Elemento <> 0 AND Estatus = 'A' AND Valor3T = 'I' ORDER BY Valor1T"
+        Else
+            sSQL = "SELECT DescCorta, Valor1T FROM BPFCatalogos WHERE Tabla = 112 AND Elemento <> 0 AND Estatus = 'A' ORDER BY Valor1T"
+        End If
+
         dtTipoCancel = SQLServer.ExecSQLReturnDT(sSQL, "BPFCatalogos")
 
         For iFila As Integer = 0 To dtTipoCancel.Rows.Count - 1
@@ -68,7 +77,7 @@
             DatosCancelar = DatosCancelar & "Archivos: " & dr("NombreArchivoPDF") & vbNewLine
             DatosCancelar = DatosCancelar & dr("NombreArchivoXML") & vbNewLine
             DatosCancelar = DatosCancelar & vbNewLine
-
+            strTipFactura = dr("TipoFactura").ToString
         Next
         txtDatos.Text = DatosCancelar
 

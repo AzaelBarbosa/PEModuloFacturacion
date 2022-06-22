@@ -700,9 +700,12 @@ Intento:
             nombreArchi = ""
 
             wrFichero.Write(Format(Now, "HH:mm:ss").ToString & "~" & "SE INICIA PROCESO DE FACTURA EN FEL.......................... " & vbNewLine)
-            GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
 
-            'GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
+            If strVersionFacturas <> "40" Then
+                GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
+            Else
+                GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleGlob, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaGlobal, )
+            End If
 
             If errorFG Then
                 GoTo NoseHaceNada

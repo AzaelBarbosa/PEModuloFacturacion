@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="PEFacturacion.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="PEFacturacion" version="22.4.27.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="PEFacturacion" version="22.6.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="PEFacturacion.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -52,24 +52,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PEFacturacion.exe" size="1607168">
-      <assemblyIdentity name="PEFacturacion" version="22.4.27.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PEFacturacion.exe" size="1606144">
+      <assemblyIdentity name="PEFacturacion" version="22.6.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>vII/xEFcC7I67jQc0hX3Jk8tf1U=</dsig:DigestValue>
+        <dsig:DigestValue>4WN9Vrd3Rpv1AeAYWS7GN2o2mEg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="PEFacturacion.exe.config" size="2913">
+  <file name="PEFacturacion.exe.config" size="3024">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Er6XPRyxerbzXsX1ObutR0dOrOc=</dsig:DigestValue>
+      <dsig:DigestValue>AH5VF3+2NOHkcvwaujLMcOs6mmM=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

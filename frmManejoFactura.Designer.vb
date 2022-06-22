@@ -29,6 +29,8 @@ Partial Class frmManejoFactura
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.dgvResultadoFact = New System.Windows.Forms.DataGridView()
         Me.colSel = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.colFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,7 +47,10 @@ Partial Class frmManejoFactura
         Me.colCorreo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colNoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRFC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colVersionFact = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdActivar = New System.Windows.Forms.Button()
         Me.txtUUID = New System.Windows.Forms.TextBox()
         Me.txtFolio = New System.Windows.Forms.TextBox()
         Me.chbxUUID = New System.Windows.Forms.CheckBox()
@@ -78,8 +83,6 @@ Partial Class frmManejoFactura
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.btnCancelaFac = New System.Windows.Forms.Button()
         Me.btnLimpiar = New System.Windows.Forms.Button()
-        Me.cmdActivar = New System.Windows.Forms.Button()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvResultadoFact, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,21 +97,45 @@ Partial Class frmManejoFactura
         Me.Panel1.Controls.Add(Me.GroupBox2)
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.GroupBox3)
-        Me.Panel1.Location = New System.Drawing.Point(2, 6)
+        Me.Panel1.Location = New System.Drawing.Point(3, 7)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(710, 510)
+        Me.Panel1.Size = New System.Drawing.Size(947, 628)
         Me.Panel1.TabIndex = 24
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Button2)
+        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.dgvResultadoFact)
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 134)
+        Me.GroupBox2.Location = New System.Drawing.Point(11, 165)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(496, 361)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Size = New System.Drawing.Size(661, 444)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Resultado de la Busqueda"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(495, 394)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(68, 27)
+        Me.Button2.TabIndex = 14
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(584, 392)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(55, 30)
+        Me.Button1.TabIndex = 13
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'dgvResultadoFact
         '
@@ -116,12 +143,13 @@ Partial Class frmManejoFactura
         Me.dgvResultadoFact.AllowUserToDeleteRows = False
         Me.dgvResultadoFact.BackgroundColor = System.Drawing.Color.White
         Me.dgvResultadoFact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvResultadoFact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colSel, Me.colFecha, Me.colFolio, Me.colSerie, Me.colEstatus, Me.colAcuse, Me.colTipo, Me.colTipoComprobante, Me.colImporte, Me.colUUID, Me.colArchivoPDF, Me.colArchivoXML, Me.colCorreo, Me.colNoCliente, Me.colRFC})
+        Me.dgvResultadoFact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colSel, Me.colFecha, Me.colFolio, Me.colSerie, Me.colEstatus, Me.colAcuse, Me.colTipo, Me.colTipoComprobante, Me.colImporte, Me.colUUID, Me.colArchivoPDF, Me.colArchivoXML, Me.colCorreo, Me.colNoCliente, Me.colRFC, Me.colVersionFact})
         Me.dgvResultadoFact.GridColor = System.Drawing.Color.White
-        Me.dgvResultadoFact.Location = New System.Drawing.Point(8, 16)
+        Me.dgvResultadoFact.Location = New System.Drawing.Point(11, 20)
+        Me.dgvResultadoFact.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvResultadoFact.Name = "dgvResultadoFact"
         Me.dgvResultadoFact.RowHeadersVisible = False
-        Me.dgvResultadoFact.Size = New System.Drawing.Size(474, 294)
+        Me.dgvResultadoFact.Size = New System.Drawing.Size(632, 362)
         Me.dgvResultadoFact.TabIndex = 12
         '
         'colSel
@@ -247,6 +275,12 @@ Partial Class frmManejoFactura
         Me.colRFC.Name = "colRFC"
         Me.colRFC.Visible = False
         '
+        'colVersionFact
+        '
+        Me.colVersionFact.DataPropertyName = "VersionFactura"
+        Me.colVersionFact.HeaderText = "Version Factura"
+        Me.colVersionFact.Name = "colVersionFact"
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.cmdCancelar)
@@ -260,37 +294,62 @@ Partial Class frmManejoFactura
         Me.GroupBox1.Controls.Add(Me.chbxFechas)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.dtpFechaFin)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 32)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 39)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(496, 96)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(661, 118)
         Me.GroupBox1.TabIndex = 23
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Opciones de Busqueda"
         '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Location = New System.Drawing.Point(605, 33)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(35, 28)
+        Me.cmdCancelar.TabIndex = 20
+        Me.cmdCancelar.Text = "C"
+        Me.cmdCancelar.UseVisualStyleBackColor = True
+        '
+        'cmdActivar
+        '
+        Me.cmdActivar.Location = New System.Drawing.Point(563, 33)
+        Me.cmdActivar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdActivar.Name = "cmdActivar"
+        Me.cmdActivar.Size = New System.Drawing.Size(35, 28)
+        Me.cmdActivar.TabIndex = 19
+        Me.cmdActivar.Text = "A"
+        Me.cmdActivar.UseVisualStyleBackColor = True
+        '
         'txtUUID
         '
         Me.txtUUID.Enabled = False
-        Me.txtUUID.Location = New System.Drawing.Point(88, 70)
+        Me.txtUUID.Location = New System.Drawing.Point(117, 86)
+        Me.txtUUID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtUUID.MaxLength = 40
         Me.txtUUID.Name = "txtUUID"
-        Me.txtUUID.Size = New System.Drawing.Size(394, 20)
+        Me.txtUUID.Size = New System.Drawing.Size(524, 22)
         Me.txtUUID.TabIndex = 7
         '
         'txtFolio
         '
         Me.txtFolio.Enabled = False
-        Me.txtFolio.Location = New System.Drawing.Point(88, 44)
+        Me.txtFolio.Location = New System.Drawing.Point(117, 54)
+        Me.txtFolio.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFolio.MaxLength = 20
         Me.txtFolio.Name = "txtFolio"
-        Me.txtFolio.Size = New System.Drawing.Size(184, 20)
+        Me.txtFolio.Size = New System.Drawing.Size(244, 22)
         Me.txtFolio.TabIndex = 6
         '
         'chbxUUID
         '
         Me.chbxUUID.AutoSize = True
-        Me.chbxUUID.Location = New System.Drawing.Point(16, 73)
+        Me.chbxUUID.Location = New System.Drawing.Point(21, 90)
+        Me.chbxUUID.Margin = New System.Windows.Forms.Padding(4)
         Me.chbxUUID.Name = "chbxUUID"
-        Me.chbxUUID.Size = New System.Drawing.Size(56, 17)
+        Me.chbxUUID.Size = New System.Drawing.Size(67, 21)
         Me.chbxUUID.TabIndex = 3
         Me.chbxUUID.Text = "UUID:"
         Me.chbxUUID.UseVisualStyleBackColor = True
@@ -298,9 +357,10 @@ Partial Class frmManejoFactura
         'chbxFolio
         '
         Me.chbxFolio.AutoSize = True
-        Me.chbxFolio.Location = New System.Drawing.Point(16, 47)
+        Me.chbxFolio.Location = New System.Drawing.Point(21, 58)
+        Me.chbxFolio.Margin = New System.Windows.Forms.Padding(4)
         Me.chbxFolio.Name = "chbxFolio"
-        Me.chbxFolio.Size = New System.Drawing.Size(51, 17)
+        Me.chbxFolio.Size = New System.Drawing.Size(64, 21)
         Me.chbxFolio.TabIndex = 2
         Me.chbxFolio.Text = "Folio:"
         Me.chbxFolio.UseVisualStyleBackColor = True
@@ -308,9 +368,10 @@ Partial Class frmManejoFactura
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(226, 24)
+        Me.Label3.Location = New System.Drawing.Point(301, 30)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(35, 13)
+        Me.Label3.Size = New System.Drawing.Size(45, 17)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Hasta"
         '
@@ -318,18 +379,20 @@ Partial Class frmManejoFactura
         '
         Me.dtpFechaIni.Enabled = False
         Me.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaIni.Location = New System.Drawing.Point(132, 19)
+        Me.dtpFechaIni.Location = New System.Drawing.Point(176, 23)
+        Me.dtpFechaIni.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaIni.Name = "dtpFechaIni"
-        Me.dtpFechaIni.Size = New System.Drawing.Size(88, 20)
+        Me.dtpFechaIni.Size = New System.Drawing.Size(116, 22)
         Me.dtpFechaIni.TabIndex = 4
         Me.dtpFechaIni.Value = New Date(2019, 2, 27, 0, 0, 0, 0)
         '
         'chbxFechas
         '
         Me.chbxFechas.AutoSize = True
-        Me.chbxFechas.Location = New System.Drawing.Point(16, 23)
+        Me.chbxFechas.Location = New System.Drawing.Point(21, 28)
+        Me.chbxFechas.Margin = New System.Windows.Forms.Padding(4)
         Me.chbxFechas.Name = "chbxFechas"
-        Me.chbxFechas.Size = New System.Drawing.Size(64, 17)
+        Me.chbxFechas.Size = New System.Drawing.Size(80, 21)
         Me.chbxFechas.TabIndex = 1
         Me.chbxFechas.Text = "Fechas:"
         Me.chbxFechas.UseVisualStyleBackColor = True
@@ -337,9 +400,10 @@ Partial Class frmManejoFactura
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(86, 23)
+        Me.Label1.Location = New System.Drawing.Point(115, 28)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(38, 13)
+        Me.Label1.Size = New System.Drawing.Size(49, 17)
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "Desde"
         '
@@ -347,9 +411,10 @@ Partial Class frmManejoFactura
         '
         Me.dtpFechaFin.Enabled = False
         Me.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaFin.Location = New System.Drawing.Point(279, 19)
+        Me.dtpFechaFin.Location = New System.Drawing.Point(372, 23)
+        Me.dtpFechaFin.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaFin.Name = "dtpFechaFin"
-        Me.dtpFechaFin.Size = New System.Drawing.Size(88, 20)
+        Me.dtpFechaFin.Size = New System.Drawing.Size(116, 22)
         Me.dtpFechaFin.TabIndex = 5
         '
         'GroupBox3
@@ -376,9 +441,11 @@ Partial Class frmManejoFactura
         Me.GroupBox3.Controls.Add(Me.btnCerrar)
         Me.GroupBox3.Controls.Add(Me.btnCancelaFac)
         Me.GroupBox3.Controls.Add(Me.btnLimpiar)
-        Me.GroupBox3.Location = New System.Drawing.Point(510, 32)
+        Me.GroupBox3.Location = New System.Drawing.Point(680, 39)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(175, 475)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox3.Size = New System.Drawing.Size(233, 585)
         Me.GroupBox3.TabIndex = 22
         Me.GroupBox3.TabStop = False
         '
@@ -388,9 +455,10 @@ Partial Class frmManejoFactura
         Me.btnNotasCredito.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNotasCredito.Image = Global.PEFacturacion.My.Resources.Resources.factura
         Me.btnNotasCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNotasCredito.Location = New System.Drawing.Point(9, 386)
+        Me.btnNotasCredito.Location = New System.Drawing.Point(12, 475)
+        Me.btnNotasCredito.Margin = New System.Windows.Forms.Padding(4)
         Me.btnNotasCredito.Name = "btnNotasCredito"
-        Me.btnNotasCredito.Size = New System.Drawing.Size(156, 37)
+        Me.btnNotasCredito.Size = New System.Drawing.Size(208, 46)
         Me.btnNotasCredito.TabIndex = 62
         Me.btnNotasCredito.Text = "  Notas de Credito"
         Me.btnNotasCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -402,9 +470,10 @@ Partial Class frmManejoFactura
         Me.btnSustitucion.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSustitucion.Image = Global.PEFacturacion.My.Resources.Resources.cambio
         Me.btnSustitucion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSustitucion.Location = New System.Drawing.Point(9, 346)
+        Me.btnSustitucion.Location = New System.Drawing.Point(12, 426)
+        Me.btnSustitucion.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSustitucion.Name = "btnSustitucion"
-        Me.btnSustitucion.Size = New System.Drawing.Size(156, 37)
+        Me.btnSustitucion.Size = New System.Drawing.Size(208, 46)
         Me.btnSustitucion.TabIndex = 61
         Me.btnSustitucion.Text = "  Sustituir Factura"
         Me.btnSustitucion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -413,9 +482,10 @@ Partial Class frmManejoFactura
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(137, 370)
+        Me.Label12.Location = New System.Drawing.Point(183, 455)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(46, 13)
+        Me.Label12.Size = New System.Drawing.Size(61, 17)
         Me.Label12.TabIndex = 60
         Me.Label12.Text = "Exportar"
         Me.Label12.Visible = False
@@ -423,9 +493,10 @@ Partial Class frmManejoFactura
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(101, 371)
+        Me.Label8.Location = New System.Drawing.Point(135, 457)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(81, 13)
+        Me.Label8.Size = New System.Drawing.Size(105, 17)
         Me.Label8.TabIndex = 58
         Me.Label8.Text = "Ver XML Acuse"
         Me.Label8.Visible = False
@@ -437,9 +508,10 @@ Partial Class frmManejoFactura
         Me.btnExportaExcel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExportaExcel.Image = Global.PEFacturacion.My.Resources.Resources.excel
         Me.btnExportaExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportaExcel.Location = New System.Drawing.Point(9, 124)
+        Me.btnExportaExcel.Location = New System.Drawing.Point(12, 153)
+        Me.btnExportaExcel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExportaExcel.Name = "btnExportaExcel"
-        Me.btnExportaExcel.Size = New System.Drawing.Size(156, 37)
+        Me.btnExportaExcel.Size = New System.Drawing.Size(208, 46)
         Me.btnExportaExcel.TabIndex = 59
         Me.btnExportaExcel.Text = "  Exportar Excel"
         Me.btnExportaExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -448,9 +520,10 @@ Partial Class frmManejoFactura
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(103, 370)
+        Me.Label6.Location = New System.Drawing.Point(137, 455)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(80, 13)
+        Me.Label6.Size = New System.Drawing.Size(104, 17)
         Me.Label6.TabIndex = 57
         Me.Label6.Text = "Ver PDF Acuse"
         Me.Label6.Visible = False
@@ -462,11 +535,12 @@ Partial Class frmManejoFactura
         Me.btnVerXMLAcuse.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerXMLAcuse.Image = Global.PEFacturacion.My.Resources.Resources.XMLAcuse
         Me.btnVerXMLAcuse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerXMLAcuse.Location = New System.Drawing.Point(9, 310)
+        Me.btnVerXMLAcuse.Location = New System.Drawing.Point(12, 382)
+        Me.btnVerXMLAcuse.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerXMLAcuse.Name = "btnVerXMLAcuse"
-        Me.btnVerXMLAcuse.Size = New System.Drawing.Size(156, 37)
+        Me.btnVerXMLAcuse.Size = New System.Drawing.Size(208, 46)
         Me.btnVerXMLAcuse.TabIndex = 56
-        Me.btnVerXMLAcuse.Text = "  Ver Acuse XML"
+        Me.btnVerXMLAcuse.Text = "  Ver XML Cancelado"
         Me.btnVerXMLAcuse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnVerXMLAcuse.UseVisualStyleBackColor = False
         '
@@ -477,11 +551,12 @@ Partial Class frmManejoFactura
         Me.btnVerPDFAcuse.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerPDFAcuse.Image = Global.PEFacturacion.My.Resources.Resources.PDFAcuse
         Me.btnVerPDFAcuse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerPDFAcuse.Location = New System.Drawing.Point(9, 272)
+        Me.btnVerPDFAcuse.Location = New System.Drawing.Point(12, 335)
+        Me.btnVerPDFAcuse.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerPDFAcuse.Name = "btnVerPDFAcuse"
-        Me.btnVerPDFAcuse.Size = New System.Drawing.Size(156, 37)
+        Me.btnVerPDFAcuse.Size = New System.Drawing.Size(208, 46)
         Me.btnVerPDFAcuse.TabIndex = 55
-        Me.btnVerPDFAcuse.Text = "  Ver Acuse PDF"
+        Me.btnVerPDFAcuse.Text = "  Ver PDF Cancelado"
         Me.btnVerPDFAcuse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnVerPDFAcuse.UseVisualStyleBackColor = False
         '
@@ -492,9 +567,10 @@ Partial Class frmManejoFactura
         Me.btnVerPDF.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerPDF.Image = Global.PEFacturacion.My.Resources.Resources.pdf
         Me.btnVerPDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerPDF.Location = New System.Drawing.Point(9, 162)
+        Me.btnVerPDF.Location = New System.Drawing.Point(12, 199)
+        Me.btnVerPDF.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerPDF.Name = "btnVerPDF"
-        Me.btnVerPDF.Size = New System.Drawing.Size(156, 37)
+        Me.btnVerPDF.Size = New System.Drawing.Size(208, 46)
         Me.btnVerPDF.TabIndex = 54
         Me.btnVerPDF.Text = "  Ver PDF"
         Me.btnVerPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -503,9 +579,10 @@ Partial Class frmManejoFactura
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(134, 370)
+        Me.Label5.Location = New System.Drawing.Point(179, 455)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 13)
+        Me.Label5.Size = New System.Drawing.Size(62, 17)
         Me.Label5.TabIndex = 53
         Me.Label5.Text = "Ver XML"
         Me.Label5.Visible = False
@@ -517,9 +594,10 @@ Partial Class frmManejoFactura
         Me.btnVerXML.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerXML.Image = Global.PEFacturacion.My.Resources.Resources.xml
         Me.btnVerXML.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerXML.Location = New System.Drawing.Point(9, 198)
+        Me.btnVerXML.Location = New System.Drawing.Point(12, 244)
+        Me.btnVerXML.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerXML.Name = "btnVerXML"
-        Me.btnVerXML.Size = New System.Drawing.Size(156, 37)
+        Me.btnVerXML.Size = New System.Drawing.Size(208, 46)
         Me.btnVerXML.TabIndex = 52
         Me.btnVerXML.Text = "  Ver XML"
         Me.btnVerXML.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -528,9 +606,10 @@ Partial Class frmManejoFactura
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(134, 371)
+        Me.Label4.Location = New System.Drawing.Point(179, 457)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(47, 13)
+        Me.Label4.Size = New System.Drawing.Size(61, 17)
         Me.Label4.TabIndex = 51
         Me.Label4.Text = "Ver PDF"
         Me.Label4.Visible = False
@@ -538,9 +617,10 @@ Partial Class frmManejoFactura
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(19, 146)
+        Me.Label2.Location = New System.Drawing.Point(25, 180)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(37, 13)
+        Me.Label2.Size = New System.Drawing.Size(48, 17)
         Me.Label2.TabIndex = 49
         Me.Label2.Text = "Enviar"
         Me.Label2.Visible = False
@@ -551,9 +631,10 @@ Partial Class frmManejoFactura
         Me.btnEnviarEmail.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEnviarEmail.Image = Global.PEFacturacion.My.Resources.Resources.correo
         Me.btnEnviarEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEnviarEmail.Location = New System.Drawing.Point(9, 87)
+        Me.btnEnviarEmail.Location = New System.Drawing.Point(12, 107)
+        Me.btnEnviarEmail.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEnviarEmail.Name = "btnEnviarEmail"
-        Me.btnEnviarEmail.Size = New System.Drawing.Size(156, 37)
+        Me.btnEnviarEmail.Size = New System.Drawing.Size(208, 46)
         Me.btnEnviarEmail.TabIndex = 48
         Me.btnEnviarEmail.Text = "  Enviar Correo"
         Me.btnEnviarEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -566,9 +647,10 @@ Partial Class frmManejoFactura
         Me.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBuscar.Image = Global.PEFacturacion.My.Resources.Resources.Buscar
         Me.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBuscar.Location = New System.Drawing.Point(9, 50)
+        Me.btnBuscar.Location = New System.Drawing.Point(12, 62)
+        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(156, 37)
+        Me.btnBuscar.Size = New System.Drawing.Size(208, 46)
         Me.btnBuscar.TabIndex = 9
         Me.btnBuscar.Text = "  Buscar"
         Me.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -577,9 +659,10 @@ Partial Class frmManejoFactura
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(80, 71)
+        Me.Label7.Location = New System.Drawing.Point(107, 87)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(40, 13)
+        Me.Label7.Size = New System.Drawing.Size(52, 17)
         Me.Label7.TabIndex = 47
         Me.Label7.Text = "Buscar"
         Me.Label7.Visible = False
@@ -587,9 +670,10 @@ Partial Class frmManejoFactura
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(148, 370)
+        Me.Label20.Location = New System.Drawing.Point(197, 455)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(35, 13)
+        Me.Label20.Size = New System.Drawing.Size(48, 17)
         Me.Label20.TabIndex = 24
         Me.Label20.Text = "Cerrar"
         Me.Label20.Visible = False
@@ -597,9 +681,10 @@ Partial Class frmManejoFactura
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(101, 371)
+        Me.Label19.Location = New System.Drawing.Point(135, 457)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(88, 13)
+        Me.Label19.Size = New System.Drawing.Size(116, 17)
         Me.Label19.TabIndex = 23
         Me.Label19.Text = "Cancelar Factura"
         Me.Label19.Visible = False
@@ -607,9 +692,10 @@ Partial Class frmManejoFactura
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(16, 71)
+        Me.Label18.Location = New System.Drawing.Point(21, 87)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(40, 13)
+        Me.Label18.Size = New System.Drawing.Size(54, 17)
         Me.Label18.TabIndex = 22
         Me.Label18.Text = "Limpiar"
         Me.Label18.Visible = False
@@ -620,9 +706,10 @@ Partial Class frmManejoFactura
         Me.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCerrar.Image = Global.PEFacturacion.My.Resources.Resources.cerrar
         Me.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCerrar.Location = New System.Drawing.Point(9, 427)
+        Me.btnCerrar.Location = New System.Drawing.Point(12, 526)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(156, 37)
+        Me.btnCerrar.Size = New System.Drawing.Size(208, 46)
         Me.btnCerrar.TabIndex = 11
         Me.btnCerrar.Text = "  Salir"
         Me.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -634,9 +721,10 @@ Partial Class frmManejoFactura
         Me.btnCancelaFac.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancelaFac.Image = Global.PEFacturacion.My.Resources.Resources.CancelarDoc
         Me.btnCancelaFac.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelaFac.Location = New System.Drawing.Point(9, 236)
+        Me.btnCancelaFac.Location = New System.Drawing.Point(12, 290)
+        Me.btnCancelaFac.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelaFac.Name = "btnCancelaFac"
-        Me.btnCancelaFac.Size = New System.Drawing.Size(156, 37)
+        Me.btnCancelaFac.Size = New System.Drawing.Size(208, 46)
         Me.btnCancelaFac.TabIndex = 10
         Me.btnCancelaFac.Text = "  Cancelar Factura"
         Me.btnCancelaFac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -648,40 +736,24 @@ Partial Class frmManejoFactura
         Me.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnLimpiar.Image = Global.PEFacturacion.My.Resources.Resources.Limpiar
         Me.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnLimpiar.Location = New System.Drawing.Point(9, 13)
+        Me.btnLimpiar.Location = New System.Drawing.Point(12, 16)
+        Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(156, 37)
+        Me.btnLimpiar.Size = New System.Drawing.Size(208, 46)
         Me.btnLimpiar.TabIndex = 8
         Me.btnLimpiar.Text = "  Limpiar"
         Me.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnLimpiar.UseVisualStyleBackColor = False
         '
-        'cmdActivar
-        '
-        Me.cmdActivar.Location = New System.Drawing.Point(422, 27)
-        Me.cmdActivar.Name = "cmdActivar"
-        Me.cmdActivar.Size = New System.Drawing.Size(26, 23)
-        Me.cmdActivar.TabIndex = 19
-        Me.cmdActivar.Text = "A"
-        Me.cmdActivar.UseVisualStyleBackColor = True
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(454, 27)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(26, 23)
-        Me.cmdCancelar.TabIndex = 20
-        Me.cmdCancelar.Text = "C"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
         'frmManejoFactura
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(722, 551)
+        Me.ClientSize = New System.Drawing.Size(963, 678)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmManejoFactura"
@@ -734,6 +806,12 @@ Partial Class frmManejoFactura
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents btnExportaExcel As System.Windows.Forms.Button
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents btnSustitucion As System.Windows.Forms.Button
+    Friend WithEvents btnNotasCredito As System.Windows.Forms.Button
+    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
+    Friend WithEvents cmdActivar As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents colSel As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents colFecha As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colFolio As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -749,9 +827,6 @@ Partial Class frmManejoFactura
     Friend WithEvents colCorreo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colNoCliente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colRFC As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnSustitucion As System.Windows.Forms.Button
-    Friend WithEvents btnNotasCredito As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdActivar As System.Windows.Forms.Button
+    Friend WithEvents colVersionFact As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

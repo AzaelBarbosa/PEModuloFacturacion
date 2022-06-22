@@ -1,4 +1,7 @@
-﻿Public Class frmMenuFacturacion
+﻿Imports System.IO
+Imports System
+
+Public Class frmMenuFacturacion
     Private Sub btnFacturaIndividual_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFacturaIndividual.Click
         If frmFactInd Is Nothing Then
             frmFactInd = New frmFacturaIndividual
@@ -51,5 +54,17 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         EnviarCorreoPrueba()
+    End Sub
+
+    Private Sub cmdCrearDirectorio_Click(sender As Object, e As EventArgs) Handles cmdCrearDirectorio.Click
+        Dim frmDirectoro As frmDirectorio
+
+        If frmDirectoro Is Nothing Then
+            frmDirectoro = New frmDirectorio
+        End If
+
+        frmDirectoro.ShowDialog()
+        frmDirectoro = Nothing
+
     End Sub
 End Class

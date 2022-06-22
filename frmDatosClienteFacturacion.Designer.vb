@@ -444,7 +444,7 @@ Partial Class frmDatosClienteFacturacion
         'rbFisica
         '
         Me.rbFisica.AutoSize = True
-        Me.rbFisica.Location = New System.Drawing.Point(149, 110)
+        Me.rbFisica.Location = New System.Drawing.Point(148, 84)
         Me.rbFisica.Name = "rbFisica"
         Me.rbFisica.Size = New System.Drawing.Size(122, 21)
         Me.rbFisica.TabIndex = 24
@@ -456,7 +456,7 @@ Partial Class frmDatosClienteFacturacion
         '
         Me.cboRegimenFiscal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboRegimenFiscal.FormattingEnabled = True
-        Me.cboRegimenFiscal.Location = New System.Drawing.Point(139, 143)
+        Me.cboRegimenFiscal.Location = New System.Drawing.Point(139, 116)
         Me.cboRegimenFiscal.Margin = New System.Windows.Forms.Padding(4)
         Me.cboRegimenFiscal.Name = "cboRegimenFiscal"
         Me.cboRegimenFiscal.Size = New System.Drawing.Size(398, 24)
@@ -465,7 +465,7 @@ Partial Class frmDatosClienteFacturacion
         'rbMoral
         '
         Me.rbMoral.AutoSize = True
-        Me.rbMoral.Location = New System.Drawing.Point(19, 110)
+        Me.rbMoral.Location = New System.Drawing.Point(18, 84)
         Me.rbMoral.Name = "rbMoral"
         Me.rbMoral.Size = New System.Drawing.Size(121, 21)
         Me.rbMoral.TabIndex = 23
@@ -476,7 +476,7 @@ Partial Class frmDatosClienteFacturacion
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(15, 143)
+        Me.Label21.Location = New System.Drawing.Point(15, 116)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(108, 17)
@@ -497,7 +497,7 @@ Partial Class frmDatosClienteFacturacion
         '
         Me.cboUsoCFDI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboUsoCFDI.FormattingEnabled = True
-        Me.cboUsoCFDI.Location = New System.Drawing.Point(139, 79)
+        Me.cboUsoCFDI.Location = New System.Drawing.Point(139, 147)
         Me.cboUsoCFDI.Margin = New System.Windows.Forms.Padding(4)
         Me.cboUsoCFDI.Name = "cboUsoCFDI"
         Me.cboUsoCFDI.Size = New System.Drawing.Size(398, 24)
@@ -546,7 +546,7 @@ Partial Class frmDatosClienteFacturacion
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(15, 79)
+        Me.Label17.Location = New System.Drawing.Point(15, 147)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(91, 17)

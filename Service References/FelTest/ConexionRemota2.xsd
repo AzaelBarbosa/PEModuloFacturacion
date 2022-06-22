@@ -2522,9 +2522,9 @@
   <xs:complexType name="TrasladoConcepto40R">
     <xs:sequence>
       <xs:element minOccurs="0" name="Base" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Importe" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Importe" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Impuesto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TasaOCuota" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TasaOCuota" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="TipoFactor" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -2645,7 +2645,6 @@
   <xs:complexType name="Pagos20R">
     <xs:sequence>
       <xs:element minOccurs="0" name="Pago" nillable="true" type="tns:ArrayOfPagosPago20R" />
-      <xs:element minOccurs="0" name="Totales" nillable="true" type="tns:PagosTotales20R" />
       <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -2665,7 +2664,6 @@
       <xs:element minOccurs="0" name="DoctoRelacionado" nillable="true" type="tns:ArrayOfPagosPagoDoctoRelacionado20R" />
       <xs:element minOccurs="0" name="FechaPago" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FormaDePagoP" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ImpuestosP" nillable="true" type="tns:ArrayOfPagosPagoImpuestosP20R" />
       <xs:element minOccurs="0" name="MonedaP" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Monto" type="xs:decimal" />
       <xs:element minOccurs="0" name="NomBancoOrdExt" nillable="true" type="xs:string" />
@@ -2739,64 +2737,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PagosPagoDoctoRelacionadoImpuestosDRTrasladoDR20R" nillable="true" type="tns:PagosPagoDoctoRelacionadoImpuestosDRTrasladoDR20R" />
-  <xs:complexType name="ArrayOfPagosPagoImpuestosP20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagosPagoImpuestosP20R" nillable="true" type="tns:PagosPagoImpuestosP20R" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPagosPagoImpuestosP20R" nillable="true" type="tns:ArrayOfPagosPagoImpuestosP20R" />
-  <xs:complexType name="PagosPagoImpuestosP20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="RetencionesP" nillable="true" type="tns:ArrayOfPagosPagoImpuestosPRetencionP20R" />
-      <xs:element minOccurs="0" name="TrasladosP" nillable="true" type="tns:ArrayOfPagosPagoImpuestosPTrasladoP20R" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PagosPagoImpuestosP20R" nillable="true" type="tns:PagosPagoImpuestosP20R" />
-  <xs:complexType name="ArrayOfPagosPagoImpuestosPRetencionP20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagosPagoImpuestosPRetencionP20R" nillable="true" type="tns:PagosPagoImpuestosPRetencionP20R" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPagosPagoImpuestosPRetencionP20R" nillable="true" type="tns:ArrayOfPagosPagoImpuestosPRetencionP20R" />
-  <xs:complexType name="PagosPagoImpuestosPRetencionP20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ImporteP" type="xs:decimal" />
-      <xs:element minOccurs="0" name="ImpuestoP" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PagosPagoImpuestosPRetencionP20R" nillable="true" type="tns:PagosPagoImpuestosPRetencionP20R" />
-  <xs:complexType name="ArrayOfPagosPagoImpuestosPTrasladoP20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PagosPagoImpuestosPTrasladoP20R" nillable="true" type="tns:PagosPagoImpuestosPTrasladoP20R" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPagosPagoImpuestosPTrasladoP20R" nillable="true" type="tns:ArrayOfPagosPagoImpuestosPTrasladoP20R" />
-  <xs:complexType name="PagosPagoImpuestosPTrasladoP20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BaseP" type="xs:decimal" />
-      <xs:element minOccurs="0" name="ImporteP" type="xs:decimal" />
-      <xs:element minOccurs="0" name="ImpuestoP" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TasaOCuotaP" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TipoFactorP" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PagosPagoImpuestosPTrasladoP20R" nillable="true" type="tns:PagosPagoImpuestosPTrasladoP20R" />
-  <xs:complexType name="PagosTotales20R">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="MontoTotalPagos" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalRetencionesIEPS" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalRetencionesISR" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalRetencionesIVA" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosBaseIVA0" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosBaseIVA16" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosBaseIVA8" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosBaseIVAExento" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosImpuestoIVA0" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosImpuestoIVA16" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="TotalTrasladosImpuestoIVA8" nillable="true" type="xs:decimal" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PagosTotales20R" nillable="true" type="tns:PagosTotales20R" />
   <xs:complexType name="Receptor40R">
     <xs:sequence>
       <xs:element minOccurs="0" name="DomicilioFiscalReceptor" nillable="true" type="xs:string" />

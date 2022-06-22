@@ -30,6 +30,7 @@ Public Class frmEnviarCorreo
         Panel1.Top = (Me.Height / 2) - (Panel1.Height / 2)
 
         For Each dr As DataRow In dtEnviar.Rows
+            strVersionFacturaEnca = IIf(IsDBNull(dr("VersionFactura")), "40", dr("VersionFactura").ToString)
             DatosEnviar = ""
             If dr("Estatus") = "A" Then
                 DatosEnviar = "Asunto: Envio Comprobante CFDI" & vbNewLine

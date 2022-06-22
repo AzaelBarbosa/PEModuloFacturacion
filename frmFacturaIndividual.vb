@@ -257,6 +257,8 @@ Public Class frmFacturaIndividual
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
                         drNew("TipoAparato") = 0
+                        drNew("Cantidad") = dgvFacturar.Item("colFCantidad", intFila).Value
+                        drNew("Neto") = dgvFacturar.Item("colFNeto", intFila).Value
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
 
@@ -283,6 +285,8 @@ Public Class frmFacturaIndividual
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
                         drNew("TipoAparato") = 0
+                        drNew("Cantidad") = dgvFacturar.Item("colFCantidad", intFila).Value
+                        drNew("Neto") = dgvFacturar.Item("colFNeto", intFila).Value
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
 
@@ -308,6 +312,8 @@ Public Class frmFacturaIndividual
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
                         drNew("TipoAparato") = dgvFacturar.Item("colTipoAparato", intFila).Value
                         drNew("DescripcionSAT2") = dgvFacturar.Item("colFDescripcionSAT2", intFila).Value
+                        drNew("Cantidad") = dgvFacturar.Item("colFCantidad", intFila).Value
+                        drNew("Neto") = dgvFacturar.Item("colFNeto", intFila).Value
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
 
@@ -332,6 +338,8 @@ Public Class frmFacturaIndividual
                         drNew("ClaveSAT") = dgvFacturar.Item("colFCodigoSAT", intFila).Value
                         drNew("DescripcionSAT") = dgvFacturar.Item("colFDescripcionSAT", intFila).Value
                         drNew("TipoAparato") = 0
+                        drNew("Cantidad") = dgvFacturar.Item("colFCantidad", intFila).Value
+                        drNew("Neto") = dgvFacturar.Item("colFNeto", intFila).Value
                         dtReturn.Rows.Add(drNew)
                         dtReturn.AcceptChanges()
 
@@ -383,6 +391,8 @@ Public Class frmFacturaIndividual
             dgvFacturar.Item("colFTipoFactura", intFilaNueva).Value = dgvResultado.Item("colRTipoFactura", NoFilaResultado).Value
             dgvFacturar.Item("colTipoAparato", intFilaNueva).Value = dgvResultado.Item("colRTipoAparato", NoFilaResultado).Value
             dgvFacturar.Item("colFDescripcionSAT2", intFilaNueva).Value = dgvResultado.Item("colRDescripcionSAT2", NoFilaResultado).Value
+            dgvFacturar.Item("colFCantidad", intFilaNueva).Value = dgvResultado.Item("colRCantidad", NoFilaResultado).Value
+            dgvFacturar.Item("colFNeto", intFilaNueva).Value = dgvResultado.Item("colRNeto", NoFilaResultado).Value
             If TipoFac = "" Then
                 dgvFacturar.Rows(intFilaNueva).DefaultCellStyle.BackColor = System.Drawing.Color.White
             Else
@@ -1301,7 +1311,7 @@ INICIO:
                         ImpAntesIVA = ImpAntesIVA + dr("Importe")
                     End If
 
-                    'ValidaRedondeos(1.0, 2, ImpAntesIVA, 6, dblPorcentajeIVA, dblValidaIVA, dblValidaTotal)
+                    ValidaRedondeos(1.0, 2, ImpAntesIVA, 6, dblPorcentajeIVA, dblValidaIVA, dblValidaTotal)
 
                     dr("IVA") = dblValidaIVA
                     dr("Total") = dblValidaTotal
@@ -1318,19 +1328,6 @@ INICIO:
                 End If
             Next dr
 
-            'generando las notas de credito
-            'si hay registros con marca de factura global, se procede a generar las notas de credito para cada uno           
-            If foliosNC <> "" Then
-                lblTextoAnuncio.Text = "Generando notas de crédito..."
-                lblTextoAnuncio.Visible = True
-                lblTextoAnuncio.Refresh()
-                errorNC = False
-                GeneraNotaCreditoIndividual(dtDetalleInd)
-                If errorNC Then
-                    GoTo NoSeHaceNada
-                End If
-            End If
-           
             'estos son los datos para la factura
             'validando redondeos de iva
             dblValidaIVA = 0
@@ -1394,8 +1391,26 @@ INICIO:
 
             FechaFact = Format(Now.Date, "yyyyMMdd")
             'generando factura
-            GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleInd, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaIndividual, )
-            'GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleInd, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaIndividual, )
+            If strVersionFacturas <> "40" Then
+                GeneraFactura(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleInd, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaIndividual, )
+            Else
+                GeneraFactura40(enTipoDocumento.Factura, dblSubtotal, dblSumaDescuento, dblSumaIVA, dblSumaTotal, dtDetalleInd, strCondicionesPago, strRespuesta, True, strDirSuc, strDirCli, strCBB, , , enTipoDocumentoAfectar.FacturaIndividual, )
+            End If
+
+
+            'generando las notas de credito
+            'si hay registros con marca de factura global, se procede a generar las notas de credito para cada uno           
+            If foliosNC <> "" Then
+                lblTextoAnuncio.Text = "Generando notas de crédito..."
+                lblTextoAnuncio.Visible = True
+                lblTextoAnuncio.Refresh()
+                errorNC = False
+                GeneraNotaCreditoIndividual(dtDetalleInd)
+                If errorNC Then
+                    GoTo NoSeHaceNada
+                End If
+            End If
+
 
 NoSeHaceNada:
 
